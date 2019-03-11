@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>混合佈局demo1</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.container{
+			width: 100%;
+			height: 1000px;
+			overflow: hidden;
+			zoom:1;
+		}
+		.left,.right{
+			width: 50%;
+			height: 70%;
+			float: left;
+			background: #ADD8E6;
+			position: relative;
+		}
+		.left img,.right img{
+			display: block;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+		}
+		.footer{
+			width: 100%;
+			height: 30%;
+			background: #FFB6C1;
+			float: left;
+			text-align: center;
+			display: table;
+		}
+		.footer ul {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.footer ul li{
+			display: inline;
+		}
+		.footer ul li img{
+			width: 500px;
+			height: 200px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<img src="http://climg.mukewang.com/58c0f808000129a303600215.jpg">
+		</div>
+		<div class="right">
+			<img src="http://climg.mukewang.com/58c0f819000198a703600214.jpg" alt="">
+		</div>
+		<div class="footer">
+			<ul>
+				<li>
+					<img src="http://climg.mukewang.com/58c0f81d0001fe4402000060.jpg" alt="">
+				</li>
+				<li>
+					<img src="http://climg.mukewang.com/58c0f8220001dfce02000060.jpg" alt="">
+				</li>
+				<li>
+					<img src="http://climg.mukewang.com/58c0f8780001c74602000060.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

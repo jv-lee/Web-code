@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css样式</title>
+	<style type="text/css">
+		@import url(css.css);
+		p em{color: blue}
+		h1.special em{color:orange }
+		a:link{color:red;}/* 未访问状态 */
+		a:visited{color: gray}/*已访问状态*/
+		a:hover{color:green;}/*鼠标悬浮状态*/
+		a:active{color: orange;}/*激活状态*/
+		p:hover{color: red;}
+		p:active{font-size: 40;}
+	</style>
+	<!-- <link rel="stylesheet" type="text/css" href="css.css"> -->
+</head>
+<body>
+	<h1>CSS层叠样式</h1>
+	<p>用于定义HTML内容在浏览器中的显示样式</p>
+	<h1 class="special"><em>CSS</em>是什么</h1>
+	<p><em>CSS</em>层叠样式</p>
+
+	<a href="http://www.imooc.com" target="_blank">css使用方法</a>
+	<p>慕课网</p>
+</body>
+</html>

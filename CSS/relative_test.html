@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>relative_test</title>
+	<style type="text/css">
+		.block{
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			border: 2px solid red;
+			text-align: center;
+			float: left;
+			z-index: 9;
+		}
+		.block:nth-child(2){
+			position: relative;
+			top: 0px;
+			left: -84px;
+			border: 2px solid blue;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="block">A</div>
+	<div class="block">B</div>
+	<!-- <div class="block">C</div> -->
+</body>
+</html>

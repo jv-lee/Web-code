@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>position_demo</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			display: table;
+		}
+		.content{
+			width: 100%;
+			height: 4000px;
+			background:url("img/mooc.png") center top no-repeat;
+		}
+		.opacity{
+			width: 100%;
+			height: 100%;
+			background: url("img/opacity.png");
+			position: fixed;
+			left: 0;
+			top: 0;
+		}
+		.login{
+			width: 360px;
+			height: 360px;
+			background: url("img/login.png") no-repeat;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin-left: -180px;
+			margin-top: -180px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content"></div>
+	<div class="opacity"></div>
+	<div class="login"></div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两列布局Demo1</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.container{
+			width: 100%;
+			height: auto;
+			color: #fff;
+			font-size: 16px;
+		}
+		.header{
+			width: 100%;
+			height: 100px;
+			background: #000;
+		}
+		.header .logo{
+			width: 300px;
+			height: 100px;
+			float: left;
+			background: url(http://climg.mukewang.com/58c0d2d900016ce303000100.png) no-repeat;
+		}
+		.header .nav{
+			width: auto;
+			height: 100px;
+			float: right;
+		}
+		.header .nav ul li{
+			float: left;
+			height: 100px;
+			line-height: 100px;
+			list-style-type: none;
+			padding: 0 20px;
+		}
+		.content{
+			width: 100%;
+			height: 1000px;
+			background: #ADD8E6;
+			color: #000;
+		}
+		.content .left{
+			width: 50%;
+			height: 100%;
+			float: left;
+		}
+		.content .right{
+			width: 50%;
+			height: 100%;
+			float: right;
+		}
+		.content .left div,.content .right div{
+			margin-top: 10%;
+			width: 400px;
+			height: auto;
+		}
+		.content .left div{
+			margin-left: 20%;
+		}
+		.content .left div h3{
+			margin:10px 0px;
+		}
+		.content .right div h3{
+			margin: 10px 0px;
+		}
+		.content .left div .list-1{
+			list-style: none;
+			float: left;
+		}
+		.content .left div .list-1 li{
+			background: pink;
+		}
+		.content .left div li{
+			margin-bottom: 5px;
+		}
+		.content .left div .list-2{
+			margin-left: 10px;
+			list-style: none;
+			float: left;
+		}
+
+		.content .right div span{
+			display: inline-block;
+			padding: 5px;
+			width: 90px;
+		}
+		.content .right div .simple{
+			width: 140px;
+		}
+
+		.footer{
+			width: 100%;
+			height: 100px;
+			position: fixed;
+			bottom: 0;
+			background: #000;
+			text-align: center;
+		}
+		.footer ul{
+			display: inline-block;
+		}
+		.footer ul li{
+			display: inline;
+			padding: 0 20px;
+			height: 100px;
+			line-height: 100px;
+		}
+
+		http://climg.mukewang.com/58c0d2d900016ce303000100.png
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo"></div>
+			<div class="nav">
+				<ul>
+					<li>课程</li>
+					<li>职业路径</li>
+					<li>实战</li>
+					<li>猿问</li>
+					<li>手记</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="left">
+				
+				<div>
+					<h3>课程推荐</h3>
+				<ul class="list-1">
+					<li>课程路径</li>
+					<li>课程路径</li>
+					<li>课程路径</li>
+					<li>课程路径</li>
+					<li>课程路径</li>
+				</ul>
+				<ul class="list-2">
+					<li>HTML5与CSS3实现动态网页</li>
+					<li>零基础入门android语法与界面</li>
+					<li>iOS基础语法与常用控件</li>
+					<li>PHP入门</li>
+					<li>JAVA入门开发</li>
+				</ul>
+				</div>
+			</div>
+			<div class="right">
+				<div>
+					<h3>相关课程</h3>
+					<span>HTML</span><span>CSS</span><span>JavaScript</span>
+					<span>HTML5</span><span>CSS3</span><span>Jquery</span>
+					<span class="simple">移动端基础</span><span class="simple">移动端APP开发</span>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul>
+				<li>网站首页</li>
+				<li>企业合作</li>
+				<li>人才招聘</li>
+				<li>联系我们</li>
+				<li>常见问题</li>
+				<li>友情链接</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

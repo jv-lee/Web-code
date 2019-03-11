@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>float_nav</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.container{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.header{
+			width: 1200px;
+			background: #ccc;
+			overflow: hidden;
+			zoom:1;
+		}
+		.header .logo{
+			width: 200px;
+			height: 80px;
+			float: left;
+			margin: 0 40px;
+		}
+		.header .nav{
+			float: right;
+			overflow: hidden;
+			zoom:1;
+			padding-right: 40px;
+		}
+		.header .nav li{
+			float: left;
+			margin-right: 20px;
+		}
+		.header .nav li a{
+			padding: 0 20px;
+			height: 80px;
+			line-height: 80px;
+			display: block;
+			font-family: "微软雅黑";
+			font-size: 16px;
+			color: #333;
+		}
+		.header .nav li a:hover{
+			color: #fff;
+		}
+		.mian .footer{
+			font-size: 22px;
+			color: #fff;
+		}
+		.mian{
+			width: 1200px;
+			overflow: hidden;
+			zoom:1;
+		}
+		.main .content{
+			width: 1000px;
+			height: 500px;
+			background: blue;
+			float: left;
+		}
+		.main .sidebar{
+			width: 200px;
+			height: 500px;
+			background: orange;
+			float: left;
+		}
+		.footer{
+			width: 1200px;
+			height: 100px;
+			background: red;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo">
+				<a href="#"><img src="./img/logo.png"/></a>
+			</div>
+			<ul class="nav">
+				<li><a href="#">免费课程</a></li>
+				<li><a href="#">职业路径</a></li>
+				<li><a href="#">实战</a></li>
+				<li><a href="#">猿问</a></li>
+				<li><a href="#">手记</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="content">content</div>
+			<div class="sidebar">sidebar</div>
+		</div>
+		<div class="footer">footer</div>
+	</div>
+</body>
+</html>

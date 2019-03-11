@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>position_test</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.block{
+			position: static;
+
+			width: 50px;
+			height: 50px;
+
+			line-height: 50px;
+			text-align: center;
+			border: 2px solid blue;
+			box-sizing: border-box;
+		}
+		.block:nth-child(1){
+			border:2px green solid;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.block:nth-child(2){
+			border:2px red solid;
+			/*margin: 10px;*/
+		}
+	</style>
+</head>	
+<body>
+	<div class="block">
+		A
+	</div>
+	<div class="block">
+		B
+	</div>
+	<div class="block">C</div>
+	<div class="block">D</div>
+</body>
+</html>

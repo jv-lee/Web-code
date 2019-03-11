@@ -1,0 +1,80 @@
+*{padding: 0;margin: 0;}
+.header{
+	width: 100%;
+	height: 100px;
+}
+.header img{
+	width: 300px;
+	height: 85px;
+	padding-left: 100px;
+	padding-top: 8px;
+}
+.header .logo{
+	float: left;
+}
+.header .nav{
+	float: right;
+}
+.header .nav ul{
+	margin-right: 100px;
+}
+.header .nav ul li{
+	width: 80px;
+	height: 100px;
+	line-height: 100px;
+	list-style: none;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	color: #7D7D7D;
+}
+.main .top{
+	width: 100%;
+	height:600px;
+}
+.main .top img{
+	width: 100%;
+	height: 600px; 
+}
+.main .topLayer{
+	position: absolute;
+	top: 100px;
+	left: 0;
+	background-color: #000;
+	width: 100%;
+	height: 600px;
+	opacity: 0.5;
+}
+.main .top-topLayer{
+	width: 500px;
+	height: 300px;
+	
+	position: absolute;
+	top: 400px;
+	margin-top: -150px;
+	z-index: 2;
+	right: 50%;
+	margin-right: -250px;
+}
+.main .top-topLayer .word{
+	padding-top: 100px;
+	color: #fff;
+	font-weight: bolder;
+	font-size: 45px;
+	text-align: center;
+	font-family: "微软雅黑";
+}
+
+.main .top-topLayer button{
+	width: 200px;
+	height: 60px;
+	margin-top: 50px;
+	color: #fff;
+	background-color: #F5704F;
+	font-family: "微软雅黑";
+	text-align:center;
+	font-weight: bolder;
+	font-size: 14px;
+	border-radius: 8px;
+	margin-left: 150px;
+}

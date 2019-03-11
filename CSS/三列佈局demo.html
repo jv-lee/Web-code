@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三列佈局Demo</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			color: #fff;
+		}
+		input{
+			padding: 0;
+			margin: 0;
+		}
+		.container{
+			width: 100%;
+			height: 1200px;
+		}
+		.header{
+			width: 100%;
+			height: 100px;
+			background: #000;
+			overflow: hidden;
+			zoom:1;
+		}
+		.logo{
+			width: 300px;
+			height: 100px;
+			float: left;
+			background: url(http://climg.mukewang.com/59093e9c00016ce303000100.png);
+		}
+		.nav{
+			width: auto;
+			height: 100px;
+			float: right;
+		}
+		.nav ul li{
+			height: 100px;
+			line-height: 100px;
+			float: left;
+			list-style: none;
+			margin-right: 30px;
+		}
+		.content{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			zoom:1;
+		}
+		.left{
+			width: 37.5%;
+			height: 100%;
+			background: #ADD8E6;
+			float: left;
+		}
+		.middle{
+			width: 37.5%;
+			height: 100%;
+			background: #ADD8E6;
+			float: left;
+		}
+		.content-line{
+			width: 0.5%;
+			height: 100%;
+			background: #EE9572;
+			float: left;
+		}
+		.rigth{
+			width: 24.5%;
+			height: 100%;
+			background: #ADD8E6;
+			float: left;
+		}
+		.left div,.middle div,.rigth div{
+			margin-top: 100px;
+			margin-left: 15%;
+		}
+		.left div dl{
+			display: inline-block;
+		}
+
+		.left div dl dd{
+			padding: 10px;
+		}
+		.left div dl dd span{
+			background: red;
+		}
+		.middle div span{
+			display: inline-block;
+			padding: 10px;
+		}
+
+		.dd-title{
+			padding: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #000000;
+		}
+		.rigth div .input{
+			width: 240px;
+			height: 20px;
+			padding: 10px;
+			color: #000000;
+			font-size: 14px;
+			margin-top: 15px;
+			margin-left: 5px;
+		}
+		.rigth div .btn{
+			background: red;
+			width: 265px;
+			height: 40px;
+			padding: 10px;
+			margin-top: 15px;
+			margin-left: 5px;
+		}
+
+		.footer{
+			width: 100%;
+			height: 100px;
+			background: #000;
+			position: fixed;
+			bottom: 0;
+			text-align: center;
+		}
+		.footer ul{
+			display: inline-block;
+		}
+		.footer ul li{
+			height: 100px;
+			line-height: 100px;
+			display:inline;
+			padding: 0 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo"></div>
+			<div class="nav">
+				<ul>
+					<li>課程</li>
+					<li>職業路徑</li>
+					<li>實戰</li>
+					<li>猿記</li>
+					<li>手記</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="left">
+				<div>
+					<h2 class="dd-title">課程推薦</h2>
+				<dl class="list1">
+					<dd><span>職業路徑</span></dd>
+					<dd><span>職業路徑</span></dd>
+					<dd><span>職業路徑</span></dd>
+					<dd><span>職業路徑</span></dd>
+					<dd><span>職業路徑</span></dd>
+				</dl>
+				<dl class="list2">
+					<dd>HTML5與CSS3實現動態網頁</dd>
+					<dd>零基礎入門Android語法與界面</dd>
+					<dd>iOS基礎語法與常用控件</dd>
+					<dd>PHP入門開發</dd>
+					<dd>JAVA入門開發</dd>
+				</dl>
+				</div>
+			</div>
+			<div class="middle">
+				<div>
+					<h2 class="dd-title">相關課程</h2>
+						<span>HTML</span>
+						<span>CSS</span>
+						<span>JavaScript</span><br/>
+						<span>HTML5</span>
+						<span>CSS3</span>
+						<span>Jquery</span><br/>
+						<span>移動開發</span>
+						<span>移動端APP開發</span>
+				</div>
+			</div>
+			<div class="content-line"></div>
+			<div class="rigth">
+				<div>
+					<form>
+							<h2 class="dd-title">
+								登陸
+							</h2>
+						<dl>
+							<dd>
+								<input class="input" type="text" name="username" placeholder="請輸入登陸郵箱/手機號" /><br/>
+							</dd>
+							<dd>
+								<input class="input" type="password" name="pwd" placeholder="6~16位密碼，區分大小寫，不能用空格"><br/>
+							</dd>
+							<dd>
+								<input class="btn" type="button" name="login"  value="登陸">
+							</dd>
+						</dl>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul>
+				<li>網站首頁</li>
+				<li>企業合作</li>
+				<li>人才招聘</li>
+				<li>聯係我們</li>
+				<li>常見問題</li>
+				<li>友情鏈接</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

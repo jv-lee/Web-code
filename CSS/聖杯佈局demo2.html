@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>聖杯佈局demo2</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			color: #ffffff;
+			font-size: 20px;
+		}
+		.header,
+		.footer{
+			width: 100%;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			float: left;
+			background: #000000;
+		}
+		.header .nav{
+			width: 300px;
+			height: 100px;
+			background: url(http://climg.mukewang.com/590037f600016ce303000100.png);
+			float: left;
+		}
+		.header ul{
+			float: right;
+		}
+		.header ul li{
+			list-style: none;
+			float: left;
+			margin-right: 30px;
+		}
+		.container{
+			min-height: 700px;
+			padding: 0 300px 0 330px;
+		}
+		.container .middle,
+		.container .left,
+		.container .right{
+			position: relative;
+			float: left;
+			min-height: 700px;
+		}
+		.container .middle{
+			width: 100%;
+			background: pink;
+		}
+		.container .left{
+			margin-left: -100%;
+			left: -330px;
+			width: 330px;
+			background: #FFEFDB;
+		}
+		.container .right{
+			margin-right: -300px;
+			width: 300px;
+			background: #ADD8E6;
+		}
+		.container .middle .image{
+			position: absolute;
+			margin: auto;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 700px;
+			height: 400px;
+			background: url(http://climg.mukewang.com/590037e00001fab706000400.jpg);
+			background-size: cover;
+		}
+		.container .left div,
+		.container .right div{
+			margin-top: 30%;
+			padding: 20px;
+		}
+		.container .left div dl{
+			display: inline-block;
+		}
+		.container .left div dl dd{
+			padding: 5px;
+			color: #000;
+			font-size: 14px;
+		}
+		.container .right div .input,
+		.container .right div .btn{
+			color: #000000;
+			padding: 5px;
+			font-size: 12px;
+			margin-bottom: 10px;
+			width: 250px;
+			height: 26px;
+		}
+		.container .right div .btn{
+			width: 265px;
+			height: 36px;
+			background: red;
+			color: #ffffff;
+			font-size: 16px;
+		}
+		.tip-title{
+			margin-bottom: 10px;
+			color: #000000;	
+		}
+		.footer ul li{
+			list-style: none;
+			display: inline-block;
+			margin: 0 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="nav"></div>
+		<ul>
+			<li>課程</li>
+			<li>職業路徑</li>
+			<li>實戰</li>
+			<li>猿記</li>
+			<li>手記</li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="middle">
+			<div class="image"></div>
+		</div>
+		<div class="left">
+			<div>
+				<h2 class="tip-title">課程推薦</h2>
+			<dl>
+				<dd>職業路徑</dd>
+				<dd>職業路徑</dd>
+				<dd>職業路徑</dd>
+				<dd>職業路徑</dd>
+				<dd>職業路徑</dd>
+			</dl>
+			<dl>
+				<dd>HTML5與CSS3實現動態網頁</dd>
+				<dd>零基礎入門Android語法與界面</dd>
+				<dd>iOS基礎語法與常用控件</dd>
+				<dd>PHP入門開發</dd>
+				<dd>JAVA入門開發</dd>
+			</dl>
+			</div>
+		</div>
+		<div class="right">
+			<div>
+				<h2 class="tip-title">登陸</h2>
+				<form>
+					<dl>
+						<dd><input class="input" type="text" placeholder="請輸入登陸郵箱/手機號"></dd>
+						<dd><input class="input" type="password" placeholder="6~16位密碼，區分大小寫，不能用空格"></dd>
+						<dd><input class="btn" type="button" value="登陸"></dd>
+					</dl>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<ul>
+			<li>網站首頁</li>
+			<li>企業合作</li>
+			<li>人才招聘</li>
+			<li>聯係我們</li>
+			<li>常見問題</li>
+			<li>友情鏈接</li>
+		</ul>
+	</div>
+</body>
+</html>
