@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>main</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.main{
+			width: 1200px;
+			height: 473px;
+			margin: auto;
+		}
+		.main h1{
+			font-size: 30px;
+			color: #000;
+			margin-bottom: 28px;
+		}
+		.main h1 > samp{
+			font-size: 30px;
+			color: #7c7c7c;
+		}
+		.main > aside{
+			float: left;
+			width: 450px;
+		}
+		.main > article{
+			float: right;
+			width: 720px;
+			overflow: hidden;
+		}
+		.main >aside > dl{
+			position: relative;
+			display: block;
+			height: 74px;
+			margin-bottom: 17px;
+		}
+		.main > aside > dl > dt{
+			position: absolute;
+			top: -1;
+			left: 92px;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 16px;
+			text-decoration: underline;
+		}
+		.main > aside > dl dd:first-of-type{
+			position: absolute;
+			left: 0;
+		}
+		.main > aside > dl dd:first-of-type span{
+			position: absolute;
+			left: 20px;
+			top: 12px;
+			color: #fff;
+			font-size: 18px;
+		}
+		.main > aside > dl dd:last-of-type{
+			position: absolute;
+			top: 20px;
+			left: 90px;
+		}
+		.main > article >p,
+		.main > article >img{
+			margin-bottom: 20px;
+		}
+		.main > article>img{
+			width: 680px;
+		}
+	</style>
+</head>
+<body>
+	<section class="main">
+		<aside>
+			<h1>Recent <samp>Course</samp></h1>
+			<dl>
+				<dt>Hyper Text Markup Language</dt>
+				<dd><img src="http://climg.mukewang.com/582e61290001787900500051.png"><span>1</span></dd>
+				<dd>HTML is the standard markup language used to create web pages and its elements form the building blocks of all websites.</dd>
+			</dl>
+			<dl>
+				<dt>Cascading Style Sheets</dt>
+				<dd><img src="http://climg.mukewang.com/582e61290001787900500051.png"><span>2</span></dd>
+				<dd>Cascading Style Sheets (CSS) is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents.</dd>
+			</dl>
+			<dl>
+				<dt>JavaScript</dt>
+				<dd><img src="http://climg.mukewang.com/582e61290001787900500051.png"><span>3</span></dd>
+				<dd>JavaScript is a high-level, dynamic, untyped, and interpreted programming language.</dd>
+			</dl>
+			<dl>
+				<dt>AngularJS</dt>
+				<dd><img src="http://climg.mukewang.com/582e61290001787900500051.png"><span>4</span></dd>
+				<dd>AngularJS is an open-source web application framework mainly maintained by Google and by a community of individuals and...</dd>
+			</dl>
+		</aside>
+		<article>
+			<h1>Welcome to <samp>Massive Open Online Course!</samp></h1>
+			<p>We provide the latest knowledge to help you cope with the changing world!</p>
+		<img src="http://climg.mukewang.com/582e61180001ede703300130.jpg">
+		<p>We hope that all the students who love the Internet can be more convenient access to learning resources, using the Internet thinking to change our learning.</p>
+		<p>Focus on IT skills education MOOC, consistent with the development trend of the Internet down to earth's MOOC. We are free, we only teach useful, we concentrate on education.</p>
+		</article>
+	</section>
+</body>
+</html>

@@ -156,4 +156,29 @@ header > .container > nav > a.active{
 .main > article > img{
 	margin-bottom: 20px;
 }
+footer{
+	background: #000;
+}
+footer > .container{
+	width: 1200px;
+	height: 64px;
+	margin: 0 auto;
+}
+footer > .container > p{
+	line-height: 64px;
+	float: left;
+	color: #fff;
+}
+footer > .container > span{
+	float: right;
+	margin: 14px 40px;
+}
+footer > .container > span > img{
+	margin-left: 4px;
+	opacity: 0.7;
+}
+footer > .container > span > img:hover{
+	opacity: 1;
+	cursor: pointer;
+}
 
