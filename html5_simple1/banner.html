@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>banner</title>
+	<style>
+		*{
+			padding:0;
+			margin: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			background:#eaeaea;
+		}
+		.banner > ul{
+			position: relative;
+			width: 1490px;
+			height: 538px;
+			margin: 0 auto;
+			padding-top: 10px;
+		}
+		.banner > ul > li{
+			position: absolute;
+			width: 610px;
+			height: 300px;
+			overflow: hidden;
+		}
+		.banner > ul > li.active{
+			top: 37px;
+			left: 0;
+			right: 0;
+			z-index: 2;
+			margin: auto;
+			width: 960px;
+			height:460px;
+		}
+		.banner > ul > li.left{
+			top: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			z-index: 1;
+		}
+		.banner > ul > li.right{
+			top:0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul>
+			<li class="active"><img src="images/banner/banner1.jpg" ></li>
+			<li class="left"><img src="images/banner/banner2.jpg" ></li>
+			<li class="right"><img src="images/banner/banner3.jpg" ></li>
+		</ul>
+	</div>
+</body>
+</html>
