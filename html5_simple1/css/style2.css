@@ -1,0 +1,47 @@
+*{padding: 0;margin: 0;border:none;font-size: 14px;font-family: Arial;}
+a{text-decoration: none;}
+ul{list-style: none;}
+
+/*头部样式*/
+header{background: #000;}
+header > .container{width: 1200px;height: 80px;margin: 0 auto;overflow: hidden;zoom:1;}
+header > .container > a{float: left;padding-top: 6px;}
+header > .container > nav{float:right;}
+header > .container > nav > a{float:left;height: 73px;line-height: 73px;font-size: 22px;width: 110px;text-align: center;color: #fff;}
+header > .container > nav > a.Home{background: #433B90;}
+header > .container > nav > a.Course{background: #017FCB;}
+header > .container > nav > a.Actual{background: #78B917;}
+header > .container > nav > a.Plan{background: #FEB800;}
+header > .container > nav > a.FAQ{background: #F27C01;}
+header > .container > nav > a.Notes{background: #D40112;}
+header > .container > nav > a:hover,
+header > .container > nav > a.activi{padding-bottom: 7px;}
+
+/*轮播图样式*/
+.banner{background: #eaeaea;}
+.banner > ul{position:relative; width: 1490px;height: 538px;margin: 0 auto;}
+.banner > ul > li{position: absolute;width: 610px;height: 300px;overflow: hidden;}
+.banner > ul > li.activi{z-index: 2;top: 40px;left: 0;right: 0;width: 960px;height: 460px;margin: auto;border: 1px solid #fff;}
+.banner > ul > li.left{z-index: 1;top: 0;bottom: 0;left: 0;margin: auto;}
+.banner > ul > li.right{z-index: 1;top: 0;right: 0;bottom: 0;margin: auto;}
+.banner > ul > li > img{position: absolute;left: -30%;height: 100%;}
+
+/*内容区域样式*/
+.main{width: 1200px;height: 473px;margin: 34px auto 0;overflow: hidden;zoom:1;}
+.main h1{font-size: 30px;font-weight: lighter;margin-bottom: 34px;}
+.main h1 > samp{font-size: 30px;color: #7c7c7c;}
+.main > aside {float: left;width: 450px;}
+.main > article{float: right;width: 720px;overflow: hidden;}
+.main > aside > dl{position: relative;display: block; height: 74px;margin-bottom: 17px;}
+.main > aside > dl > dt{position: absolute;left:90px;top: -1px; font-weight: bold;text-decoration: underline;}
+.main > aside > dl > dd:fist-of-type{position: absolute;left: 0;}
+.main > aside > dl > dd:last-of-type{position: absolute;left: 90px;top: 20px;}
+.main > article>p,
+.main > article>img{margin-bottom: 20px;}
+
+footer {background: #000;}
+footer .container{width: 1200px;height: 80px;margin: 0 auto;}
+footer .container > p{float: left;color: #fff;line-height: 80px;}
+footer .container > span{float: right;margin-top: 30px;}
+footer .container > span > img{opacity: 0.7;}
+footer .container > span > img:hover{opacity: 1;}
