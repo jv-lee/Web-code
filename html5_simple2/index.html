@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>HTML5-TABLE</title>
+	<style>
+		*{padding:0;margin: 0;}
+		table,thead,tbody,tfoot,tr,td{padding: 0;margin: 0;}
+		a{text-decoration: none;color: #000;}
+		.main{width: 100%;height: 900px; border-color: #ccc;}
+		.main > thead > tr > td{width:100%;height:50px;background: #169BD5;}
+		.main > tfoot > tr > td{width: 100%;height:50px;background: #169BD5;}
+		.main > tfoot > tr > td{text-align: center;line-height: 50px;}
+		.main > tbody > tr > td > table{width: 100%;height: 800px;border-color: #ccc;}
+		.main > tbody > tr > td > table > tbody > tr > td:first-of-type{width:12%;height: 100%; }
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type{width:88%;height: 100%; }
+		.main > tbody > tr > td > table > tbody > tr > td:first-of-type div{width: 100%;height: 100%;padding-left: 10px;padding-top: 15px;}
+		.main > tbody > tr > td > table > tbody > tr > td:first-of-type div dl{margin-bottom: 30px;}
+		.main > tbody > tr > td > table > tbody > tr > td:first-of-type div dl dd{margin-bottom: 10px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table{border-color: #ccc;text-align: center;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr{height: 54px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td{height:54px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td img{width: 40px; height: 40px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.img{padding: 0 40px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.productName{padding:0 190px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.num{padding:0 75px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.price{padding: 0 30px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.name{padding: 0 40px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.time{padding: 0 30px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.pay{padding: 0 40px;}
+		.main > tbody > tr > td > table > tbody > tr > td:last-of-type table tr td.status{padding: 0 50px;}
+	</style>
+</head>
+<body>
+	<table border="1" class="main" type="data" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<td>
+					<img src="images/logo.png" alt="">
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+						<!-- body部分 左侧内容 -->
+							<td>
+								<div>
+								<dl>
+									<dd>商品管理</dd>
+									<dd>评价管理</dd>
+									<dd>咨询管理</dd>
+								</dl>
+								<dl>
+									<dd><h4>全部订单</h3></dd>
+									<dd>已完成订单</dd>
+									<dd>待处理订单</dd>
+									<dd>今日物流</dd>
+								</dl>
+		     					<dl>
+									<dd>月考核</dd>
+									<dd>季度考核</dd>
+									<dd>年度考核</dd>
+								</dl>
+								</div>
+							</td>
+							<!-- body部分 右侧内容 -->
+							<td>
+								<table border="2px" cellspacing="0" cellpadding="0">
+									<tr>
+										<td style="text-align: left;padding-left: 5px" colspan="8">全部订单</td>
+									</tr>
+									<tr>
+										<td style="text-align: left;padding-left: 5px" colspan="8">
+											查询：<input type="date"> 至 <input type="date">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">宝贝信息</td>
+										<td>订单数量</td>
+										<td>单价</td>
+										<td>买家</td>
+										<td>下单时间</td>
+										<td>实付款</td>
+										<td>订单操作</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>
+									<tr>
+										<td class="img"><img src="images/txue.png" alt=""></td>
+										<td class="productName">2019新款个性男女潮牌imooc暮春之行文化衫</td>
+										<td class="num">2</td>
+										<td class="price">120</td>
+										<td class="name">小明</td>
+										<td class="time">2019-2-21 21：54</td>
+										<td class="pay">240</td>
+										<td class="status">待付款</td>
+									</tr>								
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>2019-9-21 &copy;imooc.com</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

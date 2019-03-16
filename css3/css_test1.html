@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3选择器</title>
+	<style>
+		/*子类选择器 > */
+		section > div{
+			color: red;
+		}
+
+		/*子类选择器 > */
+		.sibiling > div + article{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<article>
+			<div> this is word</div>
+		</article>
+		<div>this id word</div>
+	</section>
+
+	<section class="sibiling">
+		<div>this id word</div>
+		<article>
+			<div> this is word</div>
+		</article>
+		<article>
+			<div> this is word</div>
+		</article>
+		
+	</section>
+</body>
+</html>
