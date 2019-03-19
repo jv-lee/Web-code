@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>font-face-字体引入配置</title>
+	<style>
+		@font-face{
+			font-family: 'myFont';
+			src:url('font/myFont.eot'); /* IE9 Compat Modes */
+			src:url('font/myFont.eot?#iefix') format('embedded-opentype'),/* IE6 - IE8 */
+				url('font/myFont.ttf') format('truetype'),/* Safari,Android,iOS */
+				url('font/myFont.woff') format('woff'),/* Modern Browsers */
+				url('font/myFont.svg#myFont') format('svg'); /* Legacy iOS */
+		}
+		div{
+			word-break: keep-all;
+			width: 500px;
+			height: 500px;
+			margin: 0 auto;
+			font-family: 'myFont';
+			text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<h1>满江红</h1>
+		<h3>怒发冲冠，凭栏处、潇潇雨歇。<br>抬望眼，仰天长啸，壮怀激烈。<br>
+		三十功名尘与土，八千里路云和月。<br>莫等闲，白了少年头，空悲切。<br> 　　
+		靖康耻，犹未雪；臣子恨，何时灭？<br>驾长车，踏破贺兰山缺。<br>
+		壮志饥餐胡虏肉，笑谈渴饮匈奴血。<br>待从头，收拾旧山河，朝天阙。</h3>
+	</div>
+</body>
+</html>

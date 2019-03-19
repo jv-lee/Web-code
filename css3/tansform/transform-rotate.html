@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transform-rotate</title>
+	<style>
+		body{padding: 0;margin: 0;}
+		.main{position:relative; width: 800px;height:800px;margin: 0 auto;}
+		.pic{width: 250px;box-shadow: 5px 5px 1px #ababab;border: 1px solid #ebebeb;margin-top: 10px; text-align: center;background: #ebebeb;}
+		.pic img{width: 240px;height: 100px;margin: 10px 4px 0px 4px;}
+		.pic1{
+			transform: rotate(45deg);
+		}
+		.pic2{
+			transform: rotate(-45deg);	
+		}
+		.pic3{
+			position: absolute;top: 0;left: 150px;z-index: 2;
+			transform: rotate(145deg);
+		}
+		.pic4{
+			position: absolute;top: 150px;left: 157px;z-index: 3;
+			transform: rotate(-145deg);
+		}
+		.pic5{
+			position: absolute;top: 50px;left: 260px;z-index: 4;
+			transform: rotate(75deg);
+		}
+		.pic6{
+			position: absolute;top: 250px;left: 260px;z-index: 5;
+			transform: rotate(-880deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+	<div class="pic pic1"><img src="images/1.jpg" ><p>2D转换</p></div>
+	<div class="pic pic2"><img src="images/2.jpg" ><p>2D转换</p></div>
+	<div class="pic pic3"><img src="images/3.jpg" ><p>2D转换</p></div>
+	<div class="pic pic4"><img src="images/4.jpg" ><p>2D转换</p></div>
+	<div class="pic pic5"><img src="images/5.jpg" ><p>2D转换</p></div>
+	<div class="pic pic6"><img src="images/6.jpg" ><p>2D转换</p></div>
+	</div>
+</body>
+</html>

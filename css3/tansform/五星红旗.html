@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五星红旗</title>
+	<style>
+
+		.container{
+			position: relative;
+			width: 600px;
+			height: 400px;
+			background: #f00;
+			margin: 0 auto;
+		}
+		.container div{
+			width:0px;
+            height:0px;
+            border-left:100px solid transparent;
+            border-right:100px solid transparent;
+            border-bottom:70px solid #ff0;
+            transform:rotate(35deg);
+            position:absolute;}
+		.container div:before{
+			content:"";
+			width:0;
+            height:0;
+            border-left:30px solid transparent;
+            border-right:30px solid transparent;
+            border-bottom:80px solid #ff0;
+            transform:rotate(-35deg);
+            position:absolute;
+            top:-45px;
+            left:-62px;
+		}
+		.container div:after {    
+			content:"";
+            width:0;
+            height:0;
+            border-left:100px solid transparent;
+            border-right:100px solid transparent;
+            border-bottom:70px solid #ff0;
+            transform:rotate(-70deg);
+            position:absolute;
+            top:3px;
+            left:-105px;}
+            .container div:nth-child(1){
+            	transform: scale(.5) rotate(35deg) ;
+				display: block;
+				top: 50px;
+				left: 0px;
+            }
+            .container div:nth-child(2){
+            	transform: scale(.15) rotate(0deg) ;
+				left: 70px;
+            }
+            .container div:nth-child(3){
+            	transform: scale(.15) rotate(10deg) ;
+            	left: 100px;
+            	top: 30px;
+            }
+            .container div:nth-child(4){
+            	transform: scale(.15) rotate(35deg) ;
+            	left: 100px;
+            	top: 70px;
+
+            }
+            .container div:nth-child(5){
+            	transform: scale(.15) rotate(45deg) ;
+            	left: 70px;
+            	top: 100px;
+            }            
+	</style>
+</head>
+<body>
+<div>
+	<div class="container">
+		<div></div>	
+		<div></div>	
+		<div></div>	
+		<div></div>	
+		<div></div>	
+	</div>
+	
+</div>
+</body>
+</html>
