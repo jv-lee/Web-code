@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>2-4</title>
+
+    <style type="text/css">
+
+.box-taiji {
+
+    width:0;
+
+    height:400px;
+
+    position:relative;
+
+    margin:50px auto;
+
+    border-left:200px solid red;
+
+    border-right:200px solid #fff;
+
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+
+    border-radius:400px;
+
+    animation:taiji linear .2s infinite;
+    animation-direction: alternate-reverse;
+
+}
+
+.box-taiji:after{
+
+    width:200px;
+
+    height:200px;
+
+    position:absolute;
+
+    content:"";
+
+    display: block;
+
+    top:0;
+
+    left:-100px;
+
+    border-radius:50%;
+
+    background: white;
+
+    box-shadow: 0 200px 0 red;
+
+    z-index:1;
+
+}
+
+.box-taiji:before{
+
+    position:absolute;
+
+    content:"";
+
+    width:60px;
+
+    height:60px;
+
+    display: block;
+
+    top:70px;
+
+    left: -30px;
+
+    z-index:2;
+
+    border-radius:50%;
+
+    background: red;
+
+    box-shadow:0 200px 0 #fff;
+
+}
+
+@keyframes taiji{
+
+    0%{
+
+        transform: rotate(0deg);
+
+    }
+
+    100%{
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+   </style>
+
+</head>
+
+<body>
+
+    <div class="box-taiji"></div>
+
+</body>
+
+</html>

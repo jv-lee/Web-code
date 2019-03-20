@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transitionDemo</title>
+    <style>
+        div {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 50px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 50px;
+            margin: auto;
+            cursor: pointer;
+            text-align: center;
+            background: #abcdef;
+            transform:rotate(0deg) scale(1);
+            transition: transform 1s ease-in-out 0s;
+        }
+        div:hover{
+        	cursor: pointer;
+        	transform: rotate(360deg) scale(2);
+        	transition: transform 1s ease-in-out 0s;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div>www.imooc.com</div>
+</body>
+</html>

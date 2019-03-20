@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation</title>
+	<style>
+		div {
+            font-family: 'Microsoft Yahei';
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 600px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            text-align: center;
+            border: 5px solid #000;
+            border-radius: 50%;
+            /*此处写代码*/
+			animation-name: opacityAnim;
+			animation-duration: 5s;
+       }
+       @keyframes opacityAnim{
+       	from {opacity: 0}
+       	to   {opacity: 1}
+       }
+	</style>
+</head>
+<body>
+	<div>大家好，欢迎来到慕课网！</div>
+</body>
+</html>
