@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>统计员工工资</title>
+    </head>
+    <body>
+    <script>
+       //补充代码
+       var datas = new Array();
+       function inputData(){
+           var vars = prompt("请输入员工工资");
+           if(isNaN(vars)){
+                if(vars == "退出"){
+                    getData();
+                }else{
+                  inputData();
+                }        
+           }else{
+               datas[datas.length] = vars;
+               inputData();
+           }
+       }
+       function getData(){
+           var cout=0,len = datas.length;
+           for(var i = 0;i<len;i++){
+               console.log(datas[i])
+           }
+       }
+       inputData();
+    </script>
+    </body>
+</html>

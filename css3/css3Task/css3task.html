@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3task</title>
+	<style type="text/css">
+		:root{
+			--sky:rgb(196, 228, 253);
+			--sod:rgb(148, 190, 89);
+			--cloud:#fff;
+		}
+		/*view 超出浏览器 拉开宽度 解决办法1*/
+		/*html { overflow-x:hidden;overflow-y:hidden; }*/
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		/*解决办法2 使用宽度百分百填充容器  overflow超出部分隐藏 必须设置外层大容器上*/
+		.main{
+			position: relative;
+			width: 100%;
+			height: 937px;
+			background:#abcdef;
+			overflow: hidden;
+		}
+		.main>.sky{
+			width: 100%;
+			height: 60%;
+			background: linear-gradient(0deg,#fff 0%,#fff 20%, var(--sky) 60%,var(--sky) 100%);
+		}
+		.main>.sod{
+			width: 100%;
+			height: 40%;
+			background: linear-gradient(180deg,#fff 0%,#fff 20%, var(--sod) 60%,var(--sod) 100%);
+		}
+
+
+		.cloud{
+			position: absolute;
+			top: 100px;
+			left: 10%;
+			width: 100px;
+			height: 100px;
+			background: var(--cloud);
+			border-radius: 50%;
+		}
+
+		.cloud:nth-child(1){
+			top: 0px;
+			left: 20%;
+			opacity: .6;
+			animation: tran 10s linear infinite;
+		}
+
+		.cloud:nth-child(2){
+			top: 50px;
+			left: 20%;
+			opacity:.8;
+			animation: tran 8s linear infinite;
+		}
+		.cloud:nth-child(3){
+			top: 150px;
+			left: 20%;
+			opacity: .6;
+			animation: tran 15s linear infinite;
+		}
+		.cloud:nth-child(4){
+			top: 0px;
+			left: 20%;
+			opacity: .6;
+			animation: tran 14s linear infinite;
+		}
+		.cloud:nth-child(5){
+			top: 150px;
+			left: 40%;
+			opacity: .6;
+			animation: tran 11s linear infinite;
+		}
+
+		@keyframes tran{
+			0%{left: 100%;}
+			100%{left: -10%;}
+		}
+
+					
+
+		.cloud:before{
+			content: "";
+			position: absolute;
+			top: 45px;;
+			left: 50%;
+			width: 60px;
+			height: 50px;
+			background: var(--cloud);
+			border-radius: 25px/25px 25px 25px 20px;
+		}
+
+		.cloud:after{
+			content: "";
+			position: absolute;
+			top: 30px;
+			right: 50%;
+			width: 70px;
+			height: 70px;
+			background: var(--cloud);
+			border-radius: 35px 35px 35px 35px;
+		}
+
+		.cloud div:nth-child(1){
+			position: absolute;
+			top: 15px;
+			right: 60%;
+			width: 70px;
+			height: 70px;
+			background: var(--cloud);
+			border-radius: 40px 40px 40px 40px;
+		}
+
+		.cloud div:nth-child(2){
+			position: absolute;
+			top: 30px;
+			right: 85%;
+			width: 60px;
+			height: 60px;
+			background: var(--cloud);
+			border-radius: 40px 40px 40px 40px;	
+		}
+
+		.main>.sod>div{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			bottom: 50px;
+			right: 200px;
+			background: url('rabbit.png') no-repeat center center;
+			background-size: 200px 200px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="sky">
+			<div class="cloud">
+				<div></div>
+				<div></div>
+			</div>
+			<div class="cloud">
+				<div></div>
+				<div></div>
+			</div>
+			<div class="cloud">
+				<div></div>
+				<div></div>
+			</div>
+			<div class="cloud">
+				<div></div>
+				<div></div>
+			</div>
+			<div class="cloud">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div class="sod">
+			<div></div>
+		</div>
+	</div>
+</body>
+</html>
