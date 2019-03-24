@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取文件扩展名</title>
+</head>
+<body>
+	<script>
+		var url = "http://baidu.com/index.txt"
+		function getFileFormat(url){
+			var pos = url.lastIndexOf(".");
+			var type = url.slice(pos+1);
+			var type2 = url.substr(pos+1)
+			console.log(type + "  " + type2)
+		}
+		getFileFormat(url);
+
+		var str = 'welcome-to-beijing';
+		console.log(str.split('-'))
+
+		var tel = '18695995585,18688589949,18894949939'
+		console.log(tel.replace(',','-'))
+	</script>
+</body>
+</html>
