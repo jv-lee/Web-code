@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QuerySelector</title>
+	<script src="domReady.js"></script>
+	<script>
+		myReady(function(){
+			var myDiv = document.getElementById('myDiv');
+			var ul = myDiv.querySelector('#myUl');
+			console.log(ul);
+		});
+	</script>
+</head>
+<body>
+	<input type="text" class="foo:bar" value="请输入内容">
+	<div id="myDiv">
+		You are my sunshine.
+		<ul id="myUl">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</body>
+</html>

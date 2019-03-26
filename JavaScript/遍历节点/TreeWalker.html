@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom Tree walker</title>
+	<script src="domReady.js"></script>
+	<script>
+		myReady(function(){
+			var oHtml = document.documentElement;
+			var oHead = oHtml.firstChild;
+			var oBody = oHtml.childNodes.item(1);
+			console.log(oBody);
+			console.log(oHead);
+			console.log(oHtml);
+			console.log(oHead.parentNode == oHtml)
+		});
+	</script>
+</head><body>
+	<p>文本叶子节点</p>
+</body>
+</html>

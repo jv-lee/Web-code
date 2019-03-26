@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="domReady.js"></script>
+		<script>
+		myReady(function(){
+			var content = document.getElementById('content');
+			console.log(content.outerHTML);
+			content.outerHTML = "<p>This is a <strong>paragraph</strong> with a list following it.</p>"
+			console.log(content.innerText);
+		});
+	</script>
+</head>
+<body>
+	<div id="content">
+		<p>This is a <strong>paragraph</strong> with a list following it.</p>
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

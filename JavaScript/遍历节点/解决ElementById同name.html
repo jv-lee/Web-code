@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML</title>
+	<script src="domReady.js"></script>
+	<script>
+
+		//兼容IE浏览器 通过id查找元素 有相同name名时错误问题
+		var getElementById = function(id){
+			var el = document.getElementById(id);
+			if(!+"\v1"){//判断是否为ie浏览器
+				if(el && el.id == id){
+					return el;
+				}else{
+					var els = document.all[id];
+					var length = els.length;
+					for(var i = 0;i<length;i++){
+						if (els[i].id == id) {
+							return els[i];
+						}
+					}
+				}
+			}
+			return el;
+		};
+
+		console.log(doucment.getElementById('div'));
+		console.log(getElementById('div'));
+	</script>
+</head>
+<body>
+	<div name="div">这是错误的标签</div>
+	<div id="div">这是正确的标签</div>
+</body>
+</html>

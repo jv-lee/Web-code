@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="domReady.js"></script>
+	<script src="getElementsByClassName.js"></script>
+	<script>
+	myReady(function(){
+		var r = getElementsByClassName({
+			searchClass:"light dark"
+		});
+		console.log(r);
+
+		var myUl2 = document.getElementById('myU2');
+		var r2 = getElementsByClassName({
+			searchClass:'light dark',
+			node 		: myUl2
+		});
+		console.log(r2[0].innerHTML)
+	});
+	</script>
+</head>
+<body>
+	<ul id="myU1">
+		<li class="light">1</li>
+		<li class="light dark">2</li>
+		<li class="light">3</li>
+	</ul>
+		<ul id="myU2">
+		<li class="light">1</li>
+		<li class="light dark">second</li>
+		<li class="light">3</li>
+	</ul>
+</body>
+</html>

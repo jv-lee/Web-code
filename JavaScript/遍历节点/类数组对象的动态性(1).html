@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="domReady.js"></script>
+	<script>
+		myReady(function(){
+			var divs = document.getElementsByTagName('div');
+			var length = divs.length;
+			// for(var i = 0;i<divs.length;i++){
+			// 	document.body.appendChild(document.createElement('div'));
+			// }
+			for(var i = 0;i<length;i++){
+				document.body.appendChild(document.createElement('div'));
+			}
+		});
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

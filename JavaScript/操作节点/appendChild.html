@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../domReady.js"></script>
+	<script>
+		myReady(function(){
+		var myUl = document.getElementById('myUl');
+		var txt = document.createTextNode('4');
+		var li = document.createElement('li');
+		var firstLi = myUl.firstElementChild;
+		li.appendChild(txt);
+		myUl.appendChild(li);
+		myUl.appendChild(firstLi);
+
+		});
+		
+	</script>
+</head>
+<body>
+	<ul id="myUl">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+</body>
+</html>

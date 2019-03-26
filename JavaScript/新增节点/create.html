@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="domReady.js"></script>
+	<script>
+		myReady(function(){
+			var comment = document.createComment('this is A Fragment');
+			var fragment = document.createDocumentFragment(); //创建文档片段
+			var ul = document.getElementById('myList'); //获取 ul标签
+			var li = null;
+			for(var i = 0;i<=5;i++){
+				li = document.createElement('li');
+				li.appendChild(document.createTextNode('Item Index - '+(i +1)))
+				fragment.appendChild(li);
+			}
+			ul.appendChild(fragment);
+
+			//通过body添加注释到第一行
+			document.body.insertBefore(comment,document.body.firstChild);
+		});
+	</script>
+</head>
+<body>
+	<ul id="myList"></ul>
+</body>
+</html>

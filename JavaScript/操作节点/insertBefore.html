@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../domReady.js"></script>
+	<script>
+		myReady(function(){
+			var myUl = document.getElementById('myUl');
+
+			//insertBefore 添加都某个节点之前
+
+			var txt = document.createTextNode('new Text ');
+			var newLi = document.createElement('li');
+			newLi.appendChild(txt);
+			var twoLi = myUl.children.item(1);
+			myUl.insertBefore(newLi,twoLi);
+
+
+			var newfirstLi = document.createElement('li')
+			newfirstLi.appendChild(document.createTextNode('firstLi'))
+			myUl.insertBefore(newfirstLi,myUl.firstElementChild);
+
+			var newLastLi = document.createElement('li')
+			newLastLi.appendChild(document.createTextNode('lastLi'))
+			myUl.insertBefore(newLastLi,myUl.lastElementChild);
+
+			var endLi = document.createElement('li')
+			endLi.appendChild(document.createTextNode('endLi'))
+			myUl.insertBefore(endLi,null);//传nul添加到最后
+			
+			
+		});
+		
+	</script>
+</head>
+<body>
+	<ul id="myUl">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../domReady.js"></script>
+</head>
+<body>
+	<ul id="list">
+		<li>元素1</li>
+		<li>元素2</li>
+		<li>元素3</li>
+	</ul>
+	<script>
+	myReady(function(){
+		var div = document.createElement('div');
+
+		div.appendChild(document.createTextNode('DOM探索'));
+		div.appendChild(document.createTextNode('之节点探索篇'));
+
+		document.body.appendChild(div);
+
+		console.log(div.childNodes.length);
+		div.normalize();
+		console.log(div.childNodes.length);
+		console.log(div.firstChild.nodeValue)
+	});
+	</script>
+
+</body>
+
+</html>

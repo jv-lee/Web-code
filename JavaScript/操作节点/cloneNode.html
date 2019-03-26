@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../domReady.js"></script>
+</head>
+<body>
+	<ul id="list">
+		<li>元素1</li>
+		<li>元素2</li>
+		<li>元素3</li>
+	</ul>
+	<script>
+	myReady(function(){
+	var list = document.getElementById('list');
+
+	var cloneNodeSi = list.cloneNode();
+	console.log(cloneNodeSi)
+
+	var cloneNode = list.cloneNode(true);
+	console.log(cloneNode);
+	});
+	</script>
+
+</body>
+
+</html>

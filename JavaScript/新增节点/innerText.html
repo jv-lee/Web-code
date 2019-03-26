@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="domReady.js"></script>
+		<script>
+		myReady(function(){
+			var content = document.getElementById('content');
+
+			//通用方法 兼容所有浏览器的读取值得方法
+			function getInnerText(element){
+				return (typeof element.textContent = "string") ? element.textContent : element.innerText;
+			}
+			//兼容所有浏览器的set方法
+			function setInnerText(element,text){
+				if(typeof element.textContent = "string"){
+					element.textContent = text;
+				}else{
+					element.innerText = text;
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="content">
+		<p>This is a <strong>paragraph</strong> with a list following it.</p>
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+	</div>
+	
+</body>
+</html>
