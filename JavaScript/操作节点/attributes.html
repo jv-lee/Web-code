@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+	<title>attributes</title>
+</head>
+<body>
+	<div id="box"></div>
+	<input type="text" checked>
+</body>
+<script>
+		//在此处填写代码
+		var box = document.getElementById('box');
+		var attr = document.createAttribute('data');
+		attr.value = 'wrap';
+		box.attributes.setNamedItem(attr)
+</script>
+</html>

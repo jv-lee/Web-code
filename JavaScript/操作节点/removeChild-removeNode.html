@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../domReady.js"></script>
+</head>
+<body>
+	<ul id="list">
+		<li>元素1</li>
+		<li>元素2</li>
+		<li>元素3</li>
+	</ul>
+	<script>
+	myReady(function(){
+		var ul = document.getElementById('list');
+
+		// console.log(ul.childNodes.length);
+		// var newNode = ul.removeChild(ul.childNodes[1]);
+		// console.log(newNode);
+		// console.log(ul.childNodes.length);
+
+		//IE私有方法
+		ul.removeNode(); //传入true 则删除当前节点以及所有子节点
+	});
+	</script>
+
+</body>
+
+</html>

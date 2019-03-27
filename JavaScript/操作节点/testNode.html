@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		div{
+			width: 500px;height: 100%;background-color: #00c4ff7a;
+			margin:  0 auto;
+		}
+		ul{
+			width: 300px;
+			height: 100%;
+			background: #f9c3e6d6;
+			list-style:none;
+			margin: 0;
+			padding: 0;
+			margin: 20px auto;
+			margin-bottom: 30px;
+		}
+		li{
+			width: 200px;
+			height: 30px;
+			line-height: 30px;
+			margin: 30px auto;
+			background-color: #cdffc0;
+		}
+		.li-style{
+			background-color: #EB8787;
+		}
+		.li-style:hover{
+			background-color: #7451FF;
+		}
+	</style>
+	<script src="../domReady.js"></script>
+	<script>
+		myReady(function(){
+			var ul = document.getElementById('list');
+			var btnAdd = document.getElementById('btnAdd');
+			var btnRemove = document.getElementById('btnRemove');
+
+			var ulCount = ul.childElementCount;
+			console.log(ulCount);
+
+			for(var i = 0;i<ulCount ;i++){
+				var ele = ul.children.item(i);
+				ele.className = 'li-style';
+			}
+
+			btnAdd.onclick = function(){
+				if (ul.childElementCount < 5) {
+					var li = document.createElement('li');
+					li.appendChild(document.createTextNode('我是li'+(ul.childElementCount+1)));
+					li.className = 'li-style';
+					ul.appendChild(li);	
+				}
+				
+			}
+
+			btnRemove.onclick = function(){
+				if (ul.childElementCount != 0){
+					ul.removeChild(ul.children.item(ul.childElementCount-1))
+				} 
+				
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<button id="btnAdd">添加元素</button>
+		<button id="btnRemove">删除元素</button>
+		<ul id="list">我是ul
+			<li >我是li1</li>
+			<li >我是li2</li>
+			<li >我是li3</li>
+		</ul>
+	</div>
+</body>
+</html>
