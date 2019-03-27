@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+    window.onload = init;
+
+    function init() {
+        var menu = document.getElementById('menu');
+        var box = document.getElementById('box');
+        menu.onchange = function() {
+            //获取当前选中的值
+            var bgcolor = this.value;
+            // var bgcolor = menu.options[menu.selectedIndex].value;
+            console.log(bgcolor);
+            if (bgcolor == "") {
+            	document.body.style.background = '#fff';
+            }else{
+            	document.body.style.background = bgcolor;
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        请选择您喜欢的颜色：
+        <select name="" id="menu">
+            <option value="">请选择</option>
+            <option value="#f00">红色</option>
+            <option value="#0f0">绿色</option>
+            <option value="#00f">蓝色</option>
+            <option value="#ff0">黄色</option>
+            <option value="#ccc">灰色</option>
+        </select>
+    </div>
+</body>
+
+</html>
