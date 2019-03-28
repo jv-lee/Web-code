@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+
+			var clickFun = function(){
+				alert("click")
+			}
+
+			EvenetUtil.addHandler(btn,'click',clickFun);
+			EvenetUtil.removeHandler(btn,'click',clickFun);
+		};
+
+			//兼容 IE  和 主流浏览器 添加监听事件 解除事件的方法
+			var EvenetUtil = {
+				addHandler:function(ele,type,fun){
+					if (ele.addEventListener) {
+						ele.addEventListener(type,fun,false);
+					}else if(ele.attachEvent){
+						ele.attachEvent("on"+type,fun);
+					}else{
+						ele["on"+type] = null;
+					}
+				},removeHandler:function(ele,type,fun){
+					if (ele.removeEventListener) {
+						ele.removeEventListener(type,fun,false);
+					}else if(ele.detachEvent){
+						ele.detachEvent("on"+type,fun);
+					}else{
+						ele["on"+type] = null;
+					}
+				},getTarget:function(event){
+					return event.target || event.srcElement;
+				},preventDefault:function(event){
+					if (event.preventDefault) {
+						event.preventDefault()
+					}else{
+						event.returnValue = false;
+					}
+				},stopPropagation:function(event){
+					if (event.stopPropagetion) {
+						event.stopPropagation();
+					}else{
+						event.cancelBubble = true;
+					}
+				}
+			}
+	</script>
+</head>
+<body>
+	<button id="btn">点击</button>
+</body>
+</html>

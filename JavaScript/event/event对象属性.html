@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件委任</title>
+	<style>
+		#height{
+			height: 2000px;
+			background: lightgreen;
+		}
+	</style>
+	<script>
+	window.onload = function(){
+
+		//event对象
+		//type:告诉我们事件类型 属性
+		document.getElementById('btn').addEventListener('click',function(event){
+			console.log(event.type)
+		},false);
+
+		//target事件源对象
+		//currentTarget 事件绑定在谁身上，就指向谁
+		var parent = document.getElementById('parent');
+		parent.addEventListener('click',function(event){
+			console.log(event.target);
+			console.log(event.currentTarger)
+		});
+
+		//event.preventDefault 阻止默认行为
+		var a = document.getElementById('a');
+		a.addEventListener('click',function(event){
+			event.preventDefault();
+			alert(11);
+		});
+
+		//event.stopPropagation  停止冒泡或者捕获 事件执行后不继续传递往父元素或子元素
+		var header = document.getElementById('header');
+		header.addEventListener('click',function(event){
+			alert('header');
+		});
+
+		var footer = document.getElementById('footer');
+		footer.addEventListener('click',function(event){
+			alert('footer');
+			event.stopPropagation();
+		});
+
+		//clientY:浏览器顶部到鼠标点击的位置
+		//pageY:浏览器顶部到鼠标点击的位置  (包括当前页面滑动拉升后的高度相加)
+		//screenY:屏幕的顶部到鼠标点击的位置
+		var height = document.getElementById('height');
+		height.addEventListener('click',function(event){
+			alert("clientY:"+event.clientY+";pageY:"+event.pageY+";screenY:"+event.screenY);
+		});
+	}
+	</script>
+</head>
+<body>
+	<button id="btn">button</button>
+
+	<div id="parent">
+		<div id="child">点击我</div>
+	</div>
+	<a id="a" href="http://www.baidu.com">跳转</a>
+
+	<div id="header">
+		<div id="footer">子控件冒泡</div>
+	</div>
+	<div id="height"></div>
+</body>
+</html>
