@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件委任</title>
+	<script>
+	window.onload = function(){
+
+		//这是事件委托   使用冒泡机制完成
+		document.getElementById('list').addEventListener('click',function(event){
+			alert('this is item '+event.target.innerHTML);
+			// console.log(event.target.innerHTML);
+			
+		},false);
+
+	}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>ITEM 1</li>
+		<li>ITEM 2</li>
+		<li>ITEM 3</li>
+		<li>ITEM 4</li>
+		<li>ITEM 5</li>
+		<li>ITEM 6</li>
+	</ul>
+</body>
+</html>

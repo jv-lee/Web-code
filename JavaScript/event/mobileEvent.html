@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mobileEvent</title>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<script type="text/javascript">
+
+		var btn = document.getElementById('btn');
+
+		//手指触摸屏幕时触发
+		btn.addEventListener('touchstart',function(){
+			console.log('start')
+		});
+		//手指触摸屏幕开始移动时触发
+		btn.addEventListener('touchmove',function(){
+			console.log('move')
+		});
+		//手指松开屏幕的时候触发
+		btn.addEventListener('touchend',function(){
+			console.log('end')
+		})
+		//touchcancel 当系统停止跟踪触摸时触发  非人为
+	</script>
+</body>
+</html>

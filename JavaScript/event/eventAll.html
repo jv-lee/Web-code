@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+
+	<script>
+
+		//页面加载完成
+		window.addEventListener('load',function(){
+			alert("页面加载完毕")
+		});
+
+		//图片加载完成
+		var image = document.getElementById('img');
+		image.addEventListener('load',function(){
+			alert('图片加载完毕')
+		});
+
+		//图片预加载
+		var image = new Image();
+		image.addEventListener('load',function(){
+			alert('图片预加载')
+		});
+		image.src = 'cat.jpg';
+
+		//js动态加载
+		var script = document.createElement('script');
+		script.addEventListener('load',function(){
+			alert('js loaded')
+		});
+		script.src = "utils.js";
+		document.body.appendChild(script);
+
+		//css动态加载
+		var link = document.createElement('link');
+		link.type = 'type/css';
+		link.rel = 'stylesheet';
+		link.addEventListener('load',function(){
+			alert('css loaded')
+		});
+		link.href = 'colors.css';
+		document.getElementByTagName('head')[0].appendChild(link);
+
+		//鼠标键盘 点击监听
+		var div = document.getElementById('id');
+		div.addEventListener('click',function(event){
+			var keys = new Array();
+
+			if (event.shiftKey) {
+				keys.push('shift');
+			}
+			if (event.ctrlKey) {
+				keys.push('ctrl');
+			}
+			if (event.altKey) {
+				keys.push('alt');
+			}
+			if (event.metaKey) {
+				keys.push('meta');
+			}									
+			console.log('keys: '+keys.join(','));
+		});
+
+
+
+
+	</script>	
+</body>
+</html>
