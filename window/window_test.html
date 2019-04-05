@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+			padding: 15px;
+			margin: 15px;
+		}
+	</style>
+</head>
+
+<body>
+    <div id="box">
+        <span>iphone6x</span>
+        <input type="button" value="删除" id="btn">
+    </div>
+    <script>
+    var age = 15;
+
+    function sayAge() {
+        alert('我' + age);
+    }
+    //声明一个全局变量 全局方法
+    window.username = "marry"; //var username = "marry"
+    window.sayName = function() {
+        alert("我是" + this.username);
+    };
+    // sayAge();
+    // window.sayName();
+    // window.alert('nihao');
+    // window.confirm()
+    var box = document.getElementById('box');
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function() {
+        var flag = confirm('是否删除？');
+        if (flag) {
+            //删除节点
+            box.removeChild(box.childNodes[1]);
+        }
+    });
+    </script>
+</body>
+
+</html>
