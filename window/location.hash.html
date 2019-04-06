@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>location.hash</title>
+	<style type="text/css">
+		#box1{
+			height: 500px;background: #ccc;
+		}
+		#box2{height: 500px;background: #666;}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<input type="button" name="" id="btn" value="返回顶部">
+	<script type="text/javascript">
+		console.log(location.href);
+		console.log(location.host);
+		console.log(location.hostname);
+		console.log(location.pathname);
+		console.log(location.prot);
+		console.log(location.protocol);
+		console.log(location.search);
+		document.getElementById("btn").addEventListener('click',function(){
+			location.hash="#box1";
+		});
+	</script>
+</body>
+</html>

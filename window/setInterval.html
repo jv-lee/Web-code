@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>setInterval</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var time = 1;
+			var intervalID = setInterval(function(){
+				if (time > 10) {
+					clearInterval(intervalID);
+					console.log('清除定时器');
+					return;
+				}
+				console.log('计时器：'+time);
+				time++;
+			}, 1000);
+		};
+	</script>
+</body>
+</html>

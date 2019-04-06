@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Navigator</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // alert(navigator.userAgent);
+    console.log('appName:' + navigator.appName);
+    console.log('appCodeName:' + navigator.appCodeName);
+    console.log('appVersion:' + navigator.appVersion);
+    console.log('oscpu:' + navigator.oscpu);
+    //检测浏览器类型
+    function getBrowser() {
+        var explorer = navigator.userAgent.toLowerCase();
+        if(explorer.indexOf('android') > -1){
+        	browser = 'android手机';
+        }else if(explorer.indexOf('phone') > -1){
+        	browser = 'iphone手机';
+        }else if (explorer.indexOf('msie') > -1) {
+        	browser = "IE";
+        }else if(explorer.indexOf('chrome') > -1){
+        	browser = "chrome";
+        }else if(explorer.indexOf('opera') > -1){
+        	browser = "opera";
+        }else if(explorer.indexOf('safari') > -1){
+        	browser = "safari";
+        }
+        return browser;
+    }
+
+    var explorer = getBrowser();
+    console.log('您当前使用的是：'+explorer+'浏览器');
+    </script>
+</body>
+
+</html>

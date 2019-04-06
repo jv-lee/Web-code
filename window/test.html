@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>会闪烁的文字</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		div{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #ff0000;
+			margin: 0 auto;
+		}
+		p{
+			font-size: 30px;
+			color: #ff0000;
+			background: yellow;
+			text-align: center;
+			line-height: 500px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var normal = "✦✦✦✦✦今日特卖✦✦✦✦✦";
+			var selected = "✧✧✧✧✧今日特卖✧✧✧✧✧";
+			var p = document.getElementsByTagName('p');
+			p[0].innerHTML = normal;
+			setInterval(function(){
+				if (p[0].innerHTML == normal) {
+					p[0].innerHTML = selected;
+				}else{
+					p[0].innerHTML = normal;
+				}
+			},500);
+		};
+	</script>
+</head>
+<body>
+	<div>
+		<p></p>
+	</div>
+</body>
+</html>
