@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    div {
+        width: 100px;
+        height: 100px;
+        background: #ff0000;
+        -moz-animation: animstart 5s;
+        /* Firefox */
+        -webkit-animation: animstart 5s;
+        /* Safari 和 Chrome */
+        -o-animation: animstart 5s;
+        opacity: 1;
+    }
+
+    @keyframes animstart {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @-moz-keyframes animstart {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes animstart {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @-o-keyframes animstart {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
