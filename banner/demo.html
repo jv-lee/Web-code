@@ -1,66 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <style type="text/css">
-    div {
-        width: 100px;
-        height: 100px;
-        background: #ff0000;
-        -moz-animation: animstart 5s;
-        /* Firefox */
-        -webkit-animation: animstart 5s;
-        /* Safari 和 Chrome */
-        -o-animation: animstart 5s;
-        opacity: 1;
-    }
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/index_simple.js"></script>
 
-    @keyframes animstart {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-
-    @-moz-keyframes animstart {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-
-    @-webkit-keyframes animstart {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-
-    @-o-keyframes animstart {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-    </style>
 </head>
 
 <body>
-    <div></div>
+    <div class="main">
+        <div class="menu-box"></div>
+        <!-- 子菜单 -->
+        <!-- <div class="sub-menu" id="sub-menu">
+            <div class="inner-box">
+                <div class="sub-inner-box">
+                    <div class="title">手机、配件</div>
+                    <div class="sub-row">
+                        <span>手机通讯：</span>
+                        <a href="#">手机</a>
+                        <span>/</span>
+                        <a href="#">手机维修</a>
+                        <span>/</span>
+                        <a href="#">以旧换新</a>
+                    </div>
+                    <div class="sub-row">
+                        <span>手机通讯：</span>
+                        <a href="#">手机</a>
+                        <span>/</span>
+                        <a href="#">手机维修</a>
+                        <span>/</span>
+                        <a href="#">以旧换新</a>
+                    </div>
+                    <div class="sub-row">
+                        <span>手机通讯：</span>
+                        <a href="#">手机</a>
+                        <span>/</span>
+                        <a href="#">手机维修</a>
+                        <span>/</span>
+                        <a href="#">以旧换新</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- 主菜单 -->
+        <div class="menu-content" id="menu-content">
+            <div class="menu-item">
+                <a href="#">
+                    <span>手机、配件</span>
+                    <i class="icon">&#xe665;</i>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <span>电脑</span>
+                    <i class="icon">&#xe665;</i>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <span>家用电器</span>
+                    <i class="icon">&#xe665;</i>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="#">
+                    <span>家具</span>
+                    <i class="icon">&#xe665;</i>
+                </a>
+            </div>
+        </div>
+        <div class="banner" id="banner">
+            <a class="button prev" id="prev"></a>
+            <a  class="button next" id="next"></a>
+            <div class="dots" id="dots">
+             <!--    <span class="active"></span>
+                <span></span>
+                <span></span> -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
