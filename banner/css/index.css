@@ -41,52 +41,47 @@ a:visited {
     width: 1200px;
     height: 460px;
 }
-
 .banner>.banner-slide {
 	position: absolute;
     width: 1200px;
     height: 460px;
     float: left;
     background-repeat: no-repeat;
-    z-index: 1;
+    display: none;
 }
-/*.banner>.banner-slide:nth-child(1){
-	background-image: url('../img/bg1.jpg');
+.banner>.slide-active{
+    display: block;
 }
-.banner>.banner-slide:nth-child(2){
-	background-image: url('../img/bg2.jpg');
-}
-.banner>.banner-slide:nth-child(3){
-	background-image: url('../img/bg3.jpg');
-}*/
 
-.banner>.button {
+/*左右轮播按钮 上一页、下一页*/
+.button {
     position: absolute;
     width: 40px;
     height: 80px;
-    left: 244px;
     top: 50%;
     margin-top: -40px;
     background: url('../img/arrow.png') center center no-repeat;
-    transform: rotate(180deg);
-    z-index: 10;
+    cursor: pointer;
 }
-
-.banner>.next {
+.prev{
+    left: 244px;
+    transform: rotate(180deg);
+}
+.next {
     left: auto;
     right: 0;
     transform: rotate(0deg);
 }
 
-.banner>.dots {
+/*轮播图索引指示灯*/
+.dots {
     position: absolute;
     right: 24px;
     bottom: 24px;
     line-height: 12px;
     z-index: 10;
 }
-
-.banner>.dots span {
+.dots>span {
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -96,8 +91,7 @@ a:visited {
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8) inset;
     cursor: pointer;
 }
-
-.banner>.dots span.active {
+.dots>span.active {
     background-color: #fff;
     box-shadow: 0 0 0 2px rgba(7, 17, 27, 0.5) inset;
 }
