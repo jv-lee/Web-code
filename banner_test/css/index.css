@@ -1,0 +1,66 @@
+:root {
+    --tabColor: #FFCC00;
+    --bg: #FFF;
+    --fontColor: #666;
+    --fontFamily: "微软雅黑";
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: var(--bg);
+}
+
+.main {
+    width: 800px;
+    height: 500px;
+    margin: 100px auto;
+}
+
+.main>.tab-container {
+    width: 100%;
+    height: 50px;
+
+}
+
+.main>.tab-container>span {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: var(--fontColor);
+    font-family: var(--fontFamily);
+    border-radius: 5px;
+}
+
+.main>.tab-container>span.activ {
+    background-color: var(--tabColor);
+}
+
+.main>.banner-container {
+	width: 800px;
+    height: 450px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.main>.banner-container>div{
+    width: 100%;
+    height: 100%;
+}
+.main>.banner-container>div:nth-child(1) {
+    background: url('../img/1.jpg') center center no-repeat;
+}
+.main>.banner-container>div:nth-child(2) {
+    background: url('../img/3.jpg') center center no-repeat;
+}
+.main>.banner-container>div:nth-child(3) {
+    background: url('../img/4.jpg') center center no-repeat;
+}
+.main>.banner-container>div:nth-child(4) {
+    background: url('../img/5.jpg') center center no-repeat;
+}
