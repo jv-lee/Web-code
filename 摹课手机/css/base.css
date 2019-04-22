@@ -1,0 +1,13 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+	font-family: "Microsoft Yahei","微软雅黑";
+}
+body{
+	background: #fff;
+	font-size: 12px;
+}
+a{
+	text-decoration-line: none;
+}
