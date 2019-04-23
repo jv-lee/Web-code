@@ -133,9 +133,19 @@
 }
 
 .screen-4-subheading-animate-init {
-    opacity: 1;
+    opacity: 0;
     transform: translate(0, 100%);
 }
+
+/*.screen-4-heading-animate-done {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.screen-4-subheading-animate-done {
+    opacity: 1;
+    transform: translate(0, 0);
+}*/
 
 .screen-4-type-item-1 {
     transition: all 1s .5s;
@@ -193,3 +203,38 @@
 	opacity: 1;
 	transform: translate(0,0);
 }
+
+/*定义帧动画*/
+@-webkit-keyframes bounce{
+    0%,100%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1);
+    }
+}
+
+/*使用帧动画*/
+.screen-2-point:before,
+.screen-2-point:after{
+    content: " ";
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    background-color: rgb(255,0,0,0.4);
+    -webkit-animation: bounce 2s infinite;
+    border-radius: 50%;
+}
+
+/*延迟一秒交叉拉伸的效果*/
+.screen-2-point:before{
+    -webkit-animation: bounce 2s infinite 1s;
+}
+.screen-2-point-1:before,
+.screen-2-point-1:after{
+    left: 200px;
+}
+

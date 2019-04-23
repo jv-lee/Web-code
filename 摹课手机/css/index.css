@@ -411,3 +411,31 @@
 	font-size: 12px;
 	background-color: #07111b;
 }
+
+.outline{
+    position: fixed;
+    padding: 5px 10px;
+    bottom: 120px;
+    right: 0;
+    z-index: 3;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5);
+    text-align: center;
+}
+.outline-item{
+    display: block;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 0;
+    background-color: #fff;
+    margin-top: 5px;
+    border-top: 1px solid #eee;
+    color: #93999f;
+}
+.outline-item:first-child{
+    border: none;
+}
+.outline-item-active{
+    color: red;
+}
