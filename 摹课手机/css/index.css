@@ -34,6 +34,17 @@
     margin-top: -20px;
 }
 
+.header-nav-tip{
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #f01400;
+    bottom: 0;
+    left: 0;
+    margin-left: 40px;
+    transition: all .5s;
+}
+
 .header-nav-item {
     position: relative;
     color: #292f35;
@@ -41,7 +52,9 @@
     display: block;
     height: 40px;
     float: left;
-    margin-left: 40px;
+    width: 30px;
+    text-align: center;
+    padding-left: 40px;
 }
 
 .header-nav-item:hover {
@@ -53,22 +66,29 @@
 }
 
 .header-nav-item-status-active::after {
-    content: ' ';
+    /*content: ' ';
     display: block;
     width: 100%;
     height: 2px;
     background: #f01400;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0;*/
 }
 
 .header-nav-item-custom-button {
+    position: relative;
+    font-size: 14px;
+    display: block;
+    height: 40px;
+    float: left;
     background: #000;
     color: #f4f4f5;
     text-align: center;
     width: 90px;
     border-radius: 3px;
+    padding: 0;
+    margin-left: 40px;
 }
 
 

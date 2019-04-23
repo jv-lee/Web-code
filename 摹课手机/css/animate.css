@@ -238,3 +238,35 @@
     left: 200px;
 }
 
+/*导航条 status—back 样式*/
+.header{
+    transition: all 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.header-status-back{
+    background-color: rgba(0,0,0,.5);
+    
+}
+.header-status-back .header-logo,
+.header-status-back .header-nav-item{
+    color: #fff;
+}
+.header-status-back .header-nav-item-status-active{
+    color: red;
+}
+
+/*大纲 -status-in 样式*/
+.outline{
+    opacity: 0;
+    transition: all 1s;
+    transform: translate(100%,0);
+}
+.outline-status-in{
+    opacity: 1;
+    transform: translate(0,0);
+}
