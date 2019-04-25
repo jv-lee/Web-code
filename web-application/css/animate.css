@@ -1,0 +1,49 @@
+.screen-1-heading{
+	transition: all 1s;
+}
+.screen-1-subheading{
+	transition: all 1s .5s;
+}
+.screen-1-heading-animate-init{
+	opacity: 0;
+	transform: translate(0,20%);
+}
+.screen-1-subheading-animate-init{
+	opacity: 0;
+	transform: translate(0,100%);	
+}
+.screen-1-heading-animate-done,
+.screen-1-subheading-animate-done{
+	opacity: 1;
+	transform: translate(0,0);
+}
+
+
+.screen-2-heading{
+	transition: all 1s;
+}
+.screen-2-subheading{
+	transition: all 1s .5s;
+}
+.screen-2-person{
+	transition: all 1s .5s;
+}
+.screen-2-heading-animate-init{
+	opacity: 0;
+	transform: translate(0,20%);
+}
+.screen-2-subheading-animate-init{
+	opacity: 0;
+	transform: translate(0,50%);	
+}
+.screen-2-person-animate-init{
+	opacity: 0;
+}
+.screen-2-heading-animate-done,
+.screen-2-subheading-animate-done{
+	opacity: 1;
+	transform: translate(0,0);
+}
+.screen-2-person-animate-done{
+	opacity: 1;
+}

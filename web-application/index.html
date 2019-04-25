@@ -8,10 +8,12 @@
 	<script src="js/index.js" type="text/javascript" charset="utf-8" ></script>
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 <body>
 
 	<div class="main">
+		<!-- 头部导航栏 -->
 		<div class="header">
 			<div class="header-logo">H5实战页面</div>
 			<div class="header-nav">
@@ -24,6 +26,7 @@
 			</div>
 		</div>
 
+		<!-- 第一屏元素 -->
 		<div class="screen screen-1">
 			<div class="screen-warp">
 				<h2 class="screen-1-heading">实战课程重磅上线</h2>
@@ -54,18 +57,115 @@
 						<div class="screen-3-content-types-item">Node.js</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 
 		<div class="screen screen-4">
-			<div class="screen-warp"></div>
+			<div class="screen-warp">
+				<div class="screen-4-heading">省去本地复杂的环境搭建</div>
+				<div class="screen-4-subheading">你可以告别在虚拟机中调试开发了</div>
+				<div class="screen-4-commands">
+					<div class="screen-4-commands-item">实战课程集成开发</div>
+					<div class="screen-4-commands-item">内置终端命令行</div>
+					<div class="screen-4-commands-item">编译你的应用程序</div>
+					<div class="screen-4-commands-item">通过云端服务输出效果</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="screen screen-5">
-			<div class="screen-warp"></div>
+			<div class="screen-warp">
+				<div class="screen-5-icon"></div>
+				<div class="screen-5-heading">云端学习可以这样简单</div>
+				<div class="screen-5-subheading">看视频，敲代码，一气呵成。结合慕课网为你提供的云端学习工具，所见即所得，从此学习不一样。</div>
+			</div>
 		</div>		
 	</div>
-	
+
+	<div class="screen-go">
+		<div class="screen-go-button">继续了解学习体验</div>
+	</div>
+
+	<div class="footer">
+		<div class="footer-list">
+			<div class="footer-list-item">网站首页</div>
+			<div class="footer-list-item">人才招聘</div>
+			<div class="footer-list-item">联系我们</div>
+			<div class="footer-list-item">高校联盟</div>
+			<div class="footer-list-item">关于我们</div>
+			<div class="footer-list-item">讲师招募</div>
+			<div class="footer-list-item">意见反馈</div>
+			<div class="footer-list-item">友情链接</div>
+		</div>
+		<div class="footer-register-text">Copyright @ 2015 imooc.com All Rights Reserved | 京ICP备 13046642号-2</div>
+	</div>
 </body>
+	<script type="text/javascript">
+		var animaElements = {
+			".screen-1":[
+			'.screen-1-heading',
+			'.screen-1-subheading'
+			],
+			".screen-2":[
+			".screen-2-heading",
+			".screen-2-subheading",
+			".screen-2-person"
+			]
+		}
+
+		function setAnimateStatus(screenClass){
+			//获取当前屏幕元素
+			var screen = document.querySelector(screenClass);
+			var animates = animaElements[screenClass];
+			console.log(screen);
+
+			//判断是否有初始化子元素的样式
+			var isSetAnimateClass = false; 
+
+			//当前屏幕下所有子元素的状态是DONE?
+			var isAnimateDone = false; 
+
+			screen.onclick = function(){
+
+			//初次设置 初始化动画class
+			if (isSetAnimateClass === false) {
+				for (var i = 0; i < animates.length; i++) {
+					var animaClass = animates[i];
+					var element = document.querySelector(animaClass);
+					var baseClass = element.getAttribute('class');
+					element.setAttribute('class',baseClass+' '+animaClass.substr(1)+'-animate-init');
+				}
+				isSetAnimateClass = true;
+				return;
+			}
+
+			if (isAnimateDone === false) {
+				for (var i = 0; i < animates.length; i++) {
+					var animaClass = animates[i];
+					var element = document.querySelector(animaClass);
+					var baseClass = element.getAttribute('class');
+					element.setAttribute('class',baseClass.replace('-animate-init','-animate-done'));
+				}
+				isAnimateDone = true;
+				return;
+			}
+
+			if (isAnimateDone === true) {
+				for (var i = 0; i < animates.length; i++) {
+					var animaClass = animates[i];
+					var element = document.querySelector(animaClass);
+					var baseClass = element.getAttribute('class');
+					element.setAttribute('class',baseClass.replace('-animate-done','-animate-init'));
+				}
+				isAnimateDone = false;
+				return;
+			}
+
+			};
+		}
+
+		for(k in animaElements){
+			setAnimateStatus(k);
+		}
+	</script>
 </html>
