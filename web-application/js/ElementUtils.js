@@ -129,17 +129,17 @@ setCls:function(element, cls) {
 
 //为元素添加样式
 addCls:function(element, cls) {
-    var baseCls = getCls(element);
+    var baseCls = this.getCls(element);
     if (baseCls.indexOf(cls) === -1) {
-        setCls(element, baseCls + " " + cls);
+        this.setCls(element, baseCls + " " + cls);
     }
 },
 
 //为元素删除样式
 delCls:function(element, cls) {
-    var baseCls = getCls(element);
+    var baseCls = this.getCls(element);
     if (baseCls.indexOf(cls) != -1) {
-        setCls(element, baseCls.split(cls).join(' ').replace(/\s+/g, ' '));
+        this.setCls(element, baseCls.split(cls).join(' ').replace(/\s+/g, ' '));
     }
 }
 };

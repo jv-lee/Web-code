@@ -6,6 +6,15 @@
     opacity: 0;
     transform: translate(0, -100%);
 }
+.menu{
+	transition: all 1s;
+	opacity: 0;
+	transform: translate(100%,0);
+}
+.menu-animate-init{
+	opacity: 1;
+	transform: translate(0,0);
+}
 
 .screen-1-heading {
     transition: all 1s;

@@ -25,11 +25,32 @@
 	text-align: center;
 	overflow: hidden;
 	margin-top: 20px;
+	overflow: hidden;
 }
 .header>.header-nav>.header-nav-item{
+	position: relative;
 	float: left;
 	padding-right: 40px;
+	cursor: pointer;
 }
+.header>.header-nav>.header-nav-item-active::after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 60px;
+	height: 3px;
+	background-color: red;
+}
+/*.header>.header-nav>.header-nav-item-active{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 60px;
+	height: 3px;
+	background-color: red;
+	transition: all .5s;
+}*/
 
 .header>.header-nav>.header-nav-button{
 	float: left;
@@ -37,6 +58,26 @@
 	margin-right: 40px;
 	background: red;
 	border-radius: 3px;
+}
+
+.menu{
+	position: fixed;
+	width: 30px;
+	height: 165px;
+	right: 15px;
+	bottom: 100px;
+	background-color: #fff;
+	box-shadow: 4px 4px 10px #000;
+	border-radius: 3px;
+	text-align: center;
+}
+.menu>.menu-item{
+	color: #000;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.menu>.menu-item-active{
+	color: red;
 }
 
 
