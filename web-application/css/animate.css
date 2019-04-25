@@ -1,49 +1,139 @@
-.screen-1-heading{
-	transition: all 1s;
+.header {
+    transition: all 1s .5s;
 }
-.screen-1-subheading{
-	transition: all 1s .5s;
+
+.header-animate-init {
+    opacity: 0;
+    transform: translate(0, -100%);
 }
-.screen-1-heading-animate-init{
-	opacity: 0;
-	transform: translate(0,20%);
+
+.screen-1-heading {
+    transition: all 1s;
 }
-.screen-1-subheading-animate-init{
-	opacity: 0;
-	transform: translate(0,100%);	
+
+.screen-1-subheading {
+    transition: all 1s .5s;
 }
-.screen-1-heading-animate-done,
-.screen-1-subheading-animate-done{
-	opacity: 1;
-	transform: translate(0,0);
+
+.screen-1-heading-animate-init {
+    opacity: 0;
+    transform: translate(0, 20%);
+}
+
+.screen-1-subheading-animate-init {
+    opacity: 0;
+    transform: translate(0, 100%);
 }
 
 
-.screen-2-heading{
+.screen-2-heading {
+    transition: all 1s;
+}
+
+.screen-2-subheading {
+    transition: all 1s .5s;
+}
+
+.screen-2-person {
+    transition: all 1s .5s;
+}
+
+.screen-2-rocet {
+    transition: all 1s 1s;
+}
+
+.screen-2-heading-animate-init {
+    opacity: 0;
+    transform: translate(0, 20%);
+}
+
+.screen-2-subheading-animate-init {
+    opacity: 0;
+    transform: translate(0, 50%);
+}
+
+.screen-2-person-animate-init {
+    opacity: 0;
+}
+
+.screen-2-rocet-animate-init {
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+
+.screen-3-icon,
+.screen-3-content-heading {
+    transition: all 1s;
+}
+
+.screen-3-content-subheading {
+    transition: all 1s .5s;
+}
+
+.type-1,
+.type-2,
+.type-3,
+.type-4,
+.type-5 {
+    transition: all 1s 1s;
+}
+
+.screen-3-icon-animate-init {
+    transform: scale(.5);
+}
+
+.screen-3-content-heading-animate-init {
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+
+.screen-3-content-subheading-animate-init {
+    opacity: 0;
+    transform: translate(0, 100%);
+}
+
+.type-1-animate-init,
+.type-2-animate-init,
+.type-3-animate-init,
+.type-4-animate-init,
+.type-5-animate-init {
+	opacity: 0;
+	transform: translate(0,100%);
+}
+
+.screen-4-heading{
 	transition: all 1s;
 }
-.screen-2-subheading{
+.screen-4-subheading{
 	transition: all 1s .5s;
 }
-.screen-2-person{
+.screen-4-commands{
+	transition: all 1s 1s;
+}
+
+.screen-4-heading-animate-init,
+.screen-4-subheading-animate-init{
+	opacity: 0;
+	transform: translate(0,100%);
+}
+.screen-4-commands-animate-init{
+	opacity: 0;
+	transform: scale(0.5);
+}
+
+.screen-5-icon,
+.screen-5-heading{
+	transition: all 1s;
+}
+.screen-5-subheading{
 	transition: all 1s .5s;
 }
-.screen-2-heading-animate-init{
+.screen-5-icon-animate-init{
 	opacity: 0;
-	transform: translate(0,20%);
+	transform: scale(0.5);
 }
-.screen-2-subheading-animate-init{
+.screen-5-heading-animate-init,
+.screen-5-subheading-animate-init{
 	opacity: 0;
-	transform: translate(0,50%);	
-}
-.screen-2-person-animate-init{
-	opacity: 0;
-}
-.screen-2-heading-animate-done,
-.screen-2-subheading-animate-done{
-	opacity: 1;
-	transform: translate(0,0);
-}
-.screen-2-person-animate-done{
-	opacity: 1;
+	transform: translate(0,100%);
 }
