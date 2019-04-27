@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style type="text/css">
+    body {
+        background-color: #eee;
+    }
+
+    .calculator {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -150px 0 0 -150px;
+    }
+
+    .button {
+		cursor:pointer;
+        width: 50px;
+        height: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <p>
+            <input type="text" class="formerInput" value="1">
+            <span id="sign">+</span>
+            <input type="text" class="laterInput" value="1">
+            <span>=</span>
+            <span class="output">2</span>
+        </p>
+        <p>
+            <input type="button" class="button" title="add" value="+">
+            <input type="button" class="button" title="subtract" value="-">
+            <input type="button" class="button" title="multiply" value="*">
+            <input type="button" class="button" title="except" value="/">
+        </p>
+    </div>
+    <script type="text/javascript">
+    //局部作用于 模块化
+    (function() {
+        //获取元素
+        var main = document.querySelector('.calculator');
+        //元素对象
+        var elements = {
+            formerInput: main.querySelector('.formerInput'),
+            laterInput: main.querySelector('.laterInput'),
+            sign: main.querySelector('#sign'),
+            output: main.querySelector('.output'),
+            btns: main.querySelectorAll('.button')
+        };
+
+        //元算对象 方法 函数 模块化 返回operate对象 暴露出来提供调用 不关心内部函数编写. 最终返回的operate是一个运算方法 运算方法调用内部 运算对象的方法
+        var operate = (function() {
+            //方法对象
+            var operation = {
+                //加法
+                add: function(num1, num2) {
+                    return +num1 + +num2;
+                },
+                //减法
+                subtract: function(num1, num2) {
+                    return num1 - num2;
+                },
+                //乘法
+                multiply: function(num1, num2) {
+                    return num1 * num2;
+                },
+                //除法
+                except: function(num1, num2) {
+                    return num1 / num2;
+                },
+                addOperation: function(name, fun) {
+                    if (!operation[name]) {
+                        operation[name] = fun;
+                    }
+                    return operation;
+                }
+            };
+             //运算
+             function operate(name) {
+                if (!operation[name]) throw new Error('funObject中不存在名字为' + name + '的运算方法');
+                // return operation[name](num1, num2);
+                //修改为 不限定多少参数 通过apply替换自身对象的参数值为arguments中的1开始到结束的值
+                return operation[name].apply(operation,[].slice.call(arguments,1,arguments.length));
+            }
+            operate.addOperation = operation.addOperation;
+
+            //返回operate方法 对外提供调用
+            return operate;
+
+        })();
+
+
+        //为运算对象添加方法
+        operate.addOperation('mod', function(num1, num2) {
+            return num1 % num2;
+        }).addOperation('power', function(base, power) {
+            return Math.pow(base, power);
+        });
+
+        //绑定事件
+        each(elements.btns, function(index, elem) {
+            elem.onclick = function() {
+                updateSign(this.value);
+                outputResult(operate(this.title, elements.formerInput.value, elements.laterInput.value));
+            };
+        });
+
+        //遍历
+        function each(array, fun) {
+            for (var i = 0; i < array.length; i++) {
+                fun(i, array[i]);
+            }
+        }
+
+        //更新符号
+        function updateSign(sign) {
+            elements.sign.innerHTML = sign;
+        }
+
+        //更新结果
+        function outputResult(result) {
+            elements.output.innerHTML = result;
+        }
+    })();
+    </script>
+</body>
+
+</html>

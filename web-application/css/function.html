@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function min(){
+			if (arguments.length == 0) return;
+			var result = arguments[0];
+			for (var i = 1; i < arguments.length; i++) {
+				result = Math.min(result,arguments[i]);
+			}
+			document.write(result);
+			return result;
+		}
+
+		// $.each({name:'xm',sex:'male'},function(index,item){
+		// 	console.log(index);
+		// 	console.log(item);
+		// });
+
+		min.apply(this,[2,4,1,-1,56,3,-7]);
+		switch(1){
+			case 0:
+				console.log('0');
+				break;
+				case 1:
+				console.log('1');
+				break;
+				case 2:
+				console.log('2');
+				break;
+		}
+	</script>
+</body>
+</html>

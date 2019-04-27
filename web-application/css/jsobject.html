@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsobject</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function object(){}
+		object.prototype.color = "red";
+		object.prototype.fun = function(){
+			alert('show');
+		};
+		var obj = new object();
+		alert(obj.color);
+		obj.fun();
+	</script>
+</body>
+</html>
