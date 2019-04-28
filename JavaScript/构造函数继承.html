@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数继承</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function parents(name){
+			this.name = name;
+			this.say = function(){
+				alert('父亲的名字：'+this.name);
+			};
+		}
+
+		//继承parents
+		function child(name,age){
+			this.obj = parents;//子类对象的参数name 传递到父类构造函数中. 此处就是用父对象创建一个子对象
+			this.obj(name);
+			this.age = age;
+			this.sayHi = function(){
+				alert('child:'+this.name+'---age:'+this.age);
+			};
+		}
+
+		var p = new parents("章三");
+		p.say();
+		var c = new child("李四",20);
+		c.sayHi();
+		c.say();
+
+		
+
+	</script>
+</body>
+</html>

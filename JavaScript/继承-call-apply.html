@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承-call-apply</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//call:调用一个对象的一个方法，以另一个对象替换当前对象. obj.call(方法,var1,var2,var3...);
+		//apply:应用某一对象的一个方法，用另一个对象替换当前对象 obj.apply(方法,[var1,var2,var3]);
+		if (name instanceof Object) {
+
+		}
+		if (name typeof Object) {}
+		//父类
+		function person(name,age,len){
+			this.name = name;
+			this.age = age;
+			this.len = len;
+			this.say = function(){
+				alert(this.name + ':'+this.age+':'+this.len);
+			};
+		}
+
+		//call方法继承
+		function student(name,age){
+			person.call(this,name,age);
+		}
+		//apply继承
+		function teacher(name,age,len){
+			person.apply(this,[name,age,len]);
+		}
+		var per = new person('张三',25,'170');
+		per.say();
+
+		var stu = new student('李四',18);
+		stu.say();
+
+		var tea = new teacher('王五',20,180);
+		tea.say();
+
+	</script>
+</body>
+</html>

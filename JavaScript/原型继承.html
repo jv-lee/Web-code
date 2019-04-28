@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型继承</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var person = function(){};
+		person.prototype.say = function(){
+			alert('今天月色真美~');
+		};
+		person.money = 500;
+
+		var programmer = function(){};
+		programmer.prototype = new person();
+		programmer.prototype.nosay = function(){
+			alert('所以你想说什么？');
+		};
+		programmer.prototype.money = 1000;
+
+
+		var p = new programmer();
+		// p.say(); //可以调用父类方法
+		// p.nosay();//可以调用自身方法
+		// alert(p.money);//子类属性覆盖父类属性 输出子类值
+		//var p = new programmer();  p.__proto__ = programmer.prototype = new person();
+		//原型链的实现  
+		//var p1 = new person();  programmer.prototype = p1
+		//p.say(); -> p.__proto__ -> programmer == p1 -> p1.__proto__ == person.prototype.say();
+	</script>
+
+	<script type="text/javascript">
+
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayHello = function(){
+			alert('hello , my name is '+this.name+',my age is '+this.age);
+		};
+
+		function Student(){};
+		Student.prototype = new Person('章三',15);
+		Student.prototype.grade = 3;
+		Student.prototype.show = function(){
+			alert(this.grade);
+		};
+		var student = new Student();
+		student.sayHello();
+
+		//过程分析 student.__proto__ = Student.prototype = p1   p1.__proto__ = Person.prototype.sayHello();   原型继承 
+	</script>
+</body>
+</html>
