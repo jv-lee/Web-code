@@ -146,3 +146,16 @@
 	opacity: 0;
 	transform: translate(0,100%);
 }
+
+ /*呼吸灯帧动画*/
+@keyframes pulse{
+    0%{
+        transform: scale3d(1,1,1);
+    }
+    50%{
+        transform: scale3d(1.05,1.05,1.05);
+    }
+    100%{
+        transform: scale3d(1,1,1);
+    }
+}

@@ -206,6 +206,7 @@
 	margin-right: 35px;
 	transition: all .5s;
 	cursor: pointer;
+	animation: pulse 1s infinte .5s;
 }
 .screen-3>.screen-warp>.screen-3-content>.screen-3-content-types>.screen-3-content-types-item:nth-child(1){
 	color: #2294FF;
