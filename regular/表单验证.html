@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <style type="text/css">
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+    	.container{
+    		position: relative;
+    		width: 1200px;
+    		height: 800px;
+    		background-color: #ababab;
+    		margin: 0 auto;
+    		margin-top: 30px;
+    	}
+    	.form-container{
+    		position: absolute;
+    		left: 350px;
+    		top: 250px;
+			width: 500px;
+			height: 300px;
+    	}
+    	.form-container>span{
+    		display: inline-block;
+			width: 120px;
+    	}
+    	.form-container>input{
+    		width: 300px;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-container">
+                <span>用户名：</span><input class="username" type="text"></input><br />
+                <span>登陆密码：</span><input class="password" type="password"></input><br />
+                <span>确认密码：</span><input class="repassword" type="password"></input><br />
+                <span>姓名：</span><input class="name" type="text"></input><br />
+                <span>身份证号：</span><input class="personNumber" type="text"></input><br />
+                <span>邮箱：</span><input class="email" type="email"></input><br />
+                <span>手机号：</span><input class="phoneNumber" type="text"></input><br />
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

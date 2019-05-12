@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式 实际应用</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//1.QQ号正则：全是数字、首位不能为0、最少5位（10000）、目前最多11位
+		var pattern = /^[1-9]\d{4,}$/; //开头为1-9的数字，结尾为数字最少4位最大无限；
+
+		//2.昵称	中文、英文、数字以及下划线 2-18位
+		var pattern = /^[\u4e00-\u9fa5a-zA-Z0-9_]{2,18}$/;
+		var pattern = /^[\u4e00-\u9fa5\w]{2,18}$/;
+
+		//3.密码 6-16位 ， 不能用空白字符
+		var pattern = /^\S{6,16}$/;
+
+		//4.去除字符串首尾的空白字符
+		var str = '    Alex     ';
+		var pattern1 = /^\s+/;
+		var pattern2 = /\s+$/;
+		console.log("|"+str.replace(pattern1,"").replace(pattern2,"")+"|");
+		var str2 = '    Zore   ';
+		console.log(trim(str2));
+
+		//5.字符串去空格函数
+		function trim(str){
+			return str.replace(/^\s+/,"").replace(/\s+$/,"");
+		}
+
+		//6.字符串转驼峰函数
+		function toCamelCase(str){
+			return str.replace(pattern,function(all,letter){
+				return letter.toUpperCase();
+			});
+		}
+
+		//6.匹配HTML标签 \/? 结束符可有可无 多个+
+		var str = '<p class="odd" id="odd">123</p>' ;
+		var pattern = /<\/?[a-zA-Z]+(\s+[a-zA-Z]+=".*")*>/g;
+		var pattern1 = /<[^>]+>/g;
+		var pattern2 = /<?:([^"'>]|"[^"]*"|'[^']*')*>/g;
+		console.log(str.match(pattern));
+		console.log(str.match(pattern2));
+
+		//7,邮箱
+		var pattern = /(?:\w+\.)*\w+@(?:\w+\.)+([a-z])/i;
+
+		//8.URL  (协议:\/\/)主机名(:端口号)/(路径)
+		var pattern = /^(https?:\/\/)?([^:\/]+)(:\d+)?(\/.*)?$/;
+	</script>
+</body>
+</html>

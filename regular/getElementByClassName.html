@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式 匹配ClassName</title>
+</head>
+<body>
+
+	<p class="odd">1</p>
+	<p class="even">2</p>
+	<p class="odd">3</p>
+	<p class="even">4</p>
+	
+	<script type="text/javascript">
+		
+		var oddP = getElementByClassName('odd');
+		var evenP = getElementByClassName('even');
+		for (var i = 0; i < oddP.length; i++) {
+			oddP[i].style.backgroundColor = 'red';
+		}
+
+		for (var i = 0; i < evenP.length; i++) {
+			evenP[i].style.backgroundColor = 'blue';
+		}
+
+		function getElementByClassName(className,parentNode){
+			if (document.getElementsByClassName) {
+				return document.getElementsByClassName(className);
+			}else{
+				//判断是否传入父节点 没有则使用doucment
+				parentNode = parentNode || document;
+				var nodeList = [];
+
+				//获取所有元素
+				var allNodes = parentNode.getElementsByTagName('*');
+
+				// //设置分组 以className开头 或者 以空格开头 ,  以className结尾 或者 以空格结尾   的className将被匹配  正则构造需要使用双\\转义
+				// var pattern = new RegExp('(^|\\s+)'+className+'($|\\s+)');
+
+				//简化版  只要className 前或后是空格 即可匹配
+				var pattern = new RegExp('\\b'+className+'\\b');
+				
+				for (var i = 0; i < allNodes.length; i++) {
+					if (pattern.test(allNodes[i].className)) {
+						nodeList.push(allNodes[i]);
+					}
+				}
+				return nodeList;
+			}
+		}
+
+	var str="Java 是一门很好的编程语言，JavaScript是非常好、非常实用的脚本语言！"
+	/*此处写代码*/
+	var pattern = new RegExp('Java(?=Script)');
+	document.write(pattern.exec(str));
+
+	</script>
+</body>
+</html>
