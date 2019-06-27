@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>监听事件</title>
+    <style type="text/css">
+    	div{
+    		height: 2000px;
+    		width: 500px;
+    		background-color: #ababab;
+    	}
+    </style>
+</head>
+
+<body>
+    <div>div</div>
+    <a href="" id="click">点击事件</a>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+        // $('#click').click(function() {
+        //     alert("点击了");
+        // });
+        // $('#click').mousedown(function() {
+        //     alert("按下");
+        // });
+        // $('#click').mouseup(function() {
+        //     alert("松开");
+        // });
+        // $('#click').mouseenter(function() {
+        //     alert("进入");
+        // });
+        // $('#click').mouseleave(function() {
+        //     alert("移出");
+        // });
+        // $('#click').hover(function() {
+        //     alert("进入");
+        // }, function() {
+        //     alert("出去");
+        // });
+        // $('#click').mousemove(function(){
+        // 	console.log('移动');
+        // });	
+        // $('body').scroll(function(){
+        // 	console.log($(this));
+        // });
+        $(document).keydown(function(event){
+        	console.log(event);
+        });
+    });
+    </script>
+</body>
+
+</html>

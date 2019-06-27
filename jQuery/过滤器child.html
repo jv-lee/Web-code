@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQ过滤器</title>
+</head>
+
+<body>
+    <details>
+        <summary>编辑器</summary>
+        <p>Sublime Text</p>
+    </details>
+    <details>
+        <summary>IDE</summary>
+        <p>WebStorm</p>
+        <p>Visual Studio</p>
+        <p>Visual Studio Code</p>
+    </details>
+    <details>
+        <summary>
+            <p>HTML</p>
+            <p>Css</p>
+            <p>JavaScript</p>
+            <p>jQuery</p>
+        </summary>
+    </details>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+    	var first = $('details > p:first-child');
+    	console.log(first);
+    	var last = $('details > p:last-child');
+    	console.log(last);
+    	var nthF = $('details > p:nth-child(2)');
+    	console.log(nthF);
+    	var nthL = $('details > p:nth-last-child(2)');
+    	console.log(nthL);
+    	var only = $('details > p:only-child');
+    	console.log(only);
+    });
+    </script>
+</body>
+
+</html>

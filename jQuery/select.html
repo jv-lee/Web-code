@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>*选择器</title>
+    <style type="text/css">
+    	ul{
+    		display: block;
+    	}
+    </style>
+</head>
+<body>
+    <div>欢伯便同分玉髓</div>
+    <div>迎风冷笑桃杏花</div>
+    <div>来时浦口云随棹</div>
+    <div>到得扶他迂叟出</div>
+    <div>慕道焚修万法通</div>
+    <div>课儿子兮蓺松菊</div>
+    <div>网得钱塘一双鲤</div>
+    <div>学道深山空自老</div>
+    <div>习池未觉风流尽</div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+       //此处填写代码
+       var div  = $('div');
+       div.css({'color':'red'});
+       $(div[1]).css({'color':'blue'});
+    });
+    </script>
+</body>
+</html>
