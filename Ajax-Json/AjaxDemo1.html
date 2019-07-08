@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+    	$(document).ready(function(){
+
+
+
+    	});
+    </script>
+    <script type="text/javascript">
+    	//封装XMLHttpRequest对象 兼容版本
+    	function createXHR(){
+    		//判断浏览器是否将XMLHttpRequest作为本地对象实现，针对ie7，firefox、opera等
+    		if(typeof XMLHttpRequest != "undefined"){
+    			return new XMLHttpRequest();	
+    		}else{
+    			return new ActiveXObject("Microsoft.XMLHTTP");
+    		}
+    	}
+		var xhr = createXHR();
+		//响应XMLHTTPRequest对象状态变化的函数
+		xhr.onreadystatechange = function(){
+			//异步调用成功后回调
+			if(xhr.readyState === 4){
+					if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304){
+						//获得服务器返回的数据
+						console.log(xhr.responseText);
+					}
+			}
+		};
+		//创建请求
+		xhr.open("get","http://api.map.baidu.com/telematics/v3/weather?location=嘉兴&output=json&ak=5slgyqGDENN7Sy7pw29IUvrZ",true);
+		//发送请求 get请求设置为null  post请求 send参数为 请求服务器的参数xhr.send({user::"zhangsan",id:6});
+		// xhr.send(null);
+
+
+		//封装JSONP 请求函数 解决跨域问题
+		function getJSONP(url,callback){
+			if(!url){
+				return;
+			}
+			//声明数组用来随机生成函数名
+			var a = ['a','b','c','d','e','f','g','h','i','j'],
+			r1 = Math.floor(Math.random() * 10),
+			r2 = Math.floor(Math.random() * 10),
+			r3 = Math.floor(Math.random() * 10),
+			name = 'getJSONP' + a[r1] + a[r2] + a[r3],
+			cbname = 'getJSONP.'+name;
+			//判断url地址中是否含有？号
+			if(url.indexOf('?') === -1){
+				url  += '?jsonp='+cbname;
+			}else{
+				url += '&jsonp='+cbname;
+			}
+			//动态创建script标签
+			var script = document.createElement('script');
+			//定义被脚本执行的回调函数
+			getJSONP[name] =  function(data){
+				try{
+					callback && callback(data);
+				}catch(e){
+					console.log(e);
+				}finally{
+					//最后删除该函数及script标签
+					delete getJSONP([name]);
+					script.parentNode.removeChild(script);
+				}
+			};
+			//定义scirpt的src
+			script.src = url;
+			document.getElementsByTagName("head")[0].appendChild(script);
+		}
+		getJSONP("http://class.imooc.com/api/jsonp",function(data){
+			console.log(data);
+		});
+    </script>
+</body>
+</html>

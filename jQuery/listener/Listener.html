@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <title>监听事件</title>
     <style type="text/css">
-    	div{
-    		height: 2000px;
-    		width: 500px;
-    		background-color: #ababab;
-    	}
+    div {
+        height: 2000px;
+        width: 500px;
+        background-color: #ababab;
+    }
     </style>
 </head>
 
@@ -40,14 +40,42 @@
         //     alert("出去");
         // });
         // $('#click').mousemove(function(){
-        // 	console.log('移动');
-        // });	
+        //  console.log('移动');
+        // });  
         // $('body').scroll(function(){
-        // 	console.log($(this));
+        //  console.log($(this));
         // });
-        $(document).keydown(function(event){
-        	console.log(event);
+        $(document).keydown(function(event) {
+            console.log(event);
         });
+        $(document).keyup(function(event) {
+            console.log(event);
+        });
+        //获取提交表单可以获取的值
+        $('form').submit(function(){
+            var inputValue = $('input[type=text]').val();
+            if (inputValue !== 'www.imooc.com') {
+                return false;
+            }
+        });
+
+        //多事件同事绑定
+        $('id').add(document).on({
+            mouseenter:function(event){
+                // event.stop
+            },
+            mouseout:function(event){
+
+            }
+        });
+        $(document).on({
+            mouseenter:function(event){
+                event.stop
+            },
+            mouseout:function(){
+
+            }
+        })
     });
     </script>
 </body>

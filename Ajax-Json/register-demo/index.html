@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>注册验证</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <div class="register">
+        <p class="title">
+            <span>登陆</span>
+            <span class="current">注册</span>
+        </p>
+        <div class="form">
+            <div>
+                <span>+86</span>
+                <input type="text" name="user" id="user" placeholder="请输入注册手机号" autocomplete="off">
+                <i id="userIcon"></i>
+                <p class="info" id="userInfo"></p>
+            </div>
+            <div>
+                <input type="password" name="password" id="password" placeholder="请设置密码">
+                <i></i>
+                <p class="info"></p>
+            </div>
+            <p class="button">
+                <a href="javacript:void(0)" id="sigup-btn" class="btn">注册</a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript">
+    var user = document.getElementById('user'),
+        password = document.getElementById('password'),
+        sigup = document.getElementById('sigup-btn'),
+        userInfo = document.getElementById('userInfo'),
+        userIcon = document.getElementById('userIcon');
+
+		// 检测用户
+		function checkUser(){
+			var userVal = user.value,
+			userReg = /^1[3578]\d{9}$/;
+			//验证手机号是否有效
+			if(!userReg.test(userVal)){
+				userInfo.innerHTML = '手机号无效！';
+				userIcon.className = 'no';
+			}else{
+				userInfo.innerHTML = '';
+				userIcon.className = '';
+				//成功验证发起请求
+				$.ajax({
+					url:'http://localhost/register/server/isUserRepeat.php',
+					method:'post',
+					async:true,
+					data:{username:userVal},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			}
+		}
+
+        //绑定事件，检测用户是否注册过
+        user.addEventListener('blur',checkUser,false);
+    </script>
+</body>
+
+</html>
