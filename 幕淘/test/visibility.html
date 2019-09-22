@@ -20,6 +20,25 @@
         width: 100%;
         height: 200px;
         background-color: red;
+        overflow: hidden;
+    }
+
+    .transition {
+        -o-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .fadeOut {
+        visibility: hidden;
+        opacity: 0 !important;
+    }
+    .slideUpDownCollapse{
+    	height: 0 !important;
+    	padding-top: 0 !important;
+    	padding-bottom: 0 !important;
     }
     </style>
 </head>
@@ -27,116 +46,43 @@
 <body>
     <button id="btn-show" class="btn">显示</button><button id="btn-hide" class="btn">隐藏</button>
     <div id="box"></div>
+    <button>btn</button>
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/transition.js"></script>
+    <script type="text/javascript" src="../js/visibility.js"></script>
     <script type="text/javascript">
-    var silent = {
-    	//设置接口回调函数
-        show: function($elem, startCallback, endCallback) {
-            if (typeof startCallback === 'function') startCallback();
-            $elem.show();
-            if (typeof endCallback === 'function') endCallback();
-        },
-        hide: function($elem) {
-            $elem.hide();
-        }
-    };
-    var css3 = {
-        fade: {
-            show: function() {
+		console.log(window.mt.transition.end);
+		console.log(window.mt.transition.isSupport);
 
-            },
-            hide: function() {
+    //找到元素
+    var $box = $('#box'),
+        visibi = silent,
+        visibi = css3.fade,
+        visibi = css3.slideUpDown,
+        code = 0;
 
-            }
-        },
-        slideUpDown: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        slideLeftRight: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        fadeSlideUpDown: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        fadeSlideLeftRight: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        }
-    };
-    var js = {
-        fade: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        slideUpDown: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        slideLeftRight: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        fadeSlideUpDown: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        },
-        fadeSlideLeftRight: {
-            show: function() {
-
-            },
-            hide: function() {
-
-            }
-        }
-    };
-
-    var $box = $('#box');
+    //初始化
+    visibi.init($box);
+    //给显示按钮绑定点击事件 执行显示
     $('#btn-show').on('click', function() {
-        silent.show($box, function() {
-            $box.html('<p>我要显示了</p>');
-        }, function() {
-            setTimeout(function() {
-                $box.html($box.html() + '<p>显示完成</p>');
-            }, 1000);
-        });
+        visibi.show($box);
     });
+    //给隐藏按钮绑定点击事件 执行隐藏
     $('#btn-hide').on('click', function() {
-        silent.hide($box);
+        visibi.hide($box);
+    });
+
+    //显示隐藏生命周期事件绑定
+    $box.on('start resume pause stop', function(e) {
+        if (e.type === 'start') {
+            console.log('start');
+        } else if (e.type === 'resume') {
+            console.log('resume');
+        } else if (e.type === 'pause') {
+            console.log('pause');
+        } else if (e.type === 'stop') {
+            console.log('stop');
+        }
     });
     </script>
 </body>
