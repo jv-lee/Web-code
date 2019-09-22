@@ -37,3 +37,6 @@
 // }, function() {
 //     $(this).removeClass('dropdown-active');
 // });
+
+// 调用封装的下拉菜单组件
+$('.dropdown').dropdown();

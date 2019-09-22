@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>显示隐藏模块</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <style type="text/css">
+    body {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        width: 50%;
+        height: 30px;
+    }
+
+    #box {
+        width: 100%;
+        height: 200px;
+        background-color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="btn-show" class="btn">显示</button><button id="btn-hide" class="btn">隐藏</button>
+    <div id="box"></div>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript">
+    var silent = {
+    	//设置接口回调函数
+        show: function($elem, startCallback, endCallback) {
+            if (typeof startCallback === 'function') startCallback();
+            $elem.show();
+            if (typeof endCallback === 'function') endCallback();
+        },
+        hide: function($elem) {
+            $elem.hide();
+        }
+    };
+    var css3 = {
+        fade: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        slideUpDown: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        slideLeftRight: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        fadeSlideUpDown: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        fadeSlideLeftRight: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        }
+    };
+    var js = {
+        fade: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        slideUpDown: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        slideLeftRight: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        fadeSlideUpDown: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        },
+        fadeSlideLeftRight: {
+            show: function() {
+
+            },
+            hide: function() {
+
+            }
+        }
+    };
+
+    var $box = $('#box');
+    $('#btn-show').on('click', function() {
+        silent.show($box, function() {
+            $box.html('<p>我要显示了</p>');
+        }, function() {
+            setTimeout(function() {
+                $box.html($box.html() + '<p>显示完成</p>');
+            }, 1000);
+        });
+    });
+    $('#btn-hide').on('click', function() {
+        silent.hide($box);
+    });
+    </script>
+</body>
+
+</html>
