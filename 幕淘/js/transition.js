@@ -1,3 +1,4 @@
+//兼容判断依赖
 (function() {
     var transitionEndEventName = {
         transition: 'transitionend',

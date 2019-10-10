@@ -6,6 +6,9 @@
     <title>下拉菜单</title>
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <style type="text/css">
+    body{
+        background-color: #ebebeb;
+    }
     /*dropdown*/
     .dropdown {
         position: relative;
@@ -24,6 +27,7 @@
 
     .dropdown-layer {
         display: none;
+        overflow: hidden;
         position: absolute;
         z-index: 1;
     }
@@ -86,10 +90,6 @@
         /*background-image: url(../img/dropdown-arrow-active.png);*/
     }
 
-    /*下拉菜单选中显示隐藏*/
-    .menu-active .dropdown-layer {
-        display: block;
-    }
     .icon-triangle-down{
     	width: 0;
     	height: 0;
@@ -102,15 +102,34 @@
     	border-top: none;
     	border-bottom: 4px solid #f11c1c;
     }
+
+    .transition {
+        -o-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .fadeOut {
+        visibility: hidden;
+        opacity: 0 !important;
+    }
+    .slideUpDownCollapse{
+        height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .slideLeftRightCollapse{
+        width: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
     </style>
 </head>
 
 <body>
-    <!--     <div class="menu dropdown">
-        <div class="dropdown-toggle">我的幕淘<i class="dropdown-arrow"></i></div>
-        <div class="dropdown-layer dropdown-left">
-        </div>
-    </div> -->
+
     <div class="menu dropdown fl" data-active="menu">
         <a href="###" target="_blank" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow icon-triangle-down"></i></a>
         <ul class="dropdown-layer dropdown-left">
@@ -127,42 +146,17 @@
         </ul>
     </div>
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/transition.js"></script>
+    <script type="text/javascript" src="../js/visibility.js"></script>
     <script type="text/javascript" src="../js/dropdown.js"></script>
     <script type="text/javascript">
-    // $('.dropdown').hover(function() {
-    //     var $this = $(this);
-    //     $this.addClass($this.data('active') + '-active');
-    // }, function() {
-    //     $this.removeClass($this.data('active') + '-active');
-    // });
 
-    //下拉菜单通用函数
-    // function dropdown(elem) {
-    //     var $elem = $(elem),
-    //         activeClass = $elem.data('active') + '-active';
-
-    //     $elem.hover(function() {
-    //         $elem.addClass(activeClass);
-    //     }, function() {
-    //         $elem.removeClass(activeClass);
-    //     });
-    // }
-
-    // $.fn.extend({
-    // 	dropdown:function(){
-    // 		return this.each(function(){
-    // 			dropdown(this);
-    // 		});
-    // 	}
-    // });
-    // $('.dropdown').dropdown();
-
-    // $('.dropdown').each(function(){
-    // 	dropdown($(this));
-    // });
-    // dropdown($('.dropdown')[0]);
-
-    $('.dropdown').dropdown();
+    $('.dropdown').dropdown({
+                css3:true,
+                js:true,
+                animation:'slideUpDown',
+                active:'menu'
+            });
     </script>
 </body>
 

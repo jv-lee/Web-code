@@ -40,6 +40,11 @@
     	padding-top: 0 !important;
     	padding-bottom: 0 !important;
     }
+    .slideLeftRightCollapse{
+        width: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
     </style>
 </head>
 
@@ -55,21 +60,29 @@
 		console.log(window.mt.transition.isSupport);
 
     //找到元素
-    var $box = $('#box'),
-        visibi = silent,
-        visibi = css3.fade,
-        visibi = css3.slideUpDown,
-        code = 0;
+    var $box = $('#box');
 
-    //初始化
-    visibi.init($box);
+    // var visibi = window.mt.showHide($box,{
+    //     css3:true,
+    //     js:false,
+    //     animation:'fade'//{fade,slideUpDown,slideLeftRight,fadeSlideUpDown,fadeSlideLeftRight}
+    // });
+    $box.showHide({
+        css3:true,
+        js:false,
+        animation:'slideUpDown'
+    })
+
+
     //给显示按钮绑定点击事件 执行显示
     $('#btn-show').on('click', function() {
-        visibi.show($box);
+        // visibi.show();
+        $box.showHide('show');
     });
     //给隐藏按钮绑定点击事件 执行隐藏
     $('#btn-hide').on('click', function() {
-        visibi.hide($box);
+        // visibi.hide();
+        $box.showHide('hide');
     });
 
     //显示隐藏生命周期事件绑定
