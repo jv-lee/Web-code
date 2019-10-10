@@ -6,9 +6,10 @@
     <title>下拉菜单</title>
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <style type="text/css">
-    body{
+    body {
         background-color: #ebebeb;
     }
+
     /*dropdown*/
     .dropdown {
         position: relative;
@@ -53,7 +54,7 @@
     }
 
     .menu .dropdown-arrow {
-       /* width: 8px;
+        /* width: 8px;
         height: 6px;
         background-image: url(../img/dropdown-arrow.png);*/
         margin-left: 8px;
@@ -90,17 +91,18 @@
         /*background-image: url(../img/dropdown-arrow-active.png);*/
     }
 
-    .icon-triangle-down{
-    	width: 0;
-    	height: 0;
-    	border: 4px solid #535b62;
-    	border-right-color: transparent;
-    	border-left-color: transparent;
-    	border-bottom: none;
+    .icon-triangle-down {
+        width: 0;
+        height: 0;
+        border: 4px solid #535b62;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        border-bottom: none;
     }
-    .menu-active .icon-triangle-down{
-    	border-top: none;
-    	border-bottom: 4px solid #f11c1c;
+
+    .menu-active .icon-triangle-down {
+        border-top: none;
+        border-bottom: 4px solid #f11c1c;
     }
 
     .transition {
@@ -115,12 +117,14 @@
         visibility: hidden;
         opacity: 0 !important;
     }
-    .slideUpDownCollapse{
+
+    .slideUpDownCollapse {
         height: 0 !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
-    .slideLeftRightCollapse{
+
+    .slideLeftRightCollapse {
         width: 0 !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -129,15 +133,15 @@
 </head>
 
 <body>
-
     <div class="menu dropdown fl" data-active="menu">
-        <a href="###" target="_blank" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow icon-triangle-down"></i></a>
+        <a href="javascript:;" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow icon-triangle-down"></i></a>
         <ul class="dropdown-layer dropdown-left">
             <li><a href="###" target="_blank" class="menu-item">已买到的宝贝</a></li>
             <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
         </ul>
     </div>
-
+    <button id="btn-show">点我显示</button>
+    <button id="btn-hide">点我隐藏</button>
     <div class="menu dropdown fl" data-active="menu">
         <a href="###" target="_blank" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow"></i></a>
         <ul class="dropdown-layer dropdown-left">
@@ -150,13 +154,25 @@
     <script type="text/javascript" src="../js/visibility.js"></script>
     <script type="text/javascript" src="../js/dropdown.js"></script>
     <script type="text/javascript">
+    $('.dropdown').on('dropdown-start dropdown-resume dropdown-pause dropdown-stop', function(e) {
+        console.log(e.type);
+    });
 
     $('.dropdown').dropdown({
-                css3:true,
-                js:true,
-                animation:'slideUpDown',
-                active:'menu'
-            });
+        event: 'hover',
+        css3: true,
+        js: true,
+        delay: 200,
+        animation: 'slideUpDown',
+        active: 'menu'
+    });
+
+    $('#btn-show').on('click',function(){
+    	$('.dropdown').dropdown('show');
+    });
+    $('#btn-hide').on('click',function(){
+		$('.dropdown').dropdown('hide');
+    });
     </script>
 </body>
 
