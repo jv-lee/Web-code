@@ -18,15 +18,16 @@
                 <li class="fl"><a href="###" target="_blank" class="nav-site-mobile link">手机逛慕淘</a></li>
             </ul>
             <ul class="fr">
-                <li class="menu dropdown fl" data-active="menu">
-                    <a href="###" target="_blank" class="dropdown-toggle link">我的幕淘<i class="dropdown-arrow"></i></a>
+                <li class="menu dropdown fl" data-active="menu" >
+                    <a href="###" target="_blank" class="dropdown-toggle link transition">我的幕淘<i class="dropdown-arrow"></i></a>
                     <ul class="dropdown-layer dropdown-left">
+                        <!-- <li class="dropdown-loading"></li> -->
                         <li><a href="###" target="_blank" class="menu-item">已买到的宝贝</a></li>
                         <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
                     </ul>
                 </li>
                 <li class="menu dropdown fl" data-active="menu">
-                    <a href="###" target="_blank" class="dropdown-toggle link">收藏夹<i class="dropdown-arrow"></i></a>
+                    <a href="###" target="_blank" class="dropdown-toggle link transition">收藏夹<i class="dropdown-arrow"></i></a>
                     <ul class="dropdown-layer dropdown-left">
                         <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
                         <li><a href="###" target="_blank" class="menu-item">收藏的店铺</a></li>
@@ -36,7 +37,7 @@
                     <a href="###" target="_blank" class="nav-site-category link">商品分类</a>
                 </li>
                 <li class="menu dropdown fl" data-active="menu">
-                    <a href="###" target="_blank" class="dropdown-toggle link">卖家中心<i class="dropdown-arrow"></i></a>
+                    <a href="###" target="_blank" class="dropdown-toggle link transition">卖家中心<i class="dropdown-arrow"></i></a>
                     <ul class="dropdown-layer dropdown-left">
                         <li><a href="###" target="_blank" class="menu-item">免费开店</a></li>
                         <li><a href="###" target="_blank" class="menu-item">已卖出的宝贝</a></li>
@@ -47,7 +48,7 @@
                     </ul>
                 </li>
                 <li class="nav-site-service menu dropdown fl" data-active="menu">
-                    <a href="###" target="_blank" class="dropdown-toggle link">联系客服<i class="dropdown-arrow"></i></a>
+                    <a href="###" target="_blank" class="dropdown-toggle link transition">联系客服<i class="dropdown-arrow"></i></a>
                     <ul class="dropdown-layer dropdown-left">
                         <li><a href="###" target="_blank" class="menu-item">消费者客服</a></li>
                         <li><a href="###" target="_blank" class="menu-item">卖家客服</a></li>
@@ -56,12 +57,33 @@
             </ul>
         </div>
     </div>
+    <div class="header">
+        <div class="container">
+            <h1 class="fl"><a href="./index.html" class="header-logo text-hidden">慕课网</a></h1>
+            <div class="search fl">
+                <form action="https://s.taobao.com/search">
+                    <input type="text" name="q" placeholder="灵魂手办，搜索获得" autocomplete="off" class="search-inputbox fl">
+                    <input type="submit" class="search-btn fl" value="搜索">
+                </form>
+                <ul class="search-layer">
+<!--                     <li class="search-layer-item text-ellipsis" title="长">长</li>
+                    <li class="search-layer-item text-ellipsis">111</li>
+                    <li class="search-layer-item text-ellipsis">111</li> -->
+                </ul>
+            </div>
+            <div class="cart fr"></div>
+        </div>
+    </div>
+
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
     window.jQuery || document.write('<script src="js/jquery.js"><\/script>')
     </script>
+    <script type="text/javascript" src="js/transition.js"></script>
+    <script type="text/javascript" src="js/visibility.js"></script>
     <script type="text/javascript" src="js/dropdown.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </body>
 
-</html>
+</html> 

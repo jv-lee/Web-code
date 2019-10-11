@@ -27,6 +27,7 @@
     }
 
     .dropdown-layer {
+        height: 86px;
         display: none;
         overflow: hidden;
         position: absolute;
@@ -105,6 +106,21 @@
         border-bottom: 4px solid #f11c1c;
     }
 
+    .dropdown-loading{
+        width: 32px;
+        height: 32px;
+        background: url(../img/loading.png) no-repeat;
+        margin: 20px;
+        -webkit-animation-name: circle_inner;
+                    animation-name: circle_inner;
+                   -webkit-animation-duration:2s;
+                           animation-duration:2s;
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+                -webkit-animation-play-state:running;
+                        animation-play-state:running;
+    }
+
     .transition {
         -o-transition: all 0.5s;
         -ms-transition: all 0.5s;
@@ -129,33 +145,69 @@
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+
+        @keyframes circle_inner{
+            from{transform: rotateZ(0deg);}
+            to  {transform: rotateZ(360deg);}
+        }
     </style>
 </head>
 
 <body>
-    <div class="menu dropdown fl" data-active="menu">
+    <div class="menu dropdown fl" data-active="menu" data-load="dropdown.json">
         <a href="javascript:;" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow icon-triangle-down"></i></a>
         <ul class="dropdown-layer dropdown-left">
-            <li><a href="###" target="_blank" class="menu-item">已买到的宝贝</a></li>
-            <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
+            <li class="dropdown-loading"></li>
+<!--         <li><a href="###" target="_blank" class="menu-item"></a></li>
+        <li><a href="###" target="_blank" class="menu-item"></a></li>
+        <li><a href="###" target="_blank" class="menu-item"></a></li> -->
         </ul>
     </div>
     <button id="btn-show">点我显示</button>
     <button id="btn-hide">点我隐藏</button>
-    <div class="menu dropdown fl" data-active="menu">
-        <a href="###" target="_blank" class="dropdown-toggle">我的幕淘<i class="dropdown-arrow"></i></a>
-        <ul class="dropdown-layer dropdown-left">
-            <li><a href="###" target="_blank" class="menu-item">已买到的宝贝</a></li>
-            <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
-        </ul>
-    </div>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/transition.js"></script>
     <script type="text/javascript" src="../js/visibility.js"></script>
     <script type="text/javascript" src="../js/dropdown.js"></script>
     <script type="text/javascript">
+    
+    var json = [
+{
+    "url":"###",
+    "name":"已买到的宝贝"
+},
+{
+    "url":"###",
+    "name":"我的足迹"
+},
+{
+    "url":"###",
+    "name":"我的优惠券"
+}
+];
     $('.dropdown').on('dropdown-start dropdown-resume dropdown-pause dropdown-stop', function(e) {
         console.log(e.type);
+        var $this = $(this),
+            dataLoad = $this.data('load');
+
+        if (e.type == 'dropdown-start') {
+            if (!dataLoad) {
+                return;
+            }
+            
+            if(!$this.data('loaded')){
+                var $layer = $this.find('.dropdown-layer'),
+                html = '';
+
+                setTimeout(function(){
+                    for (var i = 0; i < json.length; i++) {
+                        html += '<li><a href="'+json[i].url +'" target="_blank" class="menu-item">'+json[i].name+'</a></li>'
+                    }
+                    $layer.html(html);
+                    $this.data('loaded',true);
+                },1000);
+            }
+        }
     });
 
     $('.dropdown').dropdown({

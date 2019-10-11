@@ -1,42 +1,51 @@
-// $('.dropdown').hover(function() {
-//     var $dropdown = $(this);
-
-//     //改变toggle标题颜色 及边框
-//     $dropdown.find('.dropdown-toggle').css({
-//         'background-color': '#fff',
-//         'border-color': '#cdd0d4'
-//     });
-
-//     //改变toogle 箭头方向(替换图片)
-//     $dropdown.find('.dropdown-arrow').css({
-//         'background-image': 'url(img/dropdown-arrow-active.png)'
-//     });
-
-//     $dropdown.find('.dropdown-layer').show();
-
-// }, function() {
-//     var $dropdown = $(this);
-
-//     //改变toggle标题颜色 及边框
-//     $dropdown.find('.dropdown-toggle').css({
-//         'background-color': '',
-//         'border-color': '#f3f5f7'
-//     });
-
-//     //改变toogle 箭头方向(替换图片)
-//     $dropdown.find('.dropdown-arrow').css({
-//         'background-image': 'url(img/dropdown-arrow.png)'
-//     });
-
-//     $dropdown.find('.dropdown-layer').hide();
-
-// });
-
-// $('.dropdown').hover(function() {
-//     $(this).addClass('dropdown-active');
-// }, function() {
-//     $(this).removeClass('dropdown-active');
-// });
+(function($){
+	'use strict'
 
 // 调用封装的下拉菜单组件
-$('.dropdown').dropdown();
+    var json = [
+{
+    "url":"###",
+    "name":"已买到的宝贝"
+},
+{
+    "url":"###",
+    "name":"我的足迹"
+},
+{
+    "url":"###",
+    "name":"我的优惠券"
+}
+];
+    $('.dropdown').on('dropdown-start dropdown-resume dropdown-pause dropdown-stop', function(e) {
+        console.log(e.type);
+        var $this = $(this);
+
+        if (e.type == 'dropdown-start') {
+            
+            // if(!$this.data('loaded')){
+            //     var $layer = $this.find('.dropdown-layer'),
+            //     html = '';
+
+            //     setTimeout(function(){
+            //         for (var i = 0; i < json.length; i++) {
+            //             html += '<li><a href="'+json[i].url +'" target="_blank" class="menu-item">'+json[i].name+'</a></li>'
+            //         }
+            //         $layer.html(html);
+            //         $this.data('loaded',true);
+            //     },1000);
+            // }
+        }
+    });
+
+    $('.dropdown').dropdown({
+        event: 'hover',
+        css3: true,
+        js: true,
+        delay: 200,
+        animation: 'slideUpDown',
+        active: 'menu'
+    });
+
+
+}(jQuery))
+
