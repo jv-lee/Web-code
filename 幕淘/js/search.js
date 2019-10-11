@@ -2,20 +2,17 @@
 	'use strict'
 
 	var $search = $('.search'),
+		$form = $search.find('.search-form'),
 		$input = $search.find('.search-inputbox'),
 		$btn = $search.find('.search-btn'),
 		$layer = $search.find('.search-layer');
 
 	//验证
-	$btn.on('click',function(){
-		//空字符验证
+	$form.on('submit',function(){
 		if($.trim($input.val()) === ''){
 			return false;
 		}
 	});
-
-	
-	
 
 	//自动完成
 	$input.on('input',function(){
@@ -32,7 +29,7 @@
 				dataNum = data['result'].length,
 				maxNum = 10;
 
-				//没有搜索到提示数据
+				//没有搜索
 				if (dataNum === 0) {
 					$layer.hide().html('');
 					return;
@@ -51,5 +48,28 @@
 			console.log('why always me!');
 		});
 	});
+
+	//处理事件冲突，input获取焦点时显示提示内容， 因为失去焦点事件与click冲突， 所以直接使用document绑定最上层点击事件来隐藏，通过input拦截点击冒泡来取消事件传递
+	$input.on('focus',function(){
+		$layer.show();
+	}).on('click',function(){
+		return false;
+	});
+	$(document).on('click',function(){
+		$layer.hide();
+		return 
+	});
+
+	//代理事件通过事件冒泡拦截的方式 来控制生效的点击
+	$layer.on('click','.search-layer-item',function(){
+		//获取当前的搜索提示内容item的内容 填充到input
+		$input.val(removeHtmlTags($(this).html()));
+		$form.submit();
+		$input.parents('form').submit();
+	})
+
+	function removeHtmlTags(str){
+		return str.replace(/<(?:[^>'"]|"[^"]*"|'[^']*')*>/g,"");
+	}
 
 }(jQuery));
