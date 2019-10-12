@@ -44,3 +44,37 @@
     .header .search{
         margin-left: 145px;
     }
+
+/*cart*/
+    .cart{
+        width: 158px;
+        height: 42px;
+        background-color: red;
+        font-size: 14px;
+        color: #fff;
+    }
+    .cart .cart-icon{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 11px;
+    }
+    .cart .cart-text{
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        margin-top: 11px;
+    }
+    .cart .cart-number{
+        display: inline-block;
+        text-align: center;
+        width: 10px;
+        margin-left: 4px;
+    }
+    .cart .cart-arrow{
+        display: inline-block;
+        height: 12px;
+        width: 12px;
+        margin-top: 16px;
+        margin-left: 6px;
+    }

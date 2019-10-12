@@ -50,19 +50,18 @@
     var $headerSearch = $('#header-search');
     var html = '',
         maxNum = 10;
-    $headerSearch.on('search-getData', function(e, data, $layer) {
+    $headerSearch.on('search-getData', function(e, data) {
             var $this = $(this),
             html = createHeaderSearchLayer(data, maxNum);
-            $layer.html(html);
+            $this.search('appendLayer',html);
 
             if (html) {
                 $this.search('showLayer');
             } else {
                 $this.search('hideLayer');
             }
-        }).on('search-noData', function(e, $layer) {
-            $(this).search('hideLayer');
-            $layer.html('');
+        }).on('search-noData', function(e) {
+            $(this).search('hideLayer').search('appendLayer','');
         })
         //代理事件通过事件冒泡拦截的方式 来控制生效的点击
         .on('click', '.search-layer-item', function() {
@@ -74,7 +73,8 @@
         autocomplete: true,
         css3: false,
         js: false,
-        animation: 'fade'
+        animation: 'fade',
+        getDataInterval:0
     });
 
     function removeHtmlTags(str) {
