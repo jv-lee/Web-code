@@ -1,80 +1,130 @@
 /*nav-site*/
-    .nav-site {
-        width: 100%;
-        background-color: #f3f5f7;
-    }
-    .nav-site .container {
-        height: 44px;
-        line-height: 44px;
-        border-bottom: 1px solid #cdd0d4
-    }
-    .nav-site-login {
-        margin-left: 15px;
-        color: #f01414;
-    }
-    .nav-site-signup,
-    .nav-site-mobile {
-        margin-left: 10px;
-    }
-    .nav-site-category {
-        margin: 0 10px;
-    }
-    .nav-site-service {
-        margin-right: 15px;
-    }
+.nav-site {
+    width: 100%;
+    background-color: #f3f5f7;
+}
+
+.nav-site .container {
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #cdd0d4
+}
+
+.nav-site-login {
+    margin-left: 15px;
+    color: #f01414;
+}
+
+.nav-site-signup,
+.nav-site-mobile {
+    margin-left: 10px;
+}
+
+.nav-site-category {
+    margin: 0 10px;
+}
+
+.nav-site-service {
+    margin-right: 15px;
+}
 
 /*header*/
-    .header{
-        width: 100%;
-        height: 124px;
-        background-color: #f3f5f7;
-    }
-    .header-logo,
-    .header .search,
-    .header .cart{
-        margin-top: 36px;
-    }
-    .header-logo{
-        display: block;
-        width: 136px;
-        height: 48px;
-        background: url(../img/header-logo.png) no-repeat;
-        margin-left: 15px;
-    }
-    .header .search{
-        margin-left: 145px;
-    }
+.header {
+    width: 100%;
+    height: 124px;
+    background-color: #f3f5f7;
+}
 
+.header-logo,
+.header .search,
+.header .cart {
+    margin-top: 36px;
+}
+
+.header-logo {
+    display: block;
+    width: 136px;
+    height: 48px;
+    background: url(../img/header-logo.png) no-repeat;
+    margin-left: 15px;
+}
+
+.header .search {
+    margin-left: 145px;
+}
+
+
+.cart{
+    position: relative;
+}
 /*cart*/
-    .cart{
-        width: 158px;
-        height: 42px;
-        background-color: red;
-        font-size: 14px;
-        color: #fff;
-    }
-    .cart .cart-icon{
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin: 11px;
-    }
-    .cart .cart-text{
-        display: inline-block;
-        height: 20px;
-        line-height: 20px;
-        margin-top: 11px;
-    }
-    .cart .cart-number{
-        display: inline-block;
-        text-align: center;
-        width: 10px;
-        margin-left: 4px;
-    }
-    .cart .cart-arrow{
-        display: inline-block;
-        height: 12px;
-        width: 12px;
-        margin-top: 16px;
-        margin-left: 6px;
-    }
+.cart .cart-container {
+    position: absolute;
+    right: 0;
+    width: 158px;
+    height: 42px;
+    background-color: red;
+    font-size: 14px;
+    color: #fff;
+    z-index: 1;
+}
+
+.cart-container .cart-icon {
+    width: 20px;
+    height: 20px;
+    margin: 11px;
+    background: url(../img/cart-nomral.png)  center no-repeat;
+    background-size: 20px 20px;
+}
+
+.cart-container .cart-text {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 11px;
+}
+
+.cart-container .cart-number {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 11px;
+    width: 10px;
+    margin-left: 4px;
+}
+
+.cart-container .cart-arrow {
+    height: 12px;
+    width: 12px;
+    margin-top: 16px;
+    margin-left: 10px;
+    background: url(../img/arrow-nomral.png)  center no-repeat;
+    background-size: 12px 12px;
+}
+
+.cart .cart-container:hover{
+    color: red;
+    background-color: #fff;
+    box-shadow: -2px 0 0 #ebebeb,0 -2px 0 #ebebeb,2px 0 0 #ebebeb,0 0 0 #fff;
+}
+.cart .cart-container:hover > .cart-arrow{
+    background-image: url(../img/arrow-press.png);
+}
+.cart .cart-container:hover > .cart-icon{
+    background-image: url(../img/cart-press.png);   
+}
+
+/*通过自身hover控制兄弟元素（+）， 子元素使用（>）*/
+.cart .cart-container:hover + .cart-layer{
+    display: block;
+}
+
+.cart .cart-layer {
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px #ebebeb,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+}
+
