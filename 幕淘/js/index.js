@@ -99,4 +99,13 @@
         return html;
     }
 
+    //Cart
+    var $cart = $('.cart');
+    $cart.cart({
+        autocomplete:true,
+        css3:true,
+        js:true,
+        animation:'slideUpDown'
+    });
+
 }(jQuery))

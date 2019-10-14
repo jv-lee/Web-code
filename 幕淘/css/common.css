@@ -46,7 +46,7 @@
         overflow: hidden;
         display: none;
         position: absolute;
-        z-index: 1;
+        z-index: 2;
     }
 
     .dropdown-left {
@@ -196,3 +196,49 @@
     background-color: #f3f5f7;
 }
 
+/*cart*/
+
+/*通过自身hover控制兄弟元素（+）， 子元素使用（>）*/
+/*.cart .cart-container:hover + .cart-layer{
+    display: block;
+}*/
+
+.cart .cart-layer {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    top: 42px;
+    right: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px #ebebeb,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+}
+
+.cart .cart-loading{
+    margin: 30px;
+    padding: 10px;
+    background: url(../img/loading.gif) center no-repeat;
+}
+
+.cart .cart-empty{
+    width: 300px;
+    height: 100px;
+}
+
+.cart .cart-empty-icon{
+    width: 64px;
+    height: 64px;
+    margin-top: 18px;
+    margin-left: 46px;
+    background-size: 30px 30px;
+    background: url(../img/cart.png) center no-repeat;
+}
+
+.cart .cart-empty-text{
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #93999f;
+}

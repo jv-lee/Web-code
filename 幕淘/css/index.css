@@ -113,18 +113,32 @@
     background-image: url(../img/cart-press.png);   
 }
 
-/*通过自身hover控制兄弟元素（+）， 子元素使用（>）*/
-.cart .cart-container:hover + .cart-layer{
-    display: block;
-}
 
-.cart .cart-layer {
-    display: none;
+.cart-layer-list-item{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+.cart-layer-list-item-image{
     position: absolute;
-    top: 42px;
-    right: 0;
-    width: 300px;
-    background-color: #ffffff;
-    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px #ebebeb,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: 10px;
+    background: url(../img/cart/1.png) center no-repeat;
 }
-
+.cart-layer-list-item-title{
+    position: absolute;
+    top: 10px;
+    left: 60px;
+}
+.cart-layer-list-item-pricecount{
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+.cart-layer-list-item-close{
+    position: absolute;
+    top: 10px;
+    right: 36px;
+}
