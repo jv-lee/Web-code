@@ -81,7 +81,7 @@
         return str.replace(/<(?:[^>'"]|"[^"]*"|'[^']*')*>/g, "");
     }
 
-    //创建html结构
+    //创建搜索html结构
     function createHeaderSearchLayer(data, maxNum) {
         var html = '',
             dataNum = data['result'].length;
@@ -107,5 +107,38 @@
         js:true,
         animation:'slideUpDown'
     });
+    $cart.on('cart-getData',function(e,data){
+        console.log(data);
+        $(this).cart('appendLayer',createCartItem(data));
+    });
+
+        //创建搜索html结构
+    function createCartItem(data) {
+        var html = '',
+            dataNum = data.length;
+
+        //没有搜索
+        if (dataNum === 0) {
+            return '';
+        }
+            html += '<div class="cart-layer-title">最新加入的商品</div>'+
+                    '<div class="cart-layer-list">';
+        for (var i = 0; i < dataNum; i++) {
+            html += '<div class="cart-layer-list-item">'+
+                    '<div class="cart-layer-list-item-image"></div>'+
+                    '<div class="cart-layer-list-item-title">'+data[i].title+'</div>'+
+                    '<div class="cart-layer-list-item-pricecount">￥'+data[i].price+' X '+data[i].count+'</div>'+
+                    '<div class="cart-layer-list-item-close">X</div>'+
+                    '</div>';
+        }
+        html += '</div>'+
+                '</div>'+
+                '<div class="cart-layer-footer">'+
+                        '<div class="cart-layer-footer-count-des fl">共 <b>0</b> 件商品</div>'+
+                        '<div class="cart-layer-footer-price-des fl">共计 <b>￥ 0.00</b></div>'+
+                        '<div class="cart-layer-footer-btn fr">去购物车</div>'+
+                '</div>';
+        return html;
+    }
 
 }(jQuery))

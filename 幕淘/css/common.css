@@ -202,17 +202,24 @@
 /*.cart .cart-container:hover + .cart-layer{
     display: block;
 }*/
+.cart .cart-container {
+    width: 158px;
+    height: 42px;
+    background-color: red;
+    font-size: 14px;
+    color: #fff;
+    z-index: 2;
+}
 
 .cart .cart-layer {
+    margin-left: -200px;
     display: none;
-    position: absolute;
     overflow: hidden;
-    top: 42px;
-    right: 0;
     width: 300px;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px #ebebeb,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px transparent,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+    z-index: 10;
 }
 
 .cart .cart-loading{

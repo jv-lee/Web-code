@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	.fl {
+		float: left;
+		display: inline;
+	}
+	.fr {
+		float: right;
+		display: inline;
+	}
+
+.cart{
+    
+}
+/*cart*/
+.cart .cart-container {
+    width: 158px;
+    height: 42px;
+    background-color: red;
+    font-size: 14px;
+    color: #fff;
+    z-index: 1;
+}
+
+.cart-container .cart-icon {
+    width: 20px;
+    height: 20px;
+    margin: 11px;
+    background: url(../img/cart-nomral.png)  center no-repeat;
+    background-size: 20px 20px;
+}
+
+.cart-container .cart-text {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 11px;
+}
+
+.cart-container .cart-number {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 11px;
+    width: 10px;
+    margin-left: 4px;
+}
+
+.cart-container .cart-arrow {
+    height: 12px;
+    width: 12px;
+    margin-top: 16px;
+    margin-left: 10px;
+    background: url(../img/arrow-nomral.png)  center no-repeat;
+    background-size: 12px 12px;
+}
+
+.cart .cart-container:hover{
+    color: red;
+    background-color: #fff;
+    box-shadow: -2px 0 0 #ebebeb,0 -2px 0 #ebebeb,2px 0 0 #ebebeb,0 0 0 #fff;
+}
+
+.cart .cart-container:hover > .cart-arrow{
+    background-image: url(../img/arrow-press.png);
+}
+.cart .cart-container:hover > .cart-icon{
+    background-image: url(../img/cart-press.png);   
+}
+
+.cart-layer-title{
+    margin-bottom: 16px;
+    color: #000;
+    font-size: 14px;
+}
+.cart-layer-footer{
+    width: 100%;
+    height: 30px;
+    color: #000;
+    font-style: bold;
+    margin-top: 16px;
+}
+.cart-layer-footer-count-des,
+.cart-layer-footer-price-des,
+.cart-layer-footer-btn{
+    text-align: center;
+    line-height: 36px;
+}
+
+.cart-layer-footer-count-des{
+    margin-left: 10px;
+}
+.cart-layer-footer-price-des{
+    margin-left: 10px;
+}
+.cart-layer-footer-btn{
+    width: 80px;
+    height: 36px;
+    background-color: red;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.cart-layer-list-item{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+.cart-layer-list-item-image{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: 10px;
+    background: url(../img/cart/1.png) center no-repeat;
+}
+.cart-layer-list-item-title{
+    position: absolute;
+    top: 10px;
+    left: 60px;
+}
+.cart-layer-list-item-pricecount{
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+.cart-layer-list-item-close{
+    position: absolute;
+    top: 10px;
+    right: 36px;
+}
+
+.cart .cart-layer {
+    overflow: hidden;
+    top: 6px;
+    right: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 2px #ebebeb,0 -2px 2px #ebebeb,2px 0 2px #ebebeb,0 2px 2px #ebebeb;
+}
+
+.cart .cart-loading{
+    margin: 30px;
+    padding: 10px;
+    background: url(../img/loading.gif) center no-repeat;
+}
+
+.cart .cart-empty{
+    width: 300px;
+    height: 100px;
+}
+
+.cart .cart-empty-icon{
+    width: 64px;
+    height: 64px;
+    margin-top: 18px;
+    margin-left: 46px;
+    background-size: 30px 30px;
+    background: url(../img/cart.png) center no-repeat;
+}
+
+.cart .cart-empty-text{
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #93999f;
+}
+		
+	</style>
+</head>
+<body>
+	            <div class="cart fr">
+                <div class="cart-container">
+                    <div class="cart-icon fl" ></div>
+                    <div class="cart-text fl">购物车&nbsp;&nbsp;&nbsp;|</div>
+                    <div class="cart-number fl">0</div>
+                    <div class="cart-arrow fl" ></div>
+                </div>
+                <div class="cart-layer fr">
+                    <div class="cart-layer-title">最新加入的商品</div>
+                    <ul class="cart-layer-list">
+                        <li>
+                            <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                                                        <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                                                        <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                                                        <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                                                        <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                                                        <div class="cart-layer-list-item">
+                                <div class="cart-layer-list-item-image"></div>
+                                <div class="cart-layer-list-item-title">adidas 阿迪达斯 训练 男子</div>
+                                <div class="cart-layer-list-item-pricecount">￥355 X 1</div>
+                                <div class="cart-layer-list-item-close">X</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="cart-layer-footer">
+                        <div class="cart-layer-footer-count-des fl">
+                            共 <b>0</b> 件商品
+                        </div>
+                        <div class="cart-layer-footer-price-des fl">
+                            共计 <b>￥ 0.00</b>
+                        </div>
+                        <div class="cart-layer-footer-btn fr">
+                            去购物车
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+</body>
+</html>

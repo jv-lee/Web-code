@@ -1,6 +1,38 @@
 (function($){
 	'use strict';
 
+	var json = [
+	{
+		'image':'../image/cart/1.png',
+		'title':'adidas 阿迪达斯 训练 男子',
+		'price':'335',
+		'count':'1'
+	},
+	{
+		'image':'../image/cart/1.png',
+		'title':'adidas 阿迪达斯 训练 男子',
+		'price':'335',
+		'count':'1'
+	},
+	{
+		'image':'../image/cart/1.png',
+		'title':'adidas 阿迪达斯 训练 男子',
+		'price':'335',
+		'count':'1'
+	},
+	{
+		'image':'../image/cart/1.png',
+		'title':'adidas 阿迪达斯 训练 男子',
+		'price':'335',
+		'count':'1'
+	},
+	{
+		'image':'../image/cart/1.png',
+		'title':'adidas 阿迪达斯 训练 男子',
+		'price':'335',
+		'count':'1'
+	}];
+
 	function Cart(elem,options){
 		this.$elem = $(elem);
 		this.options = options;
@@ -9,6 +41,9 @@
 
 		//设置购物车列表布局
 		this.$layer = this.$elem.find('.cart-layer');
+
+		//设置购物车列表
+		this.$list = this.$layer.find('.cart-layer-list');
 
 		//引入显示隐藏模块
         this.$layer.showHide(this.options);
@@ -28,16 +63,36 @@
 	};
 
 	Cart.prototype.autocomplete = function(){
-		this.$cartContainer.hover($.proxy(this.showLayer,this),$.proxy(this.hideLayer,this));
+		this.$elem.hover($.proxy(this.showLayer,this),$.proxy(this.hideLayer,this));
 	}
 	Cart.prototype.getData = function(){
-		console.log('getData()');
+		var self = this;
 		this.loadingLayer();
+
+		// if(this.jqXHR) this.jqXHR.abort();
+
+  //       this.jqXHR = $.ajax({
+  //           url: this.options.url,
+  //           timeout: 5000,
+  //           dataType: 'jsonp'
+  //       }).done(function(data) {
+  //       	//事件通知  参数传递使用数组的方式
+  //           self.$elem.trigger('cart-getData', [data]);
+  //       }).fail(function() {
+  //           self.$elem.trigger('cart-noData');
+  //       }).always(function(){
+  //       	//请求结束 清空连接对象
+  //       	self.jqXHR = null;
+  //       });
+		  setTimeout(function(){
+		  	self.$elem.trigger('cart-getData',[json]);
+		  },1000);
+
 	};
 	//显示购物车列表
     Cart.prototype.showLayer = function() {
         this.$layer.showHide('show');
-        // this.getData();
+        this.getData();
     };
     //隐藏购物车列表
     Cart.prototype.hideLayer = function() {
@@ -55,15 +110,18 @@
     		'</div>');
     }
     Cart.prototype.appendLayer = function(html){
-    	this.$layer.css({'height':400});
-    	this.$layer.html(html);
+        console.log(html);
+        this.$layer.css({
+        	'height':'376px'
+        })
+        this.$layer.html(html);
     	//设置初始化填充状态
     	// this.laoded = !!html;
     }
 
     //创建购物车列表 jQuery插件
     $.fn.extend({
-    	cart:function(option){
+    	cart:function(option,value){
     		return this.each(function(){
     			var $this = $(this),
                     cart = $this.data('cart'),
@@ -75,7 +133,7 @@
 
                 //对外界提供可调用内部方法
                 if (typeof cart[option] === 'function') {
-                    cart[option]();
+                    cart[option](value);
                 }
     		});
     	}
