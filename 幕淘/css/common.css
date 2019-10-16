@@ -4,12 +4,12 @@
         margin: 0 auto;
     }
 
-    .link {
+    a.link {
         color: #4d555d;
     }
 
-    .link:hover {
-        color: #f01414;
+    a.link:hover {
+        color: #f01414 !important;
     }
 
     /*隐藏文字*/

@@ -173,4 +173,14 @@
     .nav-main{
         width: 100%;
         height:48px;
+        background-color: #07111b;
+        margin-bottom: 8px;
+        text-indent: 182px;
+    }
+
+    .nav-main .link{
+        margin-left: 50px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 48px;
     }
