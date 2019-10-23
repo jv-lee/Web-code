@@ -7,11 +7,13 @@
 <body>
 
 	<video id="myVideo"></video>
-	<input type="range" min=0 max=100 value=50 id="range">
+	<input type="range" min=0 max=100 value=50 id="rangeNode">
 	<button id="playNode">播放</button>
 	<button id="stopNode">暂停</button>
-	<button id="go">快进</button>
-	<button id="loop">不循环</button>
+	<button id="goNode">快进</button>
+	<button id="loopNode">不循环</button>
+	<button id="fullScreenNode">全屏</button>
+	<button id="loadNode">重新加载</button>
 	<div id="rateNode">
 		<button>0.5</button>
 		<button>1</button>
@@ -24,6 +26,16 @@
 
 		//设置视频资源地址
 		videoNode.src = 'Source/pal4.mp4';
+
+		//刷新播放器播放资源事件
+		loadNode.onclick = function(){
+			videoNode.src = 'Source/pal4.mp4';
+			videoNode.load();
+		};
+
+		videoNode.addEventListener('canplay',function(){
+			console.log('视频已经准备好，可以开始播放了');
+		});
 
 		//手动控制 video控制器是否显示
 		videoNode.controls = true;
@@ -56,29 +68,44 @@
 			timeNode.innerHTML = currentTime+'/'+allTime;
 		});
 
-		loop.onclick = function(){
+		//seeked 当用户队视频的进度条并且已经完成操作时会触发的事件
+		videoNode.onseeked = function(){
+			console.log('seeked . . .');
+		};
+
+		//seeking 当用户开始拖动进度条时 就会触发事件 ， 事件出发比seeked多
+		videoNode.onseeking = function(){
+			console.log('seeking . . .');
+		};
+
+		//volumechange 当音量发生改变的时候
+		videoNode.onvolumechange = function(){
+			console.log('onvolumechange');
+		};
+
+		loopNode.onclick = function(){
 			if (videoNode.loop == false) {
-				loop.innerHTML = '循环'
+				loop.innerHTML = '循环';
 				videoNode.loop = true;
 			}else{
-				loop.innerHTML = '不循环'
+				loop.innerHTML = '不循环';
 				videoNode.loop = false;
 			}
-		}
+		};
 
 		//设置视频播放速度
 		rateNode.children[0].onclick = function(){
 			videoNode.playbackRate = 0.5;	
-		}
+		};
 		rateNode.children[1].onclick = function(){
 			videoNode.playbackRate = 1;	
-		}
+		};
 		rateNode.children[2].onclick = function(){
 			videoNode.playbackRate = 1.5;
-		}
+		};
 		rateNode.children[3].onclick = function(){
 			videoNode.playbackRate = 2;
-		}
+		};
 
 		// //设置声音大小 0为静音  (0 - 1 / 0.1 0.2 ...1)
 		// setInterval(function(){
@@ -95,7 +122,7 @@
 			var min = parseInt(videoNode.duration / 60);
 			var sec = parseInt(videoNode.duration % 60);
 			console.log(min+':'+sec);
-			timeNode.innserHTML = '0:0/'+min+':'+sec；
+			timeNode.innerHTML = '0:0/'+min+':'+sec;
 		},100);
 
 		//播放
@@ -107,13 +134,17 @@
 			videoNode.pause();
 		};
 		//快进
-		go.onclick = function(){
+		goNode.onclick = function(){
 			videoNode.currentTime = videoNode.currentTime+3;
 		};
 		//设置声音大小
-		range.oninput = function(){
+		rangeNode.oninput = function(){
 			videoNode.volume = this.value / 100;
-		}
+		};
+		//全屏
+		fullScreenNode.onclick = function(){
+			videoNode.webkitRequestFullscreen();
+		};
 
 	</script>
 </body>
