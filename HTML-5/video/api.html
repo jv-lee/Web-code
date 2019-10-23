@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video API</title>
+</head>
+<body>
+
+	<video id="myVideo"></video>
+	<input type="range" min=0 max=100 value=50 id="range">
+	<button id="playNode">播放</button>
+	<button id="stopNode">暂停</button>
+	<button id="go">快进</button>
+	<button id="loop">不循环</button>
+	<div id="rateNode">
+		<button>0.5</button>
+		<button>1</button>
+		<button>1.5</button>
+		<button>2</button>
+	</div>	
+	<div id="timeNode"></div>
+	<script type="text/javascript">
+		var videoNode = document.getElementById('myVideo');
+
+		//设置视频资源地址
+		videoNode.src = 'Source/pal4.mp4';
+
+		//手动控制 video控制器是否显示
+		videoNode.controls = true;
+
+		//手动设置静音
+		videoNode.muted = false;
+
+		//查看视频网络状态 
+		//0:未初始化 
+		//1:视频已经选取好资源，但未使用网络 
+		//2:正在加载（边下载边看，使用网络观看视频） 
+		//3:未找到视频资源 （在最开始的情况下，video不会立即找到资源）
+		setInterval(function(){
+			console.log(videoNode.networkState);
+		},1000);
+
+		//返回视频地址 ,src直接可返回地址，currentSrc可播放时才会返回地址
+		console.log("src:"+videoNode.src);
+		console.log("currentSrc:"+videoNode.currentSrc);
+
+		//监听ended事件
+		videoNode.addEventListener('ended',function(){
+			console.log('ended');
+		});
+		//监听timeupdate事件
+		videoNode.addEventListener('timeupdate',function(){
+			console.log('timeupdate');
+			let allTime = parseInt(videoNode.duration/60)+':'+parseInt(videoNode.duration%60);
+			let currentTime = parseInt(videoNode.currentTime/60)+':'+parseInt(videoNode.currentTime%60);
+			timeNode.innerHTML = currentTime+'/'+allTime;
+		});
+
+		loop.onclick = function(){
+			if (videoNode.loop == false) {
+				loop.innerHTML = '循环'
+				videoNode.loop = true;
+			}else{
+				loop.innerHTML = '不循环'
+				videoNode.loop = false;
+			}
+		}
+
+		//设置视频播放速度
+		rateNode.children[0].onclick = function(){
+			videoNode.playbackRate = 0.5;	
+		}
+		rateNode.children[1].onclick = function(){
+			videoNode.playbackRate = 1;	
+		}
+		rateNode.children[2].onclick = function(){
+			videoNode.playbackRate = 1.5;
+		}
+		rateNode.children[3].onclick = function(){
+			videoNode.playbackRate = 2;
+		}
+
+		// //设置声音大小 0为静音  (0 - 1 / 0.1 0.2 ...1)
+		// setInterval(function(){
+		// 	console.log("当前音量："+videoNode.volume)
+		// },1000);
+
+		// //currentTime 能返回当前视频的一个播放长度 , 可以通过设置currentTime 来提前加载该时间的视频
+		// setInterval(function(){
+		// 	console.log("当前时长："+videoNode.currentTime);
+		// },1000);
+
+		//获取视频时长
+		setTimeout(function(){
+			var min = parseInt(videoNode.duration / 60);
+			var sec = parseInt(videoNode.duration % 60);
+			console.log(min+':'+sec);
+			timeNode.innserHTML = '0:0/'+min+':'+sec；
+		},100);
+
+		//播放
+		playNode.onclick = function(){
+			videoNode.play();
+		};
+		//暂停
+		stopNode.onclick = function(){
+			videoNode.pause();
+		};
+		//快进
+		go.onclick = function(){
+			videoNode.currentTime = videoNode.currentTime+3;
+		};
+		//设置声音大小
+		range.oninput = function(){
+			videoNode.volume = this.value / 100;
+		}
+
+	</script>
+</body>
+</html>
