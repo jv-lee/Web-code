@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio API</title>
+</head>
+<body>
+	<audio id="audioNode" controls src="data/imooc.mp3"></audio>
+	<button id="btnPlay">Play</button>
+	<button id="btnPause">Pause</button>
+	<div id="durationNode"></div>
+	<div id="currentTimeNode"></div>
+	<!-- <button id="btnPlay">Play</button> -->
+	<!-- <button id="btnPlay">Play</button> -->
+	<script type="text/javascript">
+		var audio = new Audio();
+		audio.src = 'data/imooc.mp3';
+		btnPlay.onclick = function(){
+			audio.play();
+		};
+		btnPause.onclick = function(){
+			audio.pause();
+		};
+
+		//设置音频总时长
+		audio.addEventListener('canplay',function(){
+			durationNode.innerHTML = parseInt(audio.duration / 60)+':'+parseInt(audio.duration % 60);
+		});
+		//监听当前视频播放时间变化事件  设置音频当前时间点
+		audio.addEventListener('timeupdate',function(){
+			currentTimeNode.innerHTML = parseInt(audio.currentTime / 60)+':'+parseInt(audio.currentTime % 60);
+		});
+		//设置音频声音 0 0.1 .... 1
+		audio.volume = 1;
+		//设置静音
+		audio.muted = false;
+
+		//返回是否结束bool值
+		console.log(audio.ended);
+		audio.addEventListener('ended',function(){
+			console.log('音频播放结束');
+		});
+
+		//音频循环设置
+		audio.loop = true;
+
+		//playbackRate 音频播放速度 0.5 0.75 1 1.25 1.5 1.75 2
+		audio.playbackRate = 1.75;
+
+		//音量条拖动结束
+		audioNode.addEventListener('seeked',function(){
+			console.log('seeked');
+		});
+		//音量条拖动中
+		audioNode.addEventListener('seeking',function(){
+			console.log('seeking');
+		});
+		//音量改变时触发的事件
+		audioNode.addEventListener('volumechange',function(){
+			console.log('volumechange');
+		});
+
+	</script>
+</body>
+</html>

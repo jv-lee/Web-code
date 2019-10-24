@@ -229,7 +229,7 @@
             }else{
                 videoNode.pause();
             }
-        }
+        };
 
         //全屏控制
         fullNode.onclick = function(){
@@ -240,7 +240,7 @@
             }else{
                 videoNode.requestFullscreen();
             }
-        }
+        };
 
         //视频的总时间计算
         videoNode.addEventListener('canplay',function(){
@@ -280,12 +280,12 @@
 
                 var lastVolume = (v_crl.offsetLeft+2)/v_crl.parentNode.offsetWidth;
                 videoNode.volume = lastVolume < 0 ? 0:lastVolume;
-            }
+            };
             document.onmouseup = function(e){
                 document.onmousemove = document.onmouseup = null;
-            }
+            };
             return false;
-        }
+        };
 
         //拖拽进度条按钮 监听down事件
         crlNode.onmousedown =function(e){
