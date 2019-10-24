@@ -24,7 +24,6 @@
         float: left;
         width: 100%;
         height: 305px;
-        object-fit: fill;
         background-color: #000;
     }
 
@@ -37,10 +36,19 @@
 
     .outerNode .controlsNode .playNode {
         float: left;
-        width: 13px;
-        height: 15px;
+        width: 15px;
+        height: 17px;
         margin: 6px 0 0 14px;
         background: url(images/playNode.png) no-repeat;
+        cursor: pointer;
+    }
+
+    .outerNode .controlsNode .pauseNode {
+        float: left;
+        width: 15px;
+        height: 17px;
+        margin: 6px 0 0 14px;
+        background: url(images/pause.png) no-repeat;
         cursor: pointer;
     }
 
@@ -51,15 +59,6 @@
         height: 10px;
         margin: 9px 0 0 14px;
         background: url(images/load_bg.png) repeat-x;
-    }
-
-    .outerNode .controlsNode .loadNode .loadLeft {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 3px;
-        background: url(images/left_bg.png) no-repeat;
     }
 
     .outerNode .controlsNode .loadNode .loadRight {
@@ -79,11 +78,30 @@
         width: 17px;
         background: url(images/crl_bg.png);
         cursor: pointer;
+        z-index: 1;
+    }
+
+    .outerNode .controlsNode .loadNode .progressNode{
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 0%;
+        height: 7px;
+        background: url(images/line_bg.png) repeat-x;
+    }
+
+    .outerNode .controlsNode .loadNode .progressNode .progressRight{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: url(images/line_r_bg.png) no-repeat;
     }
 
     .outerNode .controlsNode .timeNode {
         float: left;
-        width: 55px;
+        width: 75px;
         height: 10px;
         margin: 9px 0 0 9px;
     }
@@ -130,7 +148,7 @@
     }
     .outerNode .controlsNode .volumeProgress .v_crl{
     	position: absolute;
-    	left: -2.5px;
+    	left: 58.5px;
     	top: -2px;
     	width: 15px;
     	height: 13px;
@@ -141,9 +159,13 @@
     	float: left;
     	width: 15px;
     	height: 17px;
-    	margin: 6px 0 0 50px;
+    	margin: 6px 0 0 25px;
     	background: url(images/full_bg.png) no-repeat;
     	cursor: pointer;
+        transition: 0.7s;
+    }
+    .outerNode .controlsNode .fullNode:hover{
+        background: url(images/full_hover_bg.png) no-repeat;
     }
     </style>
     <title>自定义视频播放器</title>
@@ -160,16 +182,19 @@
             <div class="playNode"></div>
             <!-- video的进度条 -->
             <div class="loadNode">
-                <div class="loadLeft"></div>
                 <div class="loadRight"></div>
                 <!-- 拖动进度条的按钮 -->
                 <div class="crlNode"></div>
+                <!-- progress -->
+                <div class="progressNode">
+                    <div class="progressRight"></div>
+                </div>
             </div>
             <!-- 时间的元素 -->
             <div class="timeNode">
-                <span class="now">1:30</span>
+                <span class="now">00:00</span>
                 <span>-</span>
-                <span class="all">5:30</span>
+                <span class="all">00:00</span>
             </div>
             <!-- 声音标志 -->
             <div class="volumeNode"></div>
@@ -182,6 +207,133 @@
             <div class="fullNode"></div>
         </div>
     </div>
+    <script type="text/javascript">
+        //播放暂停控制
+        var playNode = document.getElementsByClassName('playNode')[0],//播放暂停按钮
+        videoNode = document.getElementsByClassName('videoNode')[0],//播放器
+        fullNode = document.getElementsByClassName('fullNode')[0],//全屏按钮
+        nowNode = document.querySelector('.now'),//视频当前时长
+        allNode = document.querySelector('.all'),//视频总时长
+        progressNode = document.querySelector('.progressNode'),//进度条
+        crlNode = document.querySelector('.crlNode'),//进度条拖动图标
+        loadNode = document.querySelector('.loadNode'),//进度条外面的容器
+        v_crl = document.querySelector('.v_crl'),
+        volumeProgress = document.querySelector('.volumeProgress'),
+        a = 1;
+
+        //播放暂停控制
+        playNode.onclick = function(){
+            //es的语法,toggle控制
+            if (this.classList.toggle('pauseNode')) {
+                videoNode.play();
+            }else{
+                videoNode.pause();
+            }
+        }
+
+        //全屏控制
+        fullNode.onclick = function(){
+            if (videoNode.webkitRequestFullscreen) {
+                videoNode.webkitRequestFullscreen();
+            }else if(videoNode.mozRequestFullScreen){
+                videoNode.mozRequestFullScreen();
+            }else{
+                videoNode.requestFullscreen();
+            }
+        }
+
+        //视频的总时间计算
+        videoNode.addEventListener('canplay',function(){
+            var allSec = toDouble(parseInt(videoNode.duration/60));
+            var allMin = toDouble(parseInt(videoNode.duration%60));
+            allNode.innerHTML = allSec+":"+allMin;
+        },false);
+
+        //视频当前时间
+        videoNode.addEventListener('timeupdate',function(){
+            //动态设置进度
+            progressNode.style.width = videoNode.currentTime/videoNode.duration*100+"%";
+
+            //动态设置进度拖动图标
+            crlNode.style.left = progressNode.offsetWidth - 12.5 +'px';
+
+            var nowSec = toDouble(parseInt(videoNode.currentTime/60));
+            var nowMin = toDouble(parseInt(videoNode.currentTime%60));
+            nowNode.innerHTML = nowSec+":"+nowMin;
+        },false);
+
+        //设置音量控制器
+        v_crl.onmousedown =function(e){
+            console.log('v_crl onmousedown');
+            var ev = e || event;
+            var l = ev.clientX - this.offsetLeft;
+
+            document.onmousemove = function(e){
+                console.log('v_crl onmousemove');
+                var ev = e || event;
+                var needX = ev.clientX - l;
+                var maxX = v_crl.parentNode.offsetWidth - 2.5;
+
+                needX = needX < -2.5 ? -2.5 : needX;
+                needX = needX > maxX ? maxX : needX;
+                v_crl.style.left = needX + 'px';
+
+                var lastVolume = (v_crl.offsetLeft+2)/v_crl.parentNode.offsetWidth;
+                videoNode.volume = lastVolume < 0 ? 0:lastVolume;
+            }
+            document.onmouseup = function(e){
+                document.onmousemove = document.onmouseup = null;
+            }
+            return false;
+        }
+
+        //拖拽进度条按钮 监听down事件
+        crlNode.onmousedown =function(e){
+            var ev = e || event;
+            //获取down的位置 减掉 元素本身left的偏移量 获得真正的down位置
+            var l = ev.clientX - this.offsetLeft;
+            videoNode.pause();
+
+            //在down事件中处理move事件
+            document.onmousemove = function(e){
+                var ev = e || event;
+                //获取移动的位置 当前移动的位置 减去 起始点位置 来获取移动位置的实时变化
+                var needX = ev.clientX - l;
+                //容器最大宽度 减去自身的宽度
+                var maxX = loadNode.offsetWidth - 8.5;
+
+                //相对于左边最小值
+                needX = needX < -8.5 ? -8.5 : needX;
+                //相对于右边最大值
+                needX = needX > maxX ? maxX : needX;
+                crlNode.style.left = needX + 'px';
+
+                progressNode.style.width = (crlNode.offsetLeft+9)/loadNode.offsetWidth*100+'%';
+
+            };
+            //up事件后清除move事件
+            document.onmouseup = function(){
+                //抬起后取消移动监听
+                document.onmousemove = document.onmouseup = null;
+
+                videoNode.currentTime = videoNode.duration * (crlNode.offsetLeft+9)/loadNode.offsetWidth;
+                videoNode.play();
+
+                //动态设置播放暂停按钮
+                if (playNode.className != 'playNode pauseNode') {
+                    playNode.classList.toggle('pauseNode');
+                }
+            };
+            //返回默认事件
+            return false;
+        };
+
+        function toDouble(time){
+            return time<10?'0'+time:time;
+        }
+
+
+    </script>
 </body>
 
 </html>
