@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video-JS</title>
+	<link rel="stylesheet" href="video-js.min.css">
+	<script type="text/javascript" src="video.min.js"></script>
+</head>
+<body>
+	<video id="mVideo" class="video-js vjs-big-play-centered" controls data-setup="{}" width="960" height="400" preload="auto"
+	poster="https://bbs-fd.zol-img.com.cn/t_s1200x5000/g4/M04/06/0B/ChMly1155lOIN5nvAAHuCXk1zmsAAXpIQLeD8gAAe4h438.jpg">
+		<source src="https://media.w3.org/2010/05/sintel/trailer.mp4">
+	</video>
+
+	<script type="text/javascript" charset="utf-8">
+		video = videojs('mVideo');
+
+		video.ready(function(){
+			video.play();
+		});
+
+		//获取播放进度
+		setTimeout(function(){
+			//video.currentTime(3000); 设置时间/获取时间
+			console.log(video.currentTime());
+
+			//获取视频总时长
+			console.log(video.duration());
+
+			//查看网络视频缓存进度
+			console.log(video.buffered());
+
+			//声音 video.volume(0.5); 设置声音
+			console.log(video.volume());
+
+			//获取视频宽度 高度  设置直接传参
+			console.log('videoWidth:'+video.width() + ' - videoHeight:'+video.height());
+
+			//查看视频对象所有方法
+			console.log(video.__proto__);
+		},5000);
+	</script>
+</body>
+</html>

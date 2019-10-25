@@ -34,6 +34,7 @@
     }
 
     .topNode {
+        position: relative;
         width: 100%;
         height: 198px;
         border-bottom: 1px solid #787463;
@@ -41,6 +42,14 @@
         background-size: cover;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
+        transition: .7s;
+    }
+
+    .topNode .musicName{
+        position: absolute;
+        bottom: 2px;
+        left: 5px;
+        color: white;
     }
 
     .lineNode {
@@ -74,6 +83,18 @@
         width: 7px;
         height: 100%;
         background: url(musicimage/rightNode.jpg);
+    }
+
+    .progressNode .trueLine{
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 0%;
+        height: 12px;
+        max-width: 435px;
+        border-radius: 6px;
+        border-right: 1px solid #787463;
+        background: url(musicimage/green_bg.png) repeat-x;
     }
 
     .bottomNode {
@@ -124,6 +145,15 @@
     	background: url(musicimage/volume.png) no-repeat;
     	cursor: pointer;
     }
+    .bottomNode .no_volumeNode{
+        position: absolute;
+        right: 43px;
+        top: 58px;
+        width: 37px;
+        height: 32px;
+        background: url(musicimage/no_volume.png) no-repeat;
+        cursor: pointer;
+    }
     </style>
 </head>
 
@@ -133,13 +163,18 @@
         <!-- innerNode 内层元素 -->
         <div class="innerNode">
             <!--topNode 封面图元素 -->
-            <div class="topNode"></div>
+            <div class="topNode">
+                <!-- 音乐名称 -->
+                <div class="musicName"></div>
+            </div>
             <!-- lineNode 进度条 -->
             <div class="lineNode">
                 <!-- 进度条 -->
                 <div class="progressNode">
                     <div class="progressleft"></div>
                     <div class="progressright"></div>
+                    <!-- 加载中的进度 -->
+                    <div class="trueLine"></div>
                 </div>
             </div>
             <div class="bottomNode">
@@ -154,6 +189,116 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var outerNode = document.querySelector('.outerNode'),
+        topNode = document.querySelector('.topNode'),
+        playNode = document.querySelector('.playNode'),
+        lastNode = document.querySelector('.lastNode'),
+        nextNode = document.querySelector('.nextNode'),
+        volumeNode = document.querySelector('.volumeNode'),
+        progressNode = document.querySelector('.progressNode'),
+        trueLine = document.querySelector('.trueLine'),
+        musicName = document.querySelector('.musicName'),
+        isVolume = false,
+        isPlay = false;
+
+        var audio = new Audio();
+
+        let musicDatas = [{
+            'MusicSrc':'music/mus/AcousticGuitar1.mp3',
+            'MusicPic':'music/pic/fmt01.jpg',
+            'MusicName':'AcousticGuitar'
+        },{
+            'MusicSrc':'music/mus/AmazingGrace.mp3',
+            'MusicPic':'music/pic/fmt02.png',
+            'MusicName':'AmazingGrace'
+        },{
+            'MusicSrc':'music/mus/FeelsGood2B.mp3',
+            'MusicPic':'music/pic/fmt03.jpg',
+            'MusicName':'FeelsGood2B'
+        },{
+            'MusicSrc':'music/mus/FunBusyIntro.mp3',
+            'MusicPic':'music/pic/fmt04.jpg',
+            'MusicName':'FunBusyIntro'
+        },{
+            'MusicSrc':'music/mus/Greendaze.mp3',
+            'MusicPic':'music/pic/fmt05.jpg',
+            'MusicName':'Greendaze'
+        },{
+            'MusicSrc':'music/mus/StandardJazzBars.mp3',
+            'MusicPic':'music/pic/fmt06.jpg',
+            'MusicName':'StandardJazzBars'
+        }],Index = 0;
+
+        setAssetsSrc(false);
+
+        //播放暂停事件
+        playNode.onclick = function(){
+            if (!isPlay) {
+                isPlay = true;
+                audio.play();
+            }else{
+                isPlay = false;
+                audio.pause();
+            }
+        };
+
+        lastNode.onclick = function(){
+            Index--;
+            if (Index == -1) {
+                Index = musicDatas.length - 1;
+            }
+            setAssetsSrc(true);
+        };
+
+        nextNode.onclick = function(){
+            Index++;
+            if (Index == musicDatas.length) {
+                Index = 0;
+            }
+            setAssetsSrc(true);
+        };
+
+        function setAssetsSrc(isMusic){
+            //设置资源
+            audio.src = musicDatas[Index].MusicSrc;
+            //给封面赋值
+            topNode.style.backgroundImage = 'url('+musicDatas[Index].MusicPic+')';
+            //设置音乐名称
+            musicName.innerHTML = musicDatas[Index].MusicName;
+            if (isMusic) {
+                isPlay = true;
+                audio.play();
+            }
+        }
+
+        //静音控制事件
+        volumeNode.onclick = function(){
+            if (!audio.muted) {
+                audio.muted = true;
+                this.className = 'no_volumeNode'
+            }else{
+                audio.muted = false;
+                this.className = 'volumeNode'
+            }
+        }
+
+        audio.addEventListener('ended',function(){
+            isPlay = false;
+        });
+
+        // 播放时进度条的长度控制
+        audio.addEventListener('timeupdate',function(){
+            trueLine.style.width = audio.currentTime / audio.duration * 100 + '%';
+        });
+        progressNode.onclick = function(e){
+            var ev = e || event;
+            //通过当前点击的偏差值 设置播放时长 自动更新ui宽度
+            //算法 就是算出 点击的位置在外层进度条的多少像素，需要一个鼠标点击减去外层元素的offsetLeft和最外层元素的offsetLeft
+            var progressSize = ((ev.clientX - (this.offsetLeft + outerNode.offsetLeft)) / this.offsetWidth);                
+            audio.currentTime = progressSize * audio.duration;
+        };
+    </script>
 </body>
 
 </html>
