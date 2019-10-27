@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Map Test 1</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .toolsWindow {
+        position: relative;
+        left: 50px;
+        top: 25px;
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        box-shadow: 0 0 10px #000000;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .toolsWindow .title {
+        font-size: 16px;
+        color: #000;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .cityNode,
+    .levelNode{
+    	position: relative;
+    	width: 100%;
+    	height: 26px;
+    	font-size: 12px;
+    	text-align: right;
+    }
+    .cityNode span,
+    .levelNode span{
+    	display: inline-block;
+    	width: 80px;
+    }
+    .cityNode input,
+    .levelNode input{
+    	display: inline-block;
+    	width: 160px;
+    }
+    .cityNode button,
+    .levelNode button{
+    	display: inline-block;
+    	width: 40px;
+    }
+    .clear{
+    	margin-left: 100px;
+    }
+    .address{
+    	position: absolute;
+    	bottom: 5px;
+    	right: 5px;
+    	font-size: 14px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div class="toolsWindow">
+        <div class="title">工具栏</div>
+        <div class="cityNode">
+            <span>搜索城市</span>
+            <input type="text" name="city" class="inputCity">
+            <button class="btnCity">确认</button>
+        </div>
+        <div class="levelNode">
+            <span>设置显示级别</span>
+            <input type="text" name="level" class="inputLevel">
+            <button class="btnLevel">确认</button>
+        </div>
+        <button class="clear">解除范围限制</button>
+        <div class="address">当前所在省/直辖市：<span class="city">北京市</span></div>
+    </div>
+    <script type="text/javascript">
+    var isSelect = true;
+    var map = new AMap.Map('container');
+    var bounds = new AMap.Bounds([116.567542, 39.997639], [116.22422, 39.813285]);
+    map.setBounds(bounds);
+    map.setLimitBounds(map.getBounds());
+
+    var inputCity = document.querySelector('.inputCity'),
+    inputLevel = document.querySelector('.inputLevel'),
+    btnCity = document.querySelector('.btnCity'),
+    btnLevel = document.querySelector('.btnLevel'),
+    btnClear = document.querySelector('.clear'),
+    city = document.querySelector('.city');
+
+    btnCity.onclick = function(){
+    	if (inputCity.value != '') {
+    		map.setCity(inputCity.value);
+    		inputCity.value = '';
+    	}
+    };
+
+    btnLevel.onclick = function(){
+    	if(inputLevel.value != ''){
+    		map.setZoom(inputLevel.value);
+    		inputLevel.value = '';
+    	}
+    };
+
+    //解除锁定
+    btnClear.onclick = function(){
+    	if(isSelect){
+    		isSelect = false;
+    		map.clearLimitBounds();
+    		btnClear.innerHTML = '锁定范围限制';
+    	}else{
+    		isSelect = true;
+    		map.setLimitBounds(map.getBounds());
+    		btnClear.innerHTML = '解除范围限制';
+    	}
+    };
+
+    map.on('moveend',function(){
+    	 map.getCity(function(info) {
+    	 	city.innerHTML = info.city || info.province;
+        });
+    });
+
+    map.on('click',function(e){
+    	map.setCenter([e.lnglat.lng, e.lnglat.lat]);
+    });
+    </script>
+</body>
+
+</html>

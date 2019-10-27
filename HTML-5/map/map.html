@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
+    <meta charset="UTF-8">
+    <title>Map API</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #container {
+        position: absolute;
+        /*    	left: 50%;
+    	top: 50%;
+    	margin: -300px 0 0 -400px;*/
+        /*width: 800px;*/
+        /*height: 600px;*/
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+    var map = new AMap.Map('container', {
+        zoom: 10, //设置初始视距级别
+        center: [116.40, 39.90], //经纬度中心点
+    });
+
+    //地图移动结束时 获取地图视距级别/中心点经纬度
+    map.on('moveend', function() {
+        console.log(map.getZoom());
+        console.log(map.getCenter());
+    });
+    //双击视图时 获取地图视距级别/中心点经纬度
+    map.on('zoomend', function() {
+        console.log(map.getZoom());
+        console.log(map.getCenter());
+    });
+
+    //延时设置地图视距级别
+    setTimeout(function() {
+        map.setZoom(20);
+    }, 50000);
+
+    //延时设置地图中心点经纬度
+    setTimeout(function() {
+        map.setCenter([121.222, 30]);
+    }, 50000);
+
+    //延时设置地图视距层级和中心点经纬度 ， 同时设置
+    setTimeout(function() {
+        map.setZoomAndCenter(12, [122.111, 18]);
+    }, 50000);
+
+    //获取行政区
+    map.on('moveend', function() {
+        map.getCity(function(info) {
+            console.log(info);
+        });
+    });
+
+    //设置当前的行政区  地图会直接移动到天津市中心点
+    map.setCity('天津市');
+
+
+    //获取当前地图的范围坐标 , getbounds().northeast右上角坐标，getbounds().southwest左下角坐标  (northeast.P / R , southwest.P / R)设置显示范围
+    map.getBounds();
+
+    //设置当前地图的范围坐标
+    var mBounds = new AMap.Bounds([116.379391,39.861536],[117.379391,40.861536]);
+    map.setBounds(mBounds);
+
+    //限制地图显示范围
+    var bounds = map.getBounds();
+    map.setLimitBounds(bounds);
+    //清除限制 map.clearLimitBounds();
+
+    //地图平移 单位为px
+    setTimeout(function(){
+    	//向左平移50像素，向上平移300像素 , 取负值方向相反
+    	map.panBy(50,300);
+    },1000);
+
+    //地图平移 单位为经纬度
+    setTimeout(function(){
+    	map.panTo([116.379391,39.861536]);
+    },3000);
+
+    //点击后获取点击位置经纬度  longitude（lng经度） latiitude（lat纬度）
+    map.on('click',function(e){
+    	console.log(e.lnglat);
+    });
+    </script>
+</body>
+
+</html>
