@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- 地图基础API使用 demo -->
 <head>
     <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
     <meta charset="UTF-8">
-    <title>Map API</title>
+    <title>Map Common API</title>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23"></script>
     <style type="text/css">
     * {
@@ -97,6 +97,10 @@
     map.on('click',function(e){
     	console.log(e.lnglat);
     });
+
+
+    //设置鼠标的样式 可以设置web中所有的cursor的样式
+    map.setDefaultCursor('pointer');
     </script>
 </body>
 

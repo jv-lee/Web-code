@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 地图搜索与兴趣点（标记点） -->
+<head>
+    <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
+    <meta charset="UTF-8">
+    <title>Map Search-Poi</title>
+    <script type="text/javascript" 
+    src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    #toolWindow{
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        width: 280px;
+        background-color: white;
+        box-shadow: 0 0 4px #000;
+        overflow: hidden;
+    }
+    #searchNode{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 280px;
+        height: 30px;
+        background: white;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div id="searchNode">
+        <input type="text" id="searchIpt">
+    </div>
+    <script type="text/javascript">
+    var map = new AMap.Map('container', {
+        zoom: 10, //设置初始视距级别
+        center: [116.40, 39.90], //经纬度中心点
+    });
+
+    //在js引入地址中 加入插件参数 
+
+    //设置自动提示输入框元素
+    var searchNode = new AMap.Autocomplete({
+        input:'searchIpt'//必须是id
+    });
+
+    //设置地图显示poi 点
+    var placeSearch = new AMap.PlaceSearch({
+        map:map
+    });
+
+    //通过监听地图元素改变事件 ， 设置poi点 和跳转位置
+    AMap.event.addListener(searchNode,'select',function(e){
+        var en = e || event;
+        placeSearch.search(en.poi.name);
+    });
+    </script>
+</body>
+
+</html>
