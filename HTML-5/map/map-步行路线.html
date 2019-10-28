@@ -5,8 +5,8 @@
 <head>
     <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
     <meta charset="UTF-8">
-    <title>Map 驾车路线</title>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.Driving,AMap.Autocomplete"></script>
+    <title>Map 步行路线</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.Walking,AMap.Autocomplete"></script>
     <style type="text/css">
     * {
         padding: 0;
@@ -45,15 +45,15 @@
         起点：<input type="text" id="startNode">
 
          终点：<input type="text" id="endNode">
-        <button id="btn">开始导航</button>
+        <button id="btn">开始规划步行路线</button>
     </div>
     <script type="text/javascript">
     var map = new AMap.Map('container', {
         zoom: 10, //设置初始视距级别
         center: [116.379391, 39.861536], //经纬度中心点
     });
-//清除地图覆盖物的方法 ： map.clearMap();
-    var driving = new AMap.Driving({
+
+    var walking = new AMap.Walking({
         map: map,
         panel: 'panel'
     });
@@ -68,7 +68,7 @@
 
     // 输入地名导航
     btn.onclick = function() {
-        driving.search([
+        walking.search([
             { keyword: startNode.value, city: '北京' },
             { keyword: endNode.value, city: '北京' }
         ], function(status, data) {
@@ -77,7 +77,7 @@
     };
 
     //坐标导航
-    driving.search(
+    walking.search(
         new AMap.LngLat(116.32239942267535,39.89104535194512),
         new AMap.LngLat(116.31286588355897,39.97065597220695),
         function(status,data){

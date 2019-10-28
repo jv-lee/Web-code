@@ -5,8 +5,8 @@
 <head>
     <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
     <meta charset="UTF-8">
-    <title>Map 驾车路线</title>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.Driving,AMap.Autocomplete"></script>
+    <title>Map 公交路线</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.Transfer,AMap.Autocomplete"></script>
     <style type="text/css">
     * {
         padding: 0;
@@ -52,10 +52,11 @@
         zoom: 10, //设置初始视距级别
         center: [116.379391, 39.861536], //经纬度中心点
     });
-//清除地图覆盖物的方法 ： map.clearMap();
-    var driving = new AMap.Driving({
+
+    var transfer = new AMap.Transfer({
         map: map,
-        panel: 'panel'
+        panel: 'panel',
+        city:'北京'
     });
 
     new AMap.Autocomplete({
@@ -68,7 +69,7 @@
 
     // 输入地名导航
     btn.onclick = function() {
-        driving.search([
+        transfer.search([//只支持2个参数，不支持途径
             { keyword: startNode.value, city: '北京' },
             { keyword: endNode.value, city: '北京' }
         ], function(status, data) {
@@ -77,9 +78,9 @@
     };
 
     //坐标导航
-    driving.search(
-        new AMap.LngLat(116.32239942267535,39.89104535194512),
-        new AMap.LngLat(116.31286588355897,39.97065597220695),
+    transfer.search(
+        [116.32239942267535,39.89104535194512],
+        [116.31286588355897,39.97065597220695],
         function(status,data){
         console.log(data);
     });

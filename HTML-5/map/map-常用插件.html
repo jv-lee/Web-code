@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 地图搜索与兴趣点（标记点） -->
+
+<head>
+    <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
+    <meta charset="UTF-8">
+    <title>Map 常用插件</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.MapType,AMap.OverView,AMap.Scale,AMap.ToolBar"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+    var map = new AMap.Map('container', {
+        zoom: 10, //设置初始视距级别
+        center: [116.379391, 39.861536], //经纬度中心点
+    });
+
+    // 1. AMap.MapType ->  显示卫星图插件
+    map.addControl(new AMap.MapType({
+        default: 1, //0是默认 ，1是卫星图
+        showRoad: true, //显示路网
+    }));
+
+    //地图鹰眼预览插件
+    var overView = new AMap.OverView({
+        visible: true //默认显示和隐藏
+    });
+    map.addControl(overView);
+
+    //5秒后隐藏
+    setTimeout(function() {
+        overView.hide();
+    }, 5000);
+
+    //7秒后显示
+    setTimeout(function() {
+        overView.show();
+    }, 7000);
+
+
+    //地图比例尺插件
+    map.addControl(new AMap.Scale());
+
+    //添加工具条插件
+    map.addControl(new AMap.ToolBar());
+    </script>
+</body>
+
+</html>
