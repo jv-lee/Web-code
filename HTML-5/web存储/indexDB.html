@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexDB</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//打开数据库 ， 没有就创建/有就打开 , 参数一：数据库名，参数二：数据库版本
+		var request = indexedDB.open('testDB',5);
+		console.log(request);
+		request.onsuccess = function(){
+			console.log('数据库打开成功');
+		};
+		request.onerror = function(){
+			console.log('数据库打开失败，可能是版本号降低了导致的原因');
+		};
+		request.onupgradeneeded = function(){
+			var db = request.result;
+			console.log('数据库更新成功\ndbName:'+db.name + ' dbVersion:'+db.version);
+
+			//创建表
+			db.createObjectStore('test1');
+		};
+
+		var json = {'id':1001,'name':'lee','age':'18'};
+
+		setTimeout(function(){
+			var db = request.result;
+			var transaction = db.transaction('test1','readwrite');
+			var store = transaction.objectStore('test1');
+		},300);
+	</script>
+</body>
+</html>

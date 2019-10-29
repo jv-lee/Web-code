@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Local Storage</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript" charset="utf-8" >
+		localStorage.setItem('lee',25);
+		console.log(localStorage);
+		console.log(localStorage.getItem('lee'));
+		localStorage.removeItem('lee');
+		console.log(localStorage);
+
+		localStorage.setItem('lee',12);
+		localStorage.setItem('shy',22);
+		console.log(localStorage);
+		console.log(localStorage.length);
+		//清除所有
+		localStorage.clear();
+	</script>
+</body>
+</html>

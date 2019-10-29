@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 地图搜索与兴趣点（标记点） -->
+<head>
+    <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
+    <meta charset="UTF-8">
+    <title>Map StatusListener</title>
+    <script type="text/javascript" 
+    src="https://webapi.amap.com/maps?v=1.4.15&key=c98d7c0970fbd0f5b763f1e955b8bb23&plugin=AMap.ControlBar"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <button id="btnRegister">绑定事件</button>
+        <button id="btnUnRegister">解除绑定事件</button>
+    </div>
+    
+    <script type="text/javascript">
+        var map = new AMap.Map('container', {
+            zoom: 18, //设置初始视距级别
+            center: [116.379391, 39.861536], //经纬度中心点
+            resizeEnable:true
+        });
+
+        var text = new AMap.Text({
+            text:'地图加载完成',
+            position:[116.379391, 39.861536]
+        });
+
+        //complete:地图加载完成
+        map.on('complete',function(){
+            text.setMap(map);
+        });
+
+        //zoomstart,zoomend:地图缩放等级改变
+        map.on('zoomstart',function(){
+            console.log('地图缩放等级改变开始');
+        });
+        map.on('zoomend',function(){
+            console.log('地图缩放等级改变结束');
+        });
+        //mapmove,movestart,moveend:地图中心点移动
+        map.on('mapmove',function(){
+            console.log('地图中心点移动中');
+        });
+        map.on('movestart',function(){
+            console.log('地图中心点移动开始');
+        });
+        map.on('moveend',function(){
+            console.log('地图中心点移动结束');
+        });
+        
+        //resize:地图容器尺寸改变  必须设置map的resizeEnable
+        map.on('resize',function(){
+            console.log('地图尺寸改变');
+        });
+        
+
+        //mouseover,mouseout,mousemove:事件仅在点标记Marker和文字标记Text鼠标交互时触发
+        text.on('mouseover',function(){
+            console.log('鼠标移入覆盖物');
+        });
+        text.on('mouseout',function(){
+            console.log('鼠标移出覆盖物');
+        });
+        text.on('mousemove',function(){
+            console.log('鼠标在覆盖物上不断的移动');
+        });
+
+        //绘制矢量图
+        var circle = new AMap.Circle({//原型
+            center:[116.379391, 39.861536],
+            raduis:1000
+        });
+        circle.setMap(map);
+
+        var rectangle = new AMap.Rectangle({//长方形
+            bounds:new AMap.Bounds(new AMap.LngLat(116.379391, 39.861536),new AMap.LngLat(117.379391, 40.861536))
+        });
+        rectangle.setMap(map);
+
+        //hide,show:矢量图调用show(),hide()方法后触发
+        setTimeout(function(){
+            circle.hide();
+        },2000);
+        setTimeout(function(){
+            rectangle.hide();
+        },4000);
+        setTimeout(function(){
+            circle.show();
+        },6000);
+        setTimeout(function(){
+            rectangle.show();
+        },8000);
+
+        //open,close:ContextMenu类(右键菜单) 对象调用open(),close()方法后触发
+        var contextMenu = new AMap.ContextMenu();
+        contextMenu.addItem('放大一级',function(){
+            map.zoomIn();
+        },0);
+        contextMenu.addItem('缩小一级',function(){
+            map.zoomOut();
+        },1);
+
+        
+        map.on('rightclick',function(e){
+            contextMenu.open(map,e.lnglat);    
+            setTimeout(function(){
+                //3秒后自动关闭右键菜单
+                contextMenu.close();
+            },3000);
+        });      
+
+
+        //绑定dom事件
+        var listener = AMap.event.addDomListener(btnRegister,'click',function(){
+            alert('1');
+        });
+
+        //解除绑定
+        AMap.event.addDomListener(btnUnRegister,'click',function(){
+            AMap.event.removeListener(listener);
+        });
+        
+
+    </script>
+</body>
+
+</html>

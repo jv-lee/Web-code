@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LocalStorage存储时效性</title>
+</head>
+<body>
+	储存数据:
+	<input type="text" id="need">
+	存储数据的时间:
+	<input type="text" id="timer">
+	<button id="btn">保存</button>
+	数据展示:
+	<span type="text" id="span"></span>
+	<script type="text/javascript">
+		var nowTime = new Date().getMinutes();
+
+		if (nowTime >= localStorage.timer) {
+			localStorage.removeItem('lee');
+		}else if (localStorage.lee) {
+			span.innerHTML = localStorage.lee;
+		}else{
+			span.innerHTML = '暂无数据';
+		}
+
+		btn.onclick = function(){
+			localStorage.setItem('lee',need.value);
+			localStorage.setItem('timer',new Date().getMinutes() + Number(timer.value));
+
+			span.innerHTML = need.value;
+			need.value = '';
+			timer.value = '';
+		};
+	</script>
+</body>
+</html>
