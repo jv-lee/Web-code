@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证美化</title>
+	<style type="text/css">
+		.container{
+			position: relative;
+			margin: 100px;
+		}
+		input{
+			border: 1px solid #999;
+			outline: 0;
+			width: 140px;
+			height: 30px;
+			line-height: 30px;
+			text-indent: 36px;
+			border-radius: 4px;
+			transition: all .3s;
+		}
+		span.title{
+			position: absolute;
+			line-height: 30px;
+			height: 30px;
+			left: 2px;
+			top: 2px;
+			transition: all .3s;
+		}
+		input:focus,input:hover{
+			text-indent: 2px;
+		}
+		input:focus +span.title,input:hover +span.title{
+			transform: translateX(-120%);
+		}
+		/*伪类*/
+		input:valid ~label::after{
+			content:"你输入邮箱正确！";
+		}
+		input:invalid ~label::after{
+			content:"你邮箱错误！";
+		}
+		/*验证邮箱输入框 样式修改美化*/
+		input:valid{
+			border: 1px solid green;
+		}
+		input:invalid{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="mail" id="mail" name="" required placeholder="输入邮箱">
+		<span class="title">邮箱</span>
+		<label for="mail"></label>
+	</div>
+</body>
+</html>

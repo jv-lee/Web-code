@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证美化</title>
+	<style type="text/css">
+		.onelist{margin: 10px 0 5px 12px;}
+		.onelist label{width:80px;display:inline-block;}
+		.onelist input,.onelist select{height:25px;line-height:25px;width: 220px;border-radius: 3px;border:1px solid #e2e2e2;}
+		.onelist input[type="submit"]{width:150px;height: 30px;line-height: 30px;}
+		
+		/*必填项设置背景样式*/
+		input:required,select:required{
+			background: url(img/star.jpg) no-repeat 90% center;
+		}
+		input:required:valid,select:required:valid{
+			background: url(img/right.jpg) no-repeat 90% center;
+			box-shadow: 0 0 5px green;
+			border-color: green;
+		}
+		input:focus:invalid,select:focus:invalid{
+			background: url(img/error.jpg) no-repeat 90% center;
+			box-shadow: 0 0 5px red;
+			border-color: red;
+			outline: red solid 1px;
+		}
+	</style>
+</head>
+<body>
+	<form class="myform" method="post">
+		<div class="onelist">
+			<label for="UserName">手机号</label>
+			<input type="text" name="UserName" id="UserName" placeholder="请输入手机号码" pattern="^1[0-9]{10}$" required
+			oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('请输入正确的手机号码')">
+		</div>
+		<div class="onelist">
+			<label for="Password">密码</label>
+			<input type="password" name="Password" id="Password" placeholder="6~20位" pattern="^[a-zA-Z0-9]\w{5,19}$" required
+			oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('请输入正确的密码')" onchange="checkpassword()">
+		</div>
+		<div class="onelist">
+			<label for="Repassword">确认密码</label>
+			<input type="password" name="Repassword" id="Repassword" placeholder="确认密码" pattern="^[a-zA-Z0-9]\w{5,19}$" required
+			 onchange="checkpassword()">
+		</div>
+		<div class="onelist">
+			<label for="Konw">了解方式</label>
+			<select name="Konw" id="Konw" required="">
+				<option value="">===请选择===</option>
+				<option value="1">搜索引擎</option>
+				<option value="2">朋友圈</option>
+				<option value="3">朋友推广</option>
+				<option value="4">广告投放</option>
+			</select>
+		</div>
+		<div class="onelist">
+			<input type="submit" name="" value="提交">
+		</div>
+	</form>
+
+	<script type="text/javascript">
+			function checkpassword(){
+				var pass1 = document.getElmentById("Password"),pass2=document.getElmentById("Repassword");
+				if (pass1.value!=pass2.value) {
+					pass2.setCustomValidity("两次密码输入不一致");
+				}else{
+					pass2.setCustomValidity("");
+				}
+			}
+	</script>
+
+</body>
+</html>

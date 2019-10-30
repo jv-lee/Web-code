@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>H5 - 表单验证</title>
+</head>
+<body>
+	<!-- <input type="text" name="" placeholder="请输入日期" onclick="this.setAttribute('type','date')"> -->
+	<!-- autocomplete 自动提示历史记录 -->
+	<form action="" method="post" enctype="multipart/form-data" autocomplete="on">
+
+		<input type="file">
+
+		<lable for="">用户名</lable>
+		<!-- required 设置为必填项  -->
+		<input type="text" name="user" id="username" placeholder="请输入用户名" required>
+
+		<label for="">工号</label>
+		<!-- pattern 正则表达式验证 -->
+		<input type="text" name="workcode" placeholder="请输入工号" pattern="^\d{5}[imooc]$">
+
+		<input type="text" list="tips">
+		<datalist id="tips">
+			<option value="tip1"></option>
+			<option value="tip2"></option>
+			<option value="tip3"></option>
+			<option value="tip4"></option>
+			<option value="tip5"></option>
+		</datalist>
+		
+		<!-- 通过设置for input id 来绑定 点击 label选中 radio标签 -->
+		<label for="man">男</label>
+		<input type="radio" name="sex" id="man" required>
+		<label for="woman">女</label>
+		<input type="radio" name="sex" id="woman" required>
+
+		<input type="submit">
+
+	</form>
+
+	<div contenteditable></div>
+
+	<script type="text/javascript">
+		username.setCustomValidity("请输入正确的用户名");
+	</script>
+</body>
+</html>
