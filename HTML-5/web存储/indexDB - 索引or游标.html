@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexDB</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//打开数据库 ， 没有就创建/有就打开 , 参数一：数据库名，参数二：数据库版本
+		var request = indexedDB.open('TESTDB4',1);
+		console.log(request);
+		request.onsuccess = function(){
+			console.log('数据库打开成功');
+		};
+		request.onerror = function(){
+			console.log('数据库打开失败，可能是版本号降低了导致的原因');
+		};
+		request.onupgradeneeded = function(){
+			var db = request.result;
+			console.log('数据库更新成功\ndbName:'+db.name + ' dbVersion:'+db.version);
+
+			if (!db.objectStoreNames.contains('test')) {
+				var store = db.createObjectStore('test',{keyPath:'id'});
+
+				//创建索引  unique 是否唯一
+				store.createIndex('test','id',{unique:true});
+			}
+		};
+
+		var json = [{'id':100,'name':'lee','age':'19'},
+		{'id':101,'name':'zore','age':'12'},
+		{'id':102,'name':'serzi','age':'13'},
+		{'id':103,'name':'faker','age':'14'},
+		{'id':104,'name':'anbition','age':'18'}];
+
+		//打开表 获取事务对象,打开表操作对象
+		setTimeout(function(){
+			var db = request.result;
+			var transaction = db.transaction('test','readwrite');
+			var store = transaction.objectStore('test');
+			// for (var i = 0; i < json.length; i++) {
+			// 	store.add(json[i]);
+			// }
+ 			
+ 			//打开索引
+			var index = store.index('test');
+			//通过索引
+			var requestNode = index.openCursor(IDBKeyRange.upperBound(102));
+
+			requestNode.onsuccess = function(){
+				var cursor = requestNode.result;
+				if (cursor) {
+					if (cursor.value.name == 'serzis') {
+						console.log('1');
+						//游标更新内容
+						cursor.update({'id':102,'name':'serzi','age':'13'});
+					}
+					if (cursor.value.name == 'zore') {
+						cursor.delete().onsuccess = function(){
+							console.log('删除zore 的数据成功');
+						};
+					}
+					console.log(cursor.value);
+					cursor.continue();
+				}
+			}
+
+		},300);
+	</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexDB</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//打开数据库 ， 没有就创建/有就打开 , 参数一：数据库名，参数二：数据库版本
+		var request = indexedDB.open('TESTDB',1);
+		console.log(request);
+		request.onsuccess = function(){
+			console.log('数据库打开成功');
+		};
+		request.onerror = function(){
+			console.log('数据库打开失败，可能是版本号降低了导致的原因');
+		};
+		request.onupgradeneeded = function(){
+			var db = request.result;
+			console.log('数据库更新成功\ndbName:'+db.name + ' dbVersion:'+db.version);
+
+			//创建表 设置自增主键  每次更新时不可重复重建数据库表
+			if (!db.objectStoreNames.contains('test1')) {
+				db.createObjectStore('test1',{autoIncrement:true});
+			}
+			if (!db.objectStoreNames.contains('test2')) {
+				var store = db.createObjectStore('test2',{keyPath:'id'});
+			}
+		};
+
+		var json = [{'id':100,'name':'lee','age':'19'},
+		{'id':101,'name':'zore','age':'12'},
+		{'id':102,'name':'serzi','age':'13'},
+		{'id':103,'name':'faker','age':'14'},
+		{'id':104,'name':'anbition','age':'18'}];
+
+		//打开表 获取事务对象,打开表操作对象
+		setTimeout(function(){
+			var db = request.result;
+			//获取事务对象，操作两张表格 开启读写模式
+			var transaction = db.transaction(['test1','test2'],'readwrite');
+
+			//打开表操作对象
+			var test1Store = transaction.objectStore('test1');
+
+			//增
+			for (var i = 0; i < json.length; i++) {
+				test1Store.add(json[i]);
+			}
+
+			//查
+			var requestNode2 = test1Store.get(1);
+			requestNode2.onsuccess = function(){
+				console.log(requestNode2.result);
+			};
+			requestNode2.onerror = function(e){
+				console.log(e.target);
+			}
+
+			//增
+			var test2Store = transaction.objectStore('test2');
+			for (var i = 0; i < json.length; i++) {
+				test2Store.add(json[i]);
+			}
+
+			//查
+			var requestNode = test2Store.get(100);
+			requestNode.onsuccess = function(){
+				console.log(requestNode.result);
+			};
+
+			//查所有
+			var response = test2Store.getAll(); 
+			response.onsuccess = function(){
+				for (var i = 0; i < response.result.length; i++) {
+					console.log(response.result[i]);
+				}
+			};
+
+			//put可以添加 / 修改，  如果没有该主键数据则添加， 有则修改
+			// test2Store.put({'id':100,'name':'lee','age':'22'});
+			// test2Store.put({'id':105,'name':'lee','age':'19'});
+
+			//根据主键删除数据
+			// test2Store.delete(105);
+		},3000);
+	</script>
+</body>
+</html>
