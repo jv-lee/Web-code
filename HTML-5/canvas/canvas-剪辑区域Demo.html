@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas-剪辑区域</title>
+    <style>
+        canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+
+<body>
+    <canvas id="mCanvas" width="400px" height="400px">
+        您的浏览器不支持Canvas
+    </canvas>
+    <script type="text/javascript">
+    var canvas = document.getElementById('mCanvas');
+    var ctx = canvas.getContext('2d');
+
+    //剪辑之前保存画布状态
+    ctx.save();
+    ctx.arc(200, 200, 100, 0, Math.PI * 2, true);
+    ctx.clip();
+
+    //绘制4个矩形
+    ctx.beginPath();
+    ctx.fillStyle = "#F00";
+    ctx.fillRect(100, 100, 100, 100);
+
+    ctx.beginPath();
+    ctx.fillStyle = "#0F0";
+    ctx.fillRect(200, 100, 100, 100);
+
+    ctx.beginPath();
+    ctx.fillStyle = "#00F";
+    ctx.fillRect(100, 200, 100, 100);
+
+    ctx.beginPath();
+    ctx.fillStyle = "#000";
+    ctx.fillRect(200, 200, 100, 100);
+    </script>
+</body>
+
+</html>

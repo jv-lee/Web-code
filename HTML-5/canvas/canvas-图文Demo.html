@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Canvas-图文Demo</title>
-	<style>
-		.container{
+    <meta charset="UTF-8">
+    <title>Canvas-图文Demo</title>
+    <style>
+        .container{
 			width: 1200px;
 			height: 400px;
 			margin: 100px auto;
@@ -53,53 +54,94 @@
 			margin-top: 80px;
 			margin-left: 100px;
 			background-color:lightblue;
-			border: 1px solid red;
 		}
 	</style>
 </head>
+
 <body>
-	<div class="container">
-		<div class="content">
-			<input type="text" placeholder="姓名">
-			<input type="text" placeholder="地址">
-			<input type="text" placeholder="职业">
-			<input type="text" placeholder="口号">
-			<input type="button" value="生成名片">
-		</div>
-		<div class="canvas">
-			<canvas id="mCanvas" width="600px" height="120px">
-				您的浏览器不支持Canvas
-			</canvas>			
-		</div>
-	</div>
+    <div class="container">
+        <div class="content">
+            <input type="text" placeholder="姓名" id="username">
+            <input type="text" placeholder="地址" id="address">
+            <input type="text" placeholder="职业" id="career">
+            <input type="text" placeholder="口号" id="slogan">
+            <input type="button" id="btn" value="生成名片">
+        </div>
+        <div class="canvas">
+            <canvas id="mCanvas" width="600px" height="120px">
+                您的浏览器不支持Canvas
+            </canvas>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var canvas = document.getElementById('mCanvas');
+    var ctx = canvas.getContext('2d');
 
-	<script type="text/javascript">
-		var canvas = document.getElementById('mCanvas');
-		var ctx = canvas.getContext('2d');
+    var nameStr = "请输入姓名",
+        addressStr = "请输入地址",
+        careerStr = "请输入职业",
+        sloganStr = "请输入口号";
 
-		var linear = ctx.createLinearGradient(280,0,600,0);
-		linear.addColorStop(0,'#000');
-		linear.addColorStop(1,'#7D7C7E');
-		ctx.fillStyle = linear;
-		ctx.fillRect(0,0,600,120);
+    function createView() {
+        ctx.clearRect(0, 0, 600, 120);
 
-		ctx.beginPath();
-		var image = new Image();
-		image.src = 'logo.png';
-		image.onload = function(){
-			ctx.drawImage(image,10,10,100,100);
-		};
+        var linear = ctx.createLinearGradient(280, 0, 600, 0);
+        linear.addColorStop(0, '#000');
+        linear.addColorStop(1, '#7D7C7E');
+        ctx.fillStyle = linear;
+        ctx.fillRect(0, 0, 600, 120);
 
-		var nameStr = "请输入姓名",
-		addressStr = "请输入地址",
-		careerStr = "请输入职业",
-		sloganStr = "请输入口号";
-		
-		ctx.beginPath();
-		ctx.font = "20px sans-serif";
-		ctx.fillStyle = "#fff";
-		ctx.textBaseline = "top";
-		ctx.fillText(nameStr,120,0);
-	</script>
+        ctx.beginPath();
+        var image = new Image();
+        image.src = 'logo.png';
+        image.onload = function() {
+            ctx.drawImage(image, 10, 10, 100, 100);
+        };
+
+        ctx.beginPath();
+        ctx.font = "35px sans-serif";
+        ctx.fillStyle = "#fff";
+        ctx.textBaseline = "top";
+        //绘制名称
+        ctx.fillText(nameStr, 130, 10);
+
+        ctx.font = "25px sans-serif";
+        //绘制地址
+        ctx.beginPath();
+        ctx.fillText(addressStr, 130, 52.5);
+        //绘制职业
+        ctx.beginPath();
+        ctx.fillText(careerStr, 130, 85);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rotate(-0.1);
+        ctx.translate(0, 50);
+        ctx.textBaseline = "middle";
+        ctx.fillText(sloganStr, 400, 60);
+        ctx.restore();
+
+    }
+
+    createView();
+
+    btn.onclick = function(){
+    	if(username.value != ''){
+    		nameStr = username.value;
+    	}
+    	if(address.value != ''){
+    		addressStr = address.value;
+    	}
+    	if(career.value != ''){
+    		careerStr = career.value;
+    	}
+    	if(slogan.value != ''){
+    		sloganStr = slogan.value;
+    	}
+    	createView();
+    };
+
+    </script>
 </body>
+
 </html>

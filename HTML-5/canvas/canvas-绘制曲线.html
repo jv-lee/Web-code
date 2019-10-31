@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas-剪辑区域</title>
+    <style>
+        canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+
+<body>
+    <canvas id="mCanvas" width="400px" height="400px">
+        您的浏览器不支持Canvas
+    </canvas>
+    <script type="text/javascript">
+    var canvas = document.getElementById('mCanvas');
+    var ctx = canvas.getContext('2d');
+
+    //绘制圆弧
+    ctx.arc(100,100,50,0,Math.PI / 2,true);
+    ctx.stroke();
+
+    //二次贝塞尔曲线
+    ctx.beginPath();
+    ctx.lineWidth = 6;
+    ctx.strekeSytle = "#0090D2";
+    //第一个起始坐标点
+    ctx.moveTo(100,355);
+    //第二个拉升坐标点， 第三个结束坐标点
+    ctx.quadraticCurveTo(265,145,380,349);
+    ctx.stroke();
+
+    //三次贝塞尔曲线  
+    ctx.beginPath();
+    //第一个起始坐标点
+    ctx.moveTo(96,277);
+    //第二个拉升坐标点， 第三个拉升坐标点，第四个结束坐标点
+    ctx.bezierCurveTo(210,104,369,105,479,282);
+    ctx.stroke();
+    </script>
+</body>
+
+</html>

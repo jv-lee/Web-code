@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-图形画刷</title>
+	<style>
+		canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="mCanvas" width="600px" height="400px">
+		您的浏览器不支持Canvas
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+
+		var img = new Image();
+		img.src = 'logo.png';
+		img.onload = function(){
+			//参数1:图形 ， 参数2填充模式
+			var patterm = ctx.createPattern(img,"repeat");
+			ctx.fillStyle = patterm;
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+		};
+
+	</script>
+</body>
+</html>
