@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-图形变换之表盘</title>
+	<style>
+		canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="mCanvas" width="600px" height="400px">
+		您的浏览器不支持Canvas
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		//平移坐标系的左上角原点
+		ctx.translate(300,200);
+		ctx.beginPath();
+		ctx.arc(0,0,50,0,Math.PI*2,true);
+		ctx.stroke();
+		ctx.fillStyle = "#FDBFCD";
+		ctx.fill();
+		ctx.beginPath();
+		for (var i = 0; i < 12; i++) {
+			ctx.rotate(Math.PI/6);
+			ctx.moveTo(40,0);
+			ctx.lineTo(50,0);
+		}
+		ctx.stroke();
+	</script>
+</body>
+</html>

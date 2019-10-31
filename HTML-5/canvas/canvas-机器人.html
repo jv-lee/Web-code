@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas - 机器人</title>
+    <style>
+        canvas{background-color:lightblue;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800">
+        您的浏览器不支持canvas
+    </canvas>
+    
+    <script>
+	    //在此处写出代码
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        
+        //绘制头部300 - 500
+        ctx.strokeRect(300,150,200,130);
+
+        // 绘制左眼
+        ctx.beginPath();
+        ctx.arc(350,200,15,0,2*Math.PI,true);
+        ctx.stroke();
+
+        // 绘制右眼
+        ctx.beginPath();
+        ctx.arc(450,200,15,0,2*Math.PI,true);
+        ctx.stroke();
+
+        // 绘制嘴巴
+        ctx.strokeRect(375,240,50,20);
+        // 绘制左耳
+        ctx.strokeRect(280,180,20,50);
+        ctx.strokeRect(500,180,20,50);
+
+
+        //绘制天线左边
+        ctx.beginPath();
+        ctx.moveTo(350,150);
+        ctx.lineTo(300,50);
+        ctx.stroke();
+
+        //绘制天线右边
+        ctx.beginPath();
+        ctx.moveTo(450,150);
+        ctx.lineTo(500,50);
+        ctx.stroke();
+
+        //绘制身体
+        ctx.beginPath();
+        ctx.strokeRect(330,280,140,250);
+
+        //绘制双脚
+        ctx.strokeRect(350,530,30,200);
+        ctx.strokeRect(420,530,30,200);
+
+        //绘制双手
+        ctx.strokeRect(330,350,-200,20);
+        ctx.strokeRect(470,350,200,20);
+	</script>
+</body>
+
+</html>

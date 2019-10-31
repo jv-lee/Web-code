@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-文字</title>
+	<style>
+		canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="mCanvas" width="600px" height="400px">
+		您的浏览器不支持Canvas
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		var str = "hello world";
+		//字体样式
+		ctx.font = "50px sans-serif";
+		//水平对齐
+		ctx.textAlign = "center"; //绘制文字时 x坐标就会取文字中心点
+		//垂直对齐
+		ctx.textBaseline = "top";
+		//绘制填充文字
+		ctx.fillText(str,300,0);
+		//绘制描边文字
+		ctx.strokeText(str,300,200);
+
+		//获取文字宽度
+		var width = ctx.measureText(str).width;
+		var height = ctx.measureText(str).height;
+	</script>
+</body>
+</html>

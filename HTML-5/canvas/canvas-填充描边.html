@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-填充描边</title>
+	<style>
+		canvas{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="mCanvas" width="600px" height="400px">
+		您的浏览器不支持Canvas
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		ctx.moveTo(0,0);
+		ctx.lineTo(100,100);
+		ctx.lineTo(100,200);
+		//路径闭合
+		ctx.closePath();
+		//设置线宽
+		ctx.lineWidth = 10;
+		//设置线颜色
+		ctx.strokeStyle = '#F00';
+		//绘制线
+		ctx.stroke();
+
+		//设置填充样式 为绿色半透明 开始填充之前的绘制
+		ctx.fillStyle = 'rgba(0,255,0,0.5)';
+		ctx.fill();
+
+		//绘制矩形，填充矩形
+		ctx.strokeRect(100,200,100,100);
+		ctx.fillRect(100,200,100,100);
+
+		ctx.beginPath();
+		//绘制圆形
+		ctx.arc(300,100,50,0,2*Math.PI,true);
+		//填充圆形
+		ctx.fillStyle = 'rgba(0,0,255,0.5)';
+		ctx.fill();
+	</script>
+</body>
+</html>

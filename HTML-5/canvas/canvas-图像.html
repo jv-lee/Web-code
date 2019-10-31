@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-图像</title>
+	<style>
+		canvas{
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="mCanvas" width="600px" height="400px">
+		您的浏览器不支持Canvas
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		var img = new Image();
+		img.src = "logo.png";
+
+		//img加载需要时间 所以在回调中绘制
+		img.onload = function(){
+			// 在(0,0)点处绘制img图像
+			ctx.drawImage(img,0,0);	
+			// 在(0,0)点处绘制img图像，缩放成50，50
+			ctx.drawImage(img,0,0,50,50);	
+			// 获取img图像的(0,0)点处40x40的区域，绘制在(100,100)点处，缩放成80x80大小
+			ctx.drawImage(img,0,0,40,40,100,100,80,80);
+		}
+		
+	</script>
+</body>
+</html>

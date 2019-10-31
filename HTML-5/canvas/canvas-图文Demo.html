@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas-图文Demo</title>
+	<style>
+		.container{
+			width: 1200px;
+			height: 400px;
+			margin: 100px auto;
+		}
+		.content{
+			float: left;
+			width: 400px;
+			height: 100%;
+			background: #A4A298;
+		}
+		input[type="text"]{
+			display: block;
+			width: 300px;
+			height: 20px;
+			margin: 25px auto;
+			padding: 6px;
+			border: none;
+			text-indent: 10px;
+			border-radius: 15px;
+			outline: none;
+		}
+		input[type="text"]:nth-child(1){
+			margin-top: 50px;
+		}
+		input[type="button"]{
+			display:block;
+			width: 120px;
+			height: 32px;
+			margin: 0 auto;
+			border: none;
+			border-radius: 15px;
+			outline: none;
+			color: #fff;
+			background: #232123;
+			cursor: pointer;
+		}
+
+		.canvas{
+			float: left;
+			width: 800px;
+			height: 100%;
+			background: #EFE99E;
+		}
+
+		canvas{
+			margin-top: 80px;
+			margin-left: 100px;
+			background-color:lightblue;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<input type="text" placeholder="姓名">
+			<input type="text" placeholder="地址">
+			<input type="text" placeholder="职业">
+			<input type="text" placeholder="口号">
+			<input type="button" value="生成名片">
+		</div>
+		<div class="canvas">
+			<canvas id="mCanvas" width="600px" height="120px">
+				您的浏览器不支持Canvas
+			</canvas>			
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('mCanvas');
+		var ctx = canvas.getContext('2d');
+
+		var linear = ctx.createLinearGradient(280,0,600,0);
+		linear.addColorStop(0,'#000');
+		linear.addColorStop(1,'#7D7C7E');
+		ctx.fillStyle = linear;
+		ctx.fillRect(0,0,600,120);
+
+		ctx.beginPath();
+		var image = new Image();
+		image.src = 'logo.png';
+		image.onload = function(){
+			ctx.drawImage(image,10,10,100,100);
+		};
+
+		var nameStr = "请输入姓名",
+		addressStr = "请输入地址",
+		careerStr = "请输入职业",
+		sloganStr = "请输入口号";
+		
+		ctx.beginPath();
+		ctx.font = "20px sans-serif";
+		ctx.fillStyle = "#fff";
+		ctx.textBaseline = "top";
+		ctx.fillText(nameStr,120,0);
+	</script>
+</body>
+</html>

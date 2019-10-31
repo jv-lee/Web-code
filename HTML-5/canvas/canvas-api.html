@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas - API</title>
+	<style>
+		.canvas{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 没设置宽高的情况下 默认300*150 宽高  , canvas的宽高只能在属性上设置(画布的大小)，不能使用css设置(css中设置是画布被拉升的大小) -->
+	<canvas id="mCanvas" class="canvas" width="600px" height="400px">
+		您的浏览器不支持Canvas	
+	</canvas>
+
+	<script>
+		var canvas = document.getElementById('mCanvas');
+		//绘图环境
+		var ctx = canvas.getContext('2d');
+
+		ctx.moveTo(0,0);
+		ctx.lineTo(100,100);
+		ctx.lineTo(100,200);
+		ctx.strokeStyle = "#F00";
+		ctx.stroke();
+
+		//开始新的绘制
+		ctx.beginPath();
+		ctx.moveTo(100,0);
+		ctx.lineTo(200,100);
+		ctx.lineTo(200,200);
+		//直接闭合
+		ctx.closePath();
+		ctx.strokeStyle = "#0F0";
+		ctx.stroke();
+
+		//开始新的绘制 圆形 
+		ctx.beginPath();
+		//1.圆心300,300	2.半径	3.起始弧度	4.终止的弧度	5.true逆时针，false顺时针 (一键绘制 ctx.strokeArc(300,300,50,0,2*Math.PI,true)) 无需调用stroke();
+		ctx.arc(300,300,50,0,2*Math.PI,true);
+		ctx.strokeStyle = "#000"
+		ctx.stroke();
+
+		//绘制矩形 1.起始坐标左上角 300，100	2.宽：200	3.高：100  (一键绘制 ctx.strokeRect(300,100,200,100)) 无需调用stroke();
+		ctx.rect(300,100,200,100);
+		ctx.stroke();
+	</script>
+</body>
+</html>

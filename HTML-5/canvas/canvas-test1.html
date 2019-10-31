@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        canvas{background-color:lightpink;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600">
+        您的浏览器不支持canvas
+    </canvas>
+    <script>
+	//在此处填写代码
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	
+	
+	//红色线条
+	ctx.strokeStyle = "red";
+	ctx.moveTo(300,140);
+	ctx.lineTo(100,400);
+	ctx.stroke();
+	
+	//开始新的路径
+	ctx.beginPath();
+	
+	//绿色线条
+	ctx.strokeStyle = "green";
+	ctx.moveTo(100,400);
+	ctx.lineTo(500,400);
+	ctx.stroke();
+	
+	//开始新的路径
+	ctx.beginPath();
+	
+	//蓝色线条
+	ctx.strokeStyle = "blue";
+	ctx.moveTo(500,400);
+	ctx.lineTo(300,140);
+	ctx.stroke();
+	</script>
+</body>
+
+</html>
