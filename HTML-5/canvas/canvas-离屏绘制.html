@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Canvas-动画</title>
+    <title>Canvas-离屏绘制</title>
     <style>
         canvas{
             background-color:lightblue;
@@ -16,14 +16,34 @@
     <canvas id="mCanvas" width="400px" height="400px">
         您的浏览器不支持Canvas
     </canvas>
+
+    <!-- 创建离屏canvas -->
+    <canvas id="offCanvas" width="400px" height="400px" style="display: none;">
+        您的浏览器不支持Canvas
+    </canvas>
     <script type="text/javascript">
     var canvas = document.getElementById('mCanvas');
     var ctx = canvas.getContext('2d');
+
+    //离屏canvas
+    var offCanvas = document.getElementById('offCanvas');
+    var offCtx = offCanvas.getContext('2d');
 
     var posx = 0,//x坐标起始点
         posy = 0,//y坐标起始点
         dir = 1,//正向/反向
         isMouseInRect = false;//是否鼠标进入焦点
+
+    //绘制背景
+    var drawALot = function() {
+        for (var i = 0; i < canvas.width; i += 10) {
+            for (var j = 0; j < canvas.height; j += 10) {
+                offCtx.beginPath();
+                offCtx.arc(i, j, 5, 0, 2 * Math.PI, true);
+                offCtx.stroke();
+            }
+        }
+    };
 
     //监听canvas鼠标移动事件
     canvas.onmousemove = function(e) {
@@ -46,6 +66,8 @@
         }
         //清空画布
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //拷贝离屏画布 的绘制内容
+        ctx.drawImage(offCanvas,0,0,offCanvas.width,offCanvas.height,0,0,offCanvas.width,offCanvas.height);
         //绘制新坐标的矩形
         ctx.fillRect(posx, posy, 50, 50);
         //判断是否到两边的位置， 改变绘制方向
@@ -56,6 +78,8 @@
         }
     }, 100);
 
+    //在离屏canvas上绘制背景背景
+    drawALot();
     </script>
 </body>
 
