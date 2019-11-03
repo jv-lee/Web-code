@@ -1,0 +1,30 @@
+{
+  "id": "1489212",
+  "name": "test",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "588390",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "1270511",
+      "name": "add",
+      "font_class": "27CIRCLE",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "2116292",
+      "name": "扫一扫",
+      "font_class": "richscan_icon",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    }
+  ]
+}

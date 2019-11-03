@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box-Sizing 属性</title>
+	<style type="text/css">
+		.div1{
+			width: 100px;
+			height: 100px;
+			background: rgba(255,0,0,1);
+		}
+		.div2{
+			box-sizing: content-box;
+			padding: 10px;
+			border: 10px solid yellow;
+			width: 100px;
+			height: 100px;
+			background: rgba(0,0,255,1);
+		}
+		.div3{
+			box-sizing: border-box;
+			padding: 10px;
+			border: 10px solid yellow;
+			width: 100px;
+			height: 100px;
+			background: rgba(0,255,0,1);
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+</body>
+</html>

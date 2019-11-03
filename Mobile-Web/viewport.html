@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=375">  固定移动设备宽度-->
+    <!-- 自动获取设备宽度 -->
+    <!-- <meta name="viewport" content="width=device-width">  -->
+    <!-- 设置初始缩放比例 =1 为不需要缩放， 直接按设备比例显示 等同于 device-width -->
+    <!-- <meta name="viewport" content="initial-scale=1"> -->
+    <!-- 兼容写法，使用不缩放及自动获取宽度 -->
+    <mate name="viewport" content="width=device-width,initial-scale=1">
+        <!-- 取消用户可缩放，避免不必要的错误显示 -->
+        <mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1,minimum-scale=1">
+            <title>viewport</title>
+            <style type="text/css">
+            .container {
+                width: 200px;
+                height: 100px;
+                background: red;
+            }
+            </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script type="text/javascript">
+    //获取视口宽度
+    var width = document.documentElement.clientWidth || window.innerWidth;
+
+    // 获取dpr 设备像素比
+    var dpr = window.devicePixelRatio;
+    </script>
+</body>
+
+</html>

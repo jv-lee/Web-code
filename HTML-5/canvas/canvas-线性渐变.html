@@ -19,12 +19,12 @@
 		var ctx = canvas.getContext('2d');
 
 		//创建线性对象， 起始点50,50  结束点150,150
-		var linear = ctx.createLinearGradient(50,50,150,150);
+		var linear = ctx.createLinearGradient(0,0,0,200);
 		//在百分之0(0)的位置从红色开始 渐变过渡到 百分之100(1) 的时候为蓝色
-		linear.addColorStop(0,'red');
+		linear.addColorStop(0.5,'red');
 		linear.addColorStop(1,'blue');
 		ctx.fillStyle = linear;
-		ctx.fillRect(0,0,200,200);
+		ctx.fillRect(100,100,200,200);
 
 		//创建径向渐变对象 第一个圆心位置400,150, 半径0 的一个圆； 第二个圆心位置400,150, 半径100 的一个圆 ， 其实就是不同颜色的圆大小不同来重叠渐变； 
 		var radial = ctx.createRadialGradient(400,150,0,400,150,100);

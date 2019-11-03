@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flex</title>
+    <style type="text/css">
+    body {
+        background: #ebebeb;
+    }
+
+    .box1 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .box2 {
+        display: inline-flex;
+        flex-direction: row-reverse;
+    }
+
+    .box1,
+    .box2 {
+        background: white;
+    }
+
+    .box1>div,
+    .box2>div {
+        margin: 10px;
+        background: yellow;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: blue;
+        font-size: 40px;
+        line-height: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+    </div>
+    <div class="box2">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+    </div>
+</body>
+
+</html>
