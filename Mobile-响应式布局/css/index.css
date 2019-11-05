@@ -1,23 +1,77 @@
---布局 start--*/
+/*--布局 start--*/
 
 /*header*/
-.header-container{
-	background-color: #fff;
-	border-bottom: 1px solid #dadada;
+.header-container {
+    background-color: #fff;
+    border-bottom: 1px solid #dadada;
 }
+
 .header-logo-container,
 .header-btn-container,
-.header-nav-container{
-	height: 64px;
+.header-nav-container {
+    height: 64px;
 }
-.header-btn-container{
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+
+.header-btn-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*nav*/
+.nav-container {
+    position: relative;
+    top: -1px;
+    overflow: hidden;
+    height: 0;
+    border-bottom: 1px solid #dadada;
+    transition: height 0.5s;
+}
+
+.nav-container-extended {
+    /*点击展开菜单开关 样式*/
+    top: 0;
+    height: 201px;
+}
+
+/*slider*/
+.slider-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.slider-container .row {
+    background-color: #f5f5f5;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+
+    /*修改未剧中显示 ， 单独这是断点的样式 调整至剧中*/
+    .slider-container .row {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.slider-text-container {
+    padding: 20px 0;
+}
+
+/*footer-nav*/
+.footer-nav-container {
+    margin-top: 30px;
+}
+
+/*footer*/
+.footer-container {
+    margin-top: 30px;
+    background: rgba(62, 61, 63, 1);
 }
 
 /*--布局 end--*/
@@ -29,29 +83,51 @@
 /*--组件 start--*/
 
 /*btn-toggle*/
-.btn-toggle{
-	padding: 10px;
-	background-color: transparent;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
+.btn-toggle {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-.btn-toggle:hover{
-	background-color: #f9f9f9;
+
+.btn-toggle:hover {
+    background-color: #f9f9f9;
 }
-.btn-toggle-bar{
-	display: block;
-	width: 24px;
-	height: 4px;
-	background-color: #363636;
-	border-radius: 2px;
+
+.btn-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 4px;
+    background-color: #363636;
+    border-radius: 2px;
 }
-/*必须是兄弟元素 且前面有一个兄弟元素， 固除了第一个都会增加margin-top*/
-.btn-toggle-bar + .btn-toggle-bar{
-	margin-top: 4px;
+
+.btn-toggle-bar+.btn-toggle-bar {
+    /*必须是兄弟元素 且前面有一个兄弟元素， 固除了第一个都会增加margin-top*/
+    margin-top: 4px;
 }
-.btn-toggle:hover .btn-toggle-bar{
-	background-color: #1428a0;
+
+.btn-toggle:hover .btn-toggle-bar {
+    background-color: #1428a0;
+}
+
+/*btn-rounded*/
+.btn-rounded {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 30px;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-rounded:hover {
+    background-color: #000;
+    color: #fff;
 }
 
 /*--组件 end--*/
@@ -64,8 +140,133 @@
 /*--内容 start--*/
 
 /*header*/
-.header-logo{
+.header-logo {
+    display: flex;
+    align-items: center;
+    width: 136px;
+    height: 100%;
+}
 
+.header-nav,
+.header-nav-item,
+.header-nav-link {
+    /*设置导航每一项高度填充*/
+    height: 100%;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+}
+
+.header-nav-item {
+    margin-left: 24px;
+}
+
+.header-nav-item:first-child {
+    margin-left: 0;
+}
+
+.header-nav-link {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+/*nav*/
+.nav-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+/*slider*/
+.slider-title,
+.slider-subtitle,
+.slider-btns {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.slider-title {
+    font-size: 30px;
+}
+
+.slider-subtitle {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.slider-btns .btn-rounded {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.slider-btns .btn-rounded:last-child {
+    margin-right: 0;
+}
+
+/*content*/
+.content-item:last-child {
+    margin-top: 30px;
+}
+
+/*footer-nav*/
+.footer-nav-item ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav-item li {
+    font-size: 12px;
+    color: #0f0f0f;
+    margin-top: 10px;
+}
+
+.footer-nav-item li:first-child {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+/*footer*/
+.footer-item {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-item:nth-child(4) {
+    margin-top: 0px;
+    display: flex;
+}
+
+.footer-item:nth-child(5) {
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.footer-item:last-child {
+    color: #000;
+    margin-top: 0;
+}
+
+@media (min-width: 768px) {
+    .footer-item:nth-child(4) {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 /*--内容 end--
