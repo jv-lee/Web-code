@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<title>简单适配原理</title>
+	<style>
+		*{
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.header-container{
+			width: 100%;
+			height: 2.5rem;
+			background-color: rgba(222,24,27,0.9);
+		}
+		.main-container{
+			/*上下设置2.5rem 为了内容不被toobar，tabbar遮盖*/
+			padding: 2.5rem 0;
+			background: #eee;
+		}
+		.slider-container{
+			height: 9.15rem;
+			background: green;
+		}
+		.nav-container{
+			height: 8.475rem;
+			background: blue;
+		}
+		.recommend-container{
+			height: 50.0rem;
+			background: pink;
+		}
+		.tabbar-container{
+			height: 2.5rem;
+			background: #fff;
+		}
+		.header-container,
+		.tabbar-container{
+			position: fixed;
+			left: 0;
+			z-index: 1000;
+			width: 100%;
+		}
+		.header-container{
+			top: 0;
+		}
+		.tabbar-container{
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<header class="header-container"></header>
+	
+	<div class="main-container">
+		<div class="slider-container"></div>
+
+		<div class="nav-container"></div>
+
+		<div class="recommend-container"></div>
+	</div>
+
+	<div class="tabbar-container"></div>
+
+	<script src="js/simple-rem.js"></script>
+</body>
+</html>

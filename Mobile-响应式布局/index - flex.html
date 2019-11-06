@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>响应式布局 - flex</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/grid-flex.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- 结构 按手机优先  超小屏开始(手机屏幕) -->
+    <header class="header-container">
+        <div class="container">
+            <div class="row">
+                <!-- 内容 默认 logo 占8个格子 ， 中屏占3个格子 -->
+                <div class="header-logo-container col-8 col-md-3">
+                    <a class="header-logo" href="./index.html"><img src="img/logo.svg"></a>
+                </div>
+                <!-- 默认占4个各自 中屏不显示 -->
+                <div class="header-btn-container col-4 d-md-none">
+                    <button type="button" class="btn-toggle" id="btn-toggle">
+                        <!-- 自行绘制btn的图像  -->
+                        <span class="btn-toggle-bar"></span>
+                        <span class="btn-toggle-bar"></span>
+                        <span class="btn-toggle-bar"></span>
+                    </button>
+                </div>
+                <!-- 默认不显示 中屏显示 站9个格子 -->
+                <div class="header-nav-container col-md-9 d-none d-md-block">
+                    <ul class="header-nav">
+                        <li class="header-nav-item">
+                            <a href="###" class="header-nav-link">手机&amp;平板</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="###" class="header-nav-link">电视&amp;影音</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="###" class="header-nav-link">生活家电</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="###" class="header-nav-link">电脑/办公/存储</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="###" class="header-nav-link">网上商城</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 超小屏幕才显示 - 指手机  手机导航按钮 按下后的导航菜单-->
+    <nav class="nav-container d-md-none" id="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="###" class="nav-link">手机&amp;平板</a></li>
+                <li class="nav-item"><a href="###" class="nav-link">电视&amp;影音</a></li>
+                <li class="nav-item"><a href="###" class="nav-link">生活家电</a></li>
+                <li class="nav-item"><a href="###" class="nav-link">电脑/办公/存储</a></li>
+                <li class="nav-item"><a href="###" class="nav-link">网上商城</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 推荐区域 -->
+    <div class="slider-container">
+        <div class="container">
+            <div class="row">
+                <!-- 第一项内容是 文字区域  小屏幕上占满一列 ， 中屏以上开始占满5列，且从左至右移动7位 -->
+                <div class="slider-text-container col-md-5 col-md-order-last">
+                    <h3 class="slider-title">Galaxy S9 | S9+</h3>
+                    <h4 class="slider-subtitle">冰蓝 焕新上市</h4>
+                    <div class="slider-btns">
+                        <a href="###" class="btn-rounded">了解更多</a>
+                        <a href="###" class="btn-rounded">立即购买</a>
+                    </div>
+                </div>
+                <!-- 第二项内容是第一张图片 下屏幕上占满一列 ， 中屏以上开始占满7列，且从右推至左移动5位置 -->
+                <div class="col-md-7 col-md-order-first">
+                    <img src="img/1.png" alt="cellphone">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 内容区域 -->
+    <div class="content-container">
+        <div class="container">
+            <div class="row">
+                <div class="content-item col-md-4">
+                    <img src="img/2-1.jpg" alt="cellphone">
+                </div>
+                <div class="content-item col-md-4">
+                    <img src="img/2-2.jpg" alt="cellphone">
+                </div>
+                <div class="content-item col-md-4">
+                    <img src="img/2-3.jpg" alt="cellphone">
+                </div>
+                <div class="content-item col-md-12">
+                    <span>* Galaxy A9s具备后置四摄功能，Galaxy A6s为后置双摄产品。<br></span>
+                    <span>* Galaxy s9 | s9+广告中手机背面图案是Galaxy S9+ , Galaxy S9位背面单摄像头产品。<br></span>
+                    <span>* 本网站的产品图片以及型号、数据、功能、性能、规格参数等仅供参考，三星右可能对上述内容进行该进，具体信息请参照产品实物、产品说明书。<br></span>
+                    <span>* 除非经特殊情况，本网站中所设计的数据均为三星内部测试结果，涉及的对比均为三星产品相比较。<br></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 站点导航区 -->
+    <div class="footer-nav-container">
+        <div class="container">
+            <div class="row">
+                <div class="footer-nav-item col-6 col-md">
+                    <ul>
+                        <li>网站地图</li>
+                        <li>关于三星</li>
+                        <li>投资者关系</li>
+                        <li>新闻中心</li>
+                        <li>人才招聘</li>
+                        <li>三星开发者网站</li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item col-6 col-md">
+                    <ul>
+                        <li>网站地图</li>
+                        <li>关于三星</li>
+                        <li>投资者关系</li>
+                        <li>新闻中心</li>
+                        <li>人才招聘</li>
+                        <li>三星开发者网站</li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item col-6 col-md">
+                    <ul>
+                        <li>网站地图</li>
+                        <li>关于三星</li>
+                        <li>投资者关系</li>
+                        <li>新闻中心</li>
+                        <li>人才招聘</li>
+                        <li>三星开发者网站</li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item col-6 col-md">
+                    <ul>
+                        <li>网站地图</li>
+                        <li>关于三星</li>
+                        <li>投资者关系</li>
+                        <li>新闻中心</li>
+                        <li>人才招聘</li>
+                        <li>三星开发者网站</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<footer class="footer-container">
+		<div class="container">
+			<div class="row">
+				<div class="footer-item col-3 col-md-2">
+					<span>服务条款</span>
+				</div>
+				<div class="footer-item col-3 col-md-2">
+					<span>重要声明</span>
+				</div>
+				<div class="footer-item col-3 col-md-2">
+					<span>隐私政策</span>
+				</div>
+				<div class="footer-item col-12 col-md-6">
+					<span>中国/中文</span>
+				</div>
+				<div class="footer-item col-12">
+					<span>此网页最好使用IE10浏览器，Chrome浏览器，Safar浏览器或其他新式浏览器进行浏览</span>
+				</div>
+				<div class="footer-item col-12">
+					<span>京ICP备05068163号 京公安网备1101050611756号</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <script type="text/javascript">
+    var nav = document.getElementById('nav');
+    var navExtendedClassName = 'nav-container-extended';
+
+    document.getElementById('btn-toggle').onclick = function() {
+        //包含打开样式
+        if (nav.classList.contains(navExtendedClassName)) {
+            nav.classList.remove(navExtendedClassName);
+        } else {
+            nav.classList.add(navExtendedClassName);
+        }
+    };
+    </script>
+</body>
+
+</html>
