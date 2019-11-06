@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<style type="text/css">
+		.box{
+			width: 150px;
+			height: 150px;
+			background: red;
+			margin: 20px auto;
+		}
+	</style>
+	<title>touch事件基础</title>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript">
+		var boxNode = document.querySelector('.box');
+
+		boxNode.addEventListener('touchstart',handleStart,false);
+		boxNode.addEventListener('touchmove',handleMove,false);
+		boxNode.addEventListener('touchend',handleEnd,false);
+
+		function handleStart(ev){
+			console.log('touchstart',ev);
+			//1.所有的触摸点 ， 2.目标触摸点 ， 3.发生变化的触摸点
+			console.log(ev.touches,ev.targetTouches,ev.changedTouches);
+			var touch = ev.changedTouches[0];
+			console.log(touch);
+		}
+		function handleMove(ev) {
+		}
+		function handleEnd(ev) {
+		}
+		function handleCancel(ev) {
+		}
+	</script>
+</body>
+</html>
