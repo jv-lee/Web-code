@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<title>单指拖拽</title>
+	<style>
+		.backtop{
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			width: 45px;
+			height: 45px;
+			line-height: 45px;
+			text-align: center;
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 50%;
+			color: #fff;
+			font-size: 30px;
+			-webkit-tap-highlight-color:transparent;
+			/*开启GPU加速*/
+			transform: translate3d(x,y,0);
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="backtop" class="backtop">&uarr;</a>
+	<script>
+		//拖拽函数
+		function drag(el,options){
+			options.x = typeof options.x !== 'undefined' ? options.x : true;
+			options.y = typeof options.y !== 'undefined' ? options.y : false;
+			options.outRange = typeof options.outRange !== "undefined" ? options.outRange: false;
+
+			if (!options.x && !options.y)return;
+
+			var elemWidth = el.offsetWidth;//元素的宽度
+			var elemHeight = el.offsetHeight;//元素的高度
+			var screenWidth = document.documentElement.clientWidth || window.innerWidth;//屏幕可视宽度
+			var screenHeight = document.documentElement.clientHeight || window.innerHeight;//屏幕可视高度
+
+			const elemLeft = el.offsetLeft;                         // 元素左边距离屏幕左边的距离
+	        const elemRight = screenWidth - elemWidth - elemLeft;     // 元素右边距离屏幕右边的距离
+	        const elemTop = el.offsetTop;                           // 元素顶边距离屏幕顶边的距离
+	        const elemBottom = screenHeight - elemHeight - elemTop;   // 元素底边距离屏幕底边的距离
+
+			//当前元素的位置，因为通过translate3d移动 所以初始位置是0，0
+			var curPoint = {x:0,y:0};
+			var startPoint = {};//触摸起始位置
+			var diffPoint = {};
+			var movePoint = {x:0,y:0};
+			var isTouchMove = false;//
+
+			el.addEventListener('touchstart',handleStart,false);
+			el.addEventListener('touchmove',handleMove,false);
+			el.addEventListener('touchend',handleEnd,false);
+
+			function handleStart(ev){
+				//记录按下坐标
+				var touch = ev.changedTouches[0];
+				startPoint.x = touch.pageX;
+				startPoint.y = touch.pageY;
+			}
+			function handleMove(ev){
+				ev.preventDefault(); //阻止默认行为，避免有滚动条时移动元素导致滚动条滚动
+				isTouchMove = true; // 如果触发了 touchmove 事件，则将标记改为 true
+				var touch = ev.changedTouches[0];
+
+				//计算触摸移动位置与触摸起始位置之间的 x y 差值
+				diffPoint.x = touch.pageX - startPoint.x;
+				diffPoint.y = touch.pageY - startPoint.y;
+
+				// 如果允许 x、y 方向移动，则将移动的位置复制给 movePoint
+	            // 移动位置 = 触摸移动位置与触摸起始位置的差值 + 元素当前位置
+	            // 如果设置 outRange = true 则不允许移出可视区域
+	            let moveX = diffPoint.x + curPoint.x; 			 // 元素 X 轴方向移动的坐标
+	            let moveY = diffPoint.y + curPoint.y;  		     // 元素 y 轴方向移动的坐标
+	            let elemLeftDis = elemLeft + moveX;              // 元素距离左侧的距离
+	            let elemRightDis = elemRight - moveX;            // 元素距离右侧的距离
+	            let elemTopDis = elemTop + moveY;                // 元素距离左侧的距离
+	            let elemBottomDis = elemBottom - moveY;          // 元素距离右侧的距离
+
+	            // 如果元素任意边距离屏幕对应边的距离 <= 0 则将对应的移动坐标直接改为对应边距离屏幕的距离，避免元素超出屏幕范围
+	            if (options.x) {//是否可以x轴移动
+	                if (options.outRange) {//是否可以超出x轴可视距离
+	                    movePoint.x = moveX;
+	                } else {
+	                	if (elemLeftDis <= 0) {
+	                        movePoint.x = -elemLeft;
+	                    } else if(elemRightDis <= 0) {
+	                        movePoint.x = elemRight;
+	                    } else {
+	                        movePoint.x = moveX;
+	                    }
+	                }
+	            }
+	            if (options.y) {//是否可以y轴移动
+	                if (options.outRange) {//是否可以超出y轴可视区域
+	                    movePoint.y = moveY;
+	                } else {
+	                    if (elemTopDis <= 0) {
+	                        movePoint.y = -elemTop;
+	                    } else if(elemBottomDis <= 0) {
+	                        movePoint.y = elemBottom;
+	                    } else {
+	                        movePoint.y = moveY;
+	                    }
+	                }
+	            }
+
+				move(el,movePoint.x,movePoint.y);
+			}
+			function handleEnd(ev){
+				if (!isTouchMove)return;
+				var touch = ev.changedTouches[0];
+
+				//结束时将当前位置更新 用当前位置 减去起始位置 加上原来的位置 获取到最新位置的坐标
+				curPoint.x += touch.pageX - startPoint.x;
+				curPoint.y += touch.pageY - startPoint.y;
+
+				isTouchMove = false;
+			}
+
+			function move(el,x,y){
+				x = x || 0;
+				y = y || 0;
+				el.style.transform = 'translate3d('+x+'px,'+y+'px,0)';
+			};
+
+		}
+	</script>
+	<script>
+		var backtop = document.getElementById('backtop');
+
+		drag(backtop,{
+			x:true,
+			y:true,
+			outRange: false //是否可以拖出可视窗口
+		});
+	</script>
+</body>
+</html>
