@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>Slider Test</title>
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
+</head>
+
+<body>
+    <div class="slider" id="slider">
+        <div class="slider-item-container">
+            <div class="slider-item">
+                <a href="###" class="slider-link">
+                    <img src="img/1.jpg" alt="slider" class="slider-img">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="###" class="slider-link">
+                    <img src="img/2.jpg" alt="slider" class="slider-img">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="###" class="slider-link">
+                    <img src="img/3.jpg" alt="slider" class="slider-img">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="###" class="slider-link">
+                    <img src="img/4.jpg" alt="slider" class="slider-img">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="###" class="slider-link">
+                    <img src="img/5.jpg" alt="slider" class="slider-img">
+                </a>
+            </div>
+        </div>
+<!--         <div class="slider-indicator-container">
+        	<span class="slider-indicator"></span>
+        	<span class="slider-indicator"></span>
+        	<span class="slider-indicator"></span>
+        	<span class="slider-indicator"></span>
+        	<span class="slider-indicator"></span>
+        </div> -->
+    </div>
+
+	<button id="prev">prev</button>
+	<button id="next">next</button>
+	<script type="text/javascript">
+		function Slider(elem,options){
+			var defaults = {
+				initIndex:0,
+				speed:300,
+				hasIndicator:false
+			};
+			this.options = {}; 
+			this.options = typeof options.initIndex !== 'undefined' ? options.initIndex : defaults.initIndex;
+			this.options = typeof options.speed !== 'undefined' ? options.speed : defaults.speed;
+			this.options = typeof options.hasIndicator !== 'undefined' ? options.hasIndicator : defaults.hasIndicator;
+
+			this.elem = elem;
+			// 获取slider元素，获取容器中所有的子元素
+			this.itemContainer = elem.querySelector('.slider-item-container');
+
+			//获取当前banner容器中 所有的子元素 判断个数
+			this.items = this.itemContainer.children;
+			//获取item的宽度
+			this.distancePerSlider = this.items[0].offsetWidth;
+
+			//设置最小下标 ， 最大下标
+			this.minIndex = 0;
+			this.maxIndex = this.items.length - 1;
+
+			//设置当前下标
+			this.index = this._adjustIndex(this.options.initIndex);
+
+			this.move(this.getDistanceByIndex(this.index));
+
+			if(this.options.hasIndicator){
+				this._createIndicators();
+				this._setIndicatorActive(this.index);
+			}
+		}
+
+
+		Slider.prototype.to = function(index){};
+		Slider.prototype.prev = function(){};
+		Slider.prototype.next = function(){};
+		Slider.prototype._adjustIndex = function(index){};
+		Slider.prototype.move = function(index){};
+		Slider.prototype.getDistanceByIndex = function(index){};
+		Slider.prototype._createIndicators = function(){};
+		Slider.prototype._setIndicatorActive = function(){};
+	</script>
+    <script type="text/javascript">
+    	var slider = new Slider(document.getElementById('slider'),{
+    		initIndex:2,
+    		speed:300,
+    		hasIndicator:true
+    	});
+
+    	document.getElementById('prev').addEventListener('click',function(){
+    		slider.prev();
+    	});
+    	document.getElementById('next').addEventListener('click',function(){
+    		slider.next();
+    	});
+    </script>
+</body>
+
+</html>
