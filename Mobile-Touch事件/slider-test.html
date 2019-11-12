@@ -56,9 +56,9 @@
 				hasIndicator:false
 			};
 			this.options = {}; 
-			this.options = typeof options.initIndex !== 'undefined' ? options.initIndex : defaults.initIndex;
-			this.options = typeof options.speed !== 'undefined' ? options.speed : defaults.speed;
-			this.options = typeof options.hasIndicator !== 'undefined' ? options.hasIndicator : defaults.hasIndicator;
+			this.options.initIndex = typeof options.initIndex !== 'undefined' ? options.initIndex : defaults.initIndex;
+			this.options.speed = typeof options.speed !== 'undefined' ? options.speed : defaults.speed;
+			this.options.hasIndicator = typeof options.hasIndicator !== 'undefined' ? options.hasIndicator : defaults.hasIndicator;
 
 			this.elem = elem;
 			// 获取slider元素，获取容器中所有的子元素
@@ -77,22 +77,55 @@
 			this.index = this._adjustIndex(this.options.initIndex);
 
 			this.move(this.getDistanceByIndex(this.index));
-
 			if(this.options.hasIndicator){
 				this._createIndicators();
 				this._setIndicatorActive(this.index);
 			}
 		}
 
+		Slider.prototype.to = function(index){
+            this.index = index;
+            this._setTransitionSpeed(this.options.speed);
+            this.move(this.getDistanceByIndex(this.index));
+        };
+		Slider.prototype.prev = function(){
+            this.to(this.index - 1);
+        };
+		Slider.prototype.next = function(){
+            this.to(this.index + 1);
+        };
+		Slider.prototype._adjustIndex = function(index){
+            if (index < this.minIndex) {
+                index = this.minIndex;
+            }else if(index > this.maxIndex){
+                index = this.maxIndex;
+            }
+            return index;
+        };
+		Slider.prototype.move = function(distance){
+            this.itemContainer.style.transform = 'translate3d('+distance+'px,0,0)';
+        };
+		Slider.prototype.getDistanceByIndex = function(index){
+            return -index * this.distancePerSlider;
+        };
+		Slider.prototype._createIndicators = function(){
+            var indicatorContainer = document.createElement('div');
+            var html = '';
+            indicatorContainer.className = 'slider-indicator-container';
+            for (var i = 0; i < this.maxIndex; i++) {
+                html += '<span class="slider-indicator"></span>'
+            }
+            indicatorContainer.innerHTML = html;
+            this.elem.appendChild(indicatorContainer);
 
-		Slider.prototype.to = function(index){};
-		Slider.prototype.prev = function(){};
-		Slider.prototype.next = function(){};
-		Slider.prototype._adjustIndex = function(index){};
-		Slider.prototype.move = function(index){};
-		Slider.prototype.getDistanceByIndex = function(index){};
-		Slider.prototype._createIndicators = function(){};
-		Slider.prototype._setIndicatorActive = function(){};
+        };
+		Slider.prototype._setIndicatorActive = function(index){
+            this.indicators = this.indicators || this.elem.querySelectorAll('.slider-indicator');
+            for (var i = 0; i < this.indicators.length; i++) {
+                this.indicators[i].classList.remove('slider-indicator-active');
+            }
+            this.indicators[index].classList.add('slider-indicator-active');
+        };
 	</script>
     <script type="text/javascript">
     	var slider = new Slider(document.getElementById('slider'),{

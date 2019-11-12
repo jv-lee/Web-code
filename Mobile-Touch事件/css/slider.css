@@ -27,6 +27,7 @@
     	}
     	.slider-item-container{
     		display: flex;
+            transition: transform 0;
     	}
     	.slider-item{
     		flex-shrink: 0;
