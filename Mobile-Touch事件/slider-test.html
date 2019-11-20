@@ -46,100 +46,61 @@
         </div> -->
     </div>
 
-	<button id="prev">prev</button>
-	<button id="next">next</button>
-	<script type="text/javascript">
-		function Slider(elem,options){
-			var defaults = {
-				initIndex:0,
-				speed:300,
-				hasIndicator:false
-			};
-			this.options = {}; 
-			this.options.initIndex = typeof options.initIndex !== 'undefined' ? options.initIndex : defaults.initIndex;
-			this.options.speed = typeof options.speed !== 'undefined' ? options.speed : defaults.speed;
-			this.options.hasIndicator = typeof options.hasIndicator !== 'undefined' ? options.hasIndicator : defaults.hasIndicator;
-
-			this.elem = elem;
-			// 获取slider元素，获取容器中所有的子元素
-			this.itemContainer = elem.querySelector('.slider-item-container');
-
-			//获取当前banner容器中 所有的子元素 判断个数
-			this.items = this.itemContainer.children;
-			//获取item的宽度
-			this.distancePerSlider = this.items[0].offsetWidth;
-
-			//设置最小下标 ， 最大下标
-			this.minIndex = 0;
-			this.maxIndex = this.items.length - 1;
-
-			//设置当前下标
-			this.index = this._adjustIndex(this.options.initIndex);
-
-			this.move(this.getDistanceByIndex(this.index));
-			if(this.options.hasIndicator){
-				this._createIndicators();
-				this._setIndicatorActive(this.index);
-			}
-		}
-
-		Slider.prototype.to = function(index){
-            this.index = index;
-            this._setTransitionSpeed(this.options.speed);
-            this.move(this.getDistanceByIndex(this.index));
-        };
-		Slider.prototype.prev = function(){
-            this.to(this.index - 1);
-        };
-		Slider.prototype.next = function(){
-            this.to(this.index + 1);
-        };
-		Slider.prototype._adjustIndex = function(index){
-            if (index < this.minIndex) {
-                index = this.minIndex;
-            }else if(index > this.maxIndex){
-                index = this.maxIndex;
-            }
-            return index;
-        };
-		Slider.prototype.move = function(distance){
-            this.itemContainer.style.transform = 'translate3d('+distance+'px,0,0)';
-        };
-		Slider.prototype.getDistanceByIndex = function(index){
-            return -index * this.distancePerSlider;
-        };
-		Slider.prototype._createIndicators = function(){
-            var indicatorContainer = document.createElement('div');
-            var html = '';
-            indicatorContainer.className = 'slider-indicator-container';
-            for (var i = 0; i < this.maxIndex; i++) {
-                html += '<span class="slider-indicator"></span>'
-            }
-            indicatorContainer.innerHTML = html;
-            this.elem.appendChild(indicatorContainer);
-
-        };
-		Slider.prototype._setIndicatorActive = function(index){
-            this.indicators = this.indicators || this.elem.querySelectorAll('.slider-indicator');
-            for (var i = 0; i < this.indicators.length; i++) {
-                this.indicators[i].classList.remove('slider-indicator-active');
-            }
-            this.indicators[index].classList.add('slider-indicator-active');
-        };
-	</script>
+<!-- 	<button id="prev">prev</button>
+	<button id="next">next</button> -->
+	<script type="text/javascript" src="js/hammer.min.js"></script>
+	<script type="text/javascript" src="js/slider.js"></script>
     <script type="text/javascript">
     	var slider = new Slider(document.getElementById('slider'),{
-    		initIndex:2,
-    		speed:300,
-    		hasIndicator:true
+    		initIndex:0, //从第几张幻灯片开始
+    		speed:300, //移动动画速度
+    		hasIndicator:true //是否显示指示器
     	});
 
-    	document.getElementById('prev').addEventListener('click',function(){
-    		slider.prev();
+    	// document.getElementById('prev').addEventListener('click',function(){
+    	// 	slider.prev();
+    	// });
+    	// document.getElementById('next').addEventListener('click',function(){
+    	// 	slider.next();
+    	// });
+    	var hammer = new Hammer(slider.getItemContainer());
+    	var isSwiping = false;
+    	//幻灯片根据手指移动而移动
+    	hammer.on('panmove',function(ev){
+    		//获取当前拖动值 + 当前下标元素距离父元素偏差值
+    		var distance = ev.deltaX + slider.getDistanceByIndex(slider.index);
+			slider.move(distance);
     	});
-    	document.getElementById('next').addEventListener('click',function(){
-    		slider.next();
+    	hammer.on('panend',function(ev){
+    		if(isSwiping)return;
+    		var distance = ev.deltaX + slider.getDistanceByIndex(slider.index);
+    		var index = getIndexByDistance(distance);
+    		slider.to(index);
     	});
+    	//左滑
+    	hammer.on('swipeleft',function(ev){
+    		isSwiping = true;
+    		slider.next(function(){
+    			isSwiping = false;
+    		});
+    	});
+    	//右滑
+    	hammer.on('swiperight',function(ev){
+    		isSwiping = true;
+    		slider.prev(function(){
+    			isSwiping = false;
+    		});
+    	});
+
+    	//根据容器的移动距离，来获取索引
+    	function getIndexByDistance(distance){
+    		if (distance > 0) {
+    			return 0;
+    		}else{
+    			//四舍五入当前下标 拖动1.2 = 1 , 1.6 = 2  2.3 = 2 2.7 = 3  (0.6 / 1 = 0.6 = 1)
+    			return Math.round(-distance / slider.getDistancePerSlider());
+    		}
+    	}
     </script>
 </body>
 
