@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>终端调试-服务-检测</title>
+	<style>
+		#item{
+			width: 1000px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="item"></div>
+	<script>
+		item.innerHTML = navigator.userAgent
+		var isMobile = navigator.userAgent.match(/android|iphone|ipad|ipod/i);//忽略大小写 ,是否包含设备系统信息字符任何一个
+		// if(isMobile){
+		// 	location.href = 'https://m.imooc.com';
+		// }else{
+		// 	location.href = 'https://www.imooc.com';
+		// }
+
+		if (isMobile) {
+			//Zepto
+			getMobileResource();
+		}else{
+			//jQuery
+			getPCResource();
+		}
+	</script>
+</body>
+</html>
