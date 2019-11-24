@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>移动端动画</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        transition: transform 1s;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="btn">start</button>
+    <div class="box" id="box"></div>
+    <script type="text/javascript">
+    var boxNode = document.getElementById('box'),
+        btnNode = document.getElementById('btn');
+    var dest = window.innerWidth - 100; //移动距离
+    btnNode.addEventListener('click', function() {
+        move(boxNode,dest);
+    }, false);
+
+    function move(elem,position){
+    	elem.style.transform = 'translate3d(' + position + 'px,0,0)';
+    }
+    </script>
+</body>
+
+</html>

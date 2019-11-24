@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Untitled Document</title>
+</head>
+<style type="text/css">
+header {
+    height: 100px;
+    background-color: red;
+}
+
+footer {
+    height: 100px;
+    background-color: blue;
+}
+
+/*支持flex布局的样式*/
+.flexbox header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexbox footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*不支持flex布局的样式*/
+.no-flexbox header {
+    line-height: 100px;
+    text-align: center;
+}
+
+.no-flexbox footer {
+    line-height: 100px;
+    text-align: center;
+}
+</style>
+
+<body>
+    <header>Header</header>
+    <footer>Footer</footer>
+    <!-- 处理css样式兼容问题， 是否兼容 flex 布局， 不支持会在html标签上添加 no-flexbox  , 支持则加上flexbox-->
+    <script type="text/javascript" src="js/modernizr-custom.js"></script>
+    <!-- 处理ie678 兼容h5标签 -->
+    <script type="text/javascript" src="js/html5shiv.min.js"></script>
+</body>
+
+</html>
