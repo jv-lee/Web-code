@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <style type="text/css">
+    	.nav-container{
+    		display: flex;
+    		position: fixed;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		width: 100%;
+    		height: 56px;
+    		background: white;
+    		z-index: 1000;
+    	}
+    	.nav-item{
+    		flex: 1;
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+    	}
+    	.nav-item-active{
+    		background: #ebebeb;
+    		color: orange;
+    	}
+
+    </style>
+</head>
+
+<body>
+	<!-- 添加swiper-no-swiping 可以取消手动滑动事件 -->
+    <div class="swiper-container swiper-no-swiping">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+    </div>
+    <div class="nav-container" id="nav-container">
+    		<div class="nav-item nav-item-active">首页</div>
+    		<div class="nav-item">收藏</div>
+    		<div class="nav-item">我的</div>
+    </div>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+    var swiper = new Swiper('.swiper-container',{
+    	onSlideChangeStart:function(swiper){
+
+    	}
+    });
+
+    var navNode = document.getElementById('nav-container');
+    var navItems =  document.querySelectorAll('.nav-item');
+    var itemLength = navItems.length;
+    var navItemWidth = navNode.offsetWidth / 3;
+
+    //添加tab点击事件
+    navNode.addEventListener('click',function(ev){
+    	var position = ev.clientX / navItemWidth;
+    	selectNavActive(parseInt(position));
+    },false);
+
+    //选中tab 移动视图方法
+    function selectNavActive(index){
+    	swiper.slideTo(index,0,false);
+    	for (var i = 0; i < itemLength; i++) {
+    		var node = navItems[i];
+    		if (i == index) {
+    			node.classList.add('nav-item-active');
+    		}else{
+				node.classList.remove('nav-item-active');
+    		}
+    	}
+    }
+
+    </script>
+</body>
+
+</html>
