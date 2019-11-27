@@ -15,21 +15,27 @@
         		'<div class="item-price">'+
         			'<div class="item-pre-price">$min_price_tip</div>'+
         		'</div>'+
-        		'<div class="item-others">'+
+        		'<div class="item-others one-line">'+
         			'$others'+
         		'</div>'+
         	'</div>' +
         '</div>';
 
         var listNode = $('.list-wrap');
+        var loading = $('.loading')[0];
 
+        var page = 0;
+        var isLoading = false;
       //获取商家数据
      function getList(){
+        page++;
+        isLoading = true;
      	$.get('../json/homelist.json',function(data){
      		console.log(data);
      		var list = data.data.poilist || [];
 
      		initContentList(list);
+            isLoading = false; 
      	});
      }
 
@@ -87,14 +93,37 @@
 
      		.replace('$monthNum',getMonthNum(item))
 
-			.replace('$others',getOthers(item));
+			.replace('$others',getOthers(item))
+
+            .replace('$wm_poi_sorce',new StarScore(item.wm_poi_score).getStars());
 
      		listNode.append(str);
      	});
      }
 
+     function addEvent(){
+        window.addEventListener('scroll',function(){
+            var clientHeight = document.documentElement.clientHeight;
+            var scrollHeight = document.body.scrollHeight;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            var proDis = 30;//提前量
+            //滑动到底部
+            if ((scrollTop + clientHeight) >= (scrollHeight - proDis)) {
+                //当前非正在加载状态， 且最多加载三页
+                if (!isLoading && page < 3) {
+                    getList();
+                    if (page == 3) {
+                        loading.innerHTML = "加载完成";
+                    }
+                }
+            }
+        });
+     }
+
     function init() {
     	getList();
+        addEvent();
     }
 
     init();

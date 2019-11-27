@@ -20,6 +20,14 @@
 	margin-bottom: 0.106667rem;
 }
 
+.loading{
+	padding-bottom: 0.266667rem;
+	padding-top: 0.266667rem;
+	font-size: 0.426667rem;
+	text-align: center;
+	color: #ccc;
+}
+
 .r-item-content{
 	display: flex;
 	padding-top: 0.4rem;
@@ -110,4 +118,5 @@
 	margin-left: 0.08rem;
 	height: 0.373333rem;
 	width: 6.133333rem;
+	margin-top: 0.026667rem;
 }
