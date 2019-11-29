@@ -24,11 +24,23 @@
     var $strTop = $(itemTopTemp);
     var $strBottom = $(itemBottomTemp);
 
+    //改变
+    function changeShippingPrice(str){
+        $strBottom.find('.shipping-fee').text(str);
+    }
+
+    //改变总价
+    function changeTotalPrice(str){
+        $strBottom.find('.total-price-span').text(str);
+    }
+
+    //渲染购物车顶部
     function renderItems() {
         //清除数据
         $strTop.find('.choose-item').remove();
 
         var list = window.food_spu_tags || [];
+        console.log(list);
         var temp =
             '<div class="choose-item">' +
             '<div class="item-name">$name</div>' +
@@ -42,7 +54,6 @@
         var totalPrice = 0;
         list.forEach(function(item) {
             item.spus.forEach(function(_item) {
-
                 //如果有选中菜品数量大于0 开始渲染数据
                 if (_item.chooseCount > 0) {
                     var price = _item.min_price * _item.chooseCount;
@@ -57,20 +68,82 @@
                         $strTop.append($row);
                 }
             });
+
+            //改变总价
+            changeTotalPrice(totalPrice);
+
+            //改变红点个数
+            changeDot();
         });
     }
 
-    function addClick() {
+    //渲染数量红点
+    function changeDot(){
+        //先获取所有的count元素
+        var $count = $strTop.find('.count');
+        var total = 0;
 
+        //便利获取所有count的值相加
+        for(var i = 0;i<$count.length;i++){
+            total += parseInt($($count[i]).text());
+        }
+
+        if (total > 0) {
+            $('.dot-num').show().text(total);
+        }else{
+            $('.dot-num').hide();
+        }
+    }
+
+    function addClick() {
+        $('.shop-bar').on('click','.shop-icon',function(){
+            //显示隐藏
+            $('.mask').toggle();
+            $strTop.toggle();
+        });
+        $strTop.on('click','.plus',function(e){
+            var $count = $(e.currentTarget).parent().find('.count');
+            $count.text(parseInt($count.text() || '0')+1);
+
+            var $item = $(e.currentTarget).parents('.choose-item').first();
+
+            var itemData = $item.data('itemData');
+
+            itemData.chooseCount = itemData.chooseCount + 1;
+
+            renderItems();
+
+            //找到当前的右侧详情的数据进行联动
+            $('.left-item.active').click();
+        });
+        $strTop.on('click','.minus',function(e){
+            var $count = $(e.currentTarget).parent().find('.count');
+
+            if ($count.text() == 0)return;
+            $count.text(parseInt($count.text() || '0')- 1);
+
+            var $item = $(e.currentTarget).parents('.choose-item').first();
+
+            var itemData = $item.data('itemData');
+
+            itemData.chooseCount = itemData.chooseCount - 1;
+
+            renderItems();
+
+            //找到当前的右侧详情的数据进行联动
+            $('.left-item.active').click();
+        });
     }
 
     function init(data) {
         $('.shop-bar').append($strTop);
         $('.shop-bar').append($strBottom);
+        addClick();
     }
     init();
 
     window.ShopBar = {
-        renderItems: renderItems
+        renderItems: renderItems,
+        changeShippingPrice:changeShippingPrice
     }
 })();

@@ -50,6 +50,21 @@
 
 	//添加选中商品item 加减操作
 	function addClick(){
+		$('.menu-item').on('click','.plus',function(e){
+			var $count = $(e.currentTarget).parent().find('.count');
+
+			$count.text(parseInt($count.text() || '0') + 1);
+
+			var $item =  $(e.currentTarget).parents('.menu-item').first();
+
+			var itemData = $item.data('itemData');
+
+			itemData.chooseCount = itemData.chooseCount + 1;
+
+			//每次修改条目后 刷新已购清单
+			window.ShopBar.renderItems();
+		});
+		
 		$('.menu-item').on('click','.minus',function(e){
 			var $count = $(e.currentTarget).parent().find('.count');
 
@@ -62,18 +77,9 @@
 			var itemData = $item.data('itemData');
 
 			itemData.chooseCount = itemData.chooseCount - 1;
-		});
 
-		$('.menu-item').on('click','.plus',function(e){
-			var $count = $(e.currentTarget).parent().find('.count');
-
-			$count.text(parseInt($count.text() || '0') + 1);
-
-			var $item =  $(e.currentTarget).parents('.menu-item').first();
-
-			var itemData = $item.data('itemData');
-
-			itemData.chooseCount = itemData.chooseCount + 1;
+			//每次修改条目后 刷新已购清单
+			window.ShopBar.renderItems();			
 		});
 	}
 

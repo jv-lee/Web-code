@@ -27,14 +27,11 @@
             var $target = $(str);
             $target.data('itemData',item);
 
-            //默认首项选中加载数据
-            if (index == 0) {
-                $target.addClass('active');
-                window.Right.refresh(item);
-            }
-
             leftBarInnerNode.append($target);
         });
+        
+        //默认首项选中加载数据
+        $('.left-item').first().click();
     }
     
     //请求数据绘制列表                                
@@ -44,6 +41,8 @@
                 //数据进行挂载
                 window.food_spu_tags = data.data.food_spu_tags || [];
                 initContentList(window.food_spu_tags);
+
+                window.ShopBar.changeShippingPrice(data.data.poi_info.shipping_fee || 0);
     	});
     }
 
