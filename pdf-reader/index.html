@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+        position: relative;
+    }
+
+    .loading {
+        width: 100%;
+        height: 100%;
+        background: url(loading.gif) no-repeat center;
+        position: absolute;
+        left: 0%;
+        top: 0%;
+    }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.min.js"></script>
+    <script type="text/javascript">
+    var PDF_PATH = "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf";
+    // var PDF_PATH = "./compressed.tracemonkey-pldi-09.pdf";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.worker.min.js";
+
+    function createPage(viewport) {
+        var container = document.createElement("div");
+        container.className = "container";
+        container.width = viewport.width;
+        container.height = viewport.height;
+
+        var loading = document.createElement("div");
+        loading.className = "loading";
+
+        var canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        container.appendChild(canvas);
+        container.appendChild(loading);
+
+        document.body.appendChild(container);
+        return canvas;
+    }
+
+    function buildPage(page, index) {
+        page.then(function(page) {
+            var viewport = page.getViewport({ scale: 2.0 });
+            var canvas = createPage(viewport);
+            var ctx = canvas.getContext('2d');
+
+            page.render({
+                canvasContext: ctx,
+                viewport: viewport
+            }).promise.then(function() {
+                var loadings = document.body.getElementsByClassName('loading');
+                var loading = loadings[index];
+                loading.style.display = "none";
+            });
+        });
+    }
+
+    pdfjsLib.getDocument({ url: PDF_PATH }).promise.then(function(pdf) {
+        // pdfjsLib.getDocument({data:PDF_PATH}).promise.then(function(pdf){
+        for (var i = 1; i <= pdf.numPages; i++) {
+            buildPage(pdf.getPage(i), i - 1);
+        }
+
+    }, function(error) {
+        console.log(error);
+    });
+    </script>
+</body>
+
+</html>

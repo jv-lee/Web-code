@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>首页</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-	<script src="../lib/flexible.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" href="../lib/reset.css">
-	<link rel="stylesheet" type="text/css" href="./header/header.css">
-	<link rel="stylesheet" type="text/css" href="./searchBar/searchBar.css">
-	<link rel="stylesheet" type="text/css" href="./category/category.css">
-	<link rel="stylesheet" type="text/css" href="./contentList/contentList.css">
-	<link rel="stylesheet" type="text/css" href="./starScore/starScore.css">
-	<link rel="stylesheet" type="text/css" href="../common/bottomBar/bottomBar.css">
+    <title>首页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <script src="../lib/flexible.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" type="text/css" href="./header/header.css">
+    <link rel="stylesheet" type="text/css" href="./searchBar/searchBar.css">
+    <link rel="stylesheet" type="text/css" href="./category/category.css">
+    <link rel="stylesheet" type="text/css" href="./contentList/contentList.css">
+    <link rel="stylesheet" type="text/css" href="./starScore/starScore.css">
+    <link rel="stylesheet" type="text/css" href="../common/bottomBar/bottomBar.css">
 </head>
+
 <body>
-	<!-- 头部开始 -->
-	<div class="header">
-		<div class="search-bar">
-			<div class="bar-location">
-				<div class="location-icon"></div>
-				<div class="location-text">深圳市</div>
-				<div class="location-arrow"></div>
-			</div>
-			<div class="search-btn">
-				<p class="place-holder">鸡翅</p>
-			</div>
-		</div>
-		<img src="https://app.nihaoshijie.com.cn/upload/bannertemp.e8a6fa63.jpg" alt="" class="header-img">
-	</div>
-	<!-- 头部结束 -->
-
-	<!-- 类目开始-->
-	<div class="category-content clearfix"></div>
-	<!-- 类目结束 -->
-
-	<!-- 商家列表开始 -->
-	<div class="list-content">
-		<h4 class="list-title">
-			<span class="title-line"></span>
-			<span>附近商家</span>
-			<span class="title-line"></span>
-		</h4>
-		<div class="list-wrap"></div>
-		<div class="loading">加载中</div>
-		
-	</div>
-	<!-- 商家列表结束 -->
-
-	<!-- 底部栏开始 -->
-	<div class="bottom-bar"></div>
-	<!-- 底部栏结束 -->
-
-	<script type="text/javascript" src="../lib/zepto.min.js"></script>
-	<script type="text/javascript" src="./category/categorys.js"></script>
-	<script type="text/javascript" src="./starScore/starScore.js"></script>
-	<script type="text/javascript" src="../common/bottomBar/bottomBar.js"></script>
-	<script type="text/javascript" src="./contentList/contentList.js"></script>
+    <!-- 头部开始 -->
+    <div class="header">
+        <div class="search-bar">
+            <div class="bar-location">
+                <div class="location-icon"></div>
+                <div class="location-text">深圳市</div>
+                <div class="location-arrow"></div>
+            </div>
+            <div class="search-btn">
+                <p class="place-holder">鸡翅</p>
+            </div>
+        </div>
+        <img src="https://app.nihaoshijie.com.cn/upload/bannertemp.e8a6fa63.jpg" alt="" class="header-img">
+    </div>
+    <!-- 头部结束 -->
+    <!-- 类目开始-->
+    <div class="category-content clearfix"></div>
+    <!-- 类目结束 -->
+    <!-- 商家列表开始 -->
+    <div class="list-content">
+        <h4 class="list-title">
+            <span class="title-line"></span>
+            <span>附近商家</span>
+            <span class="title-line"></span>
+        </h4>
+        <div class="list-wrap"></div>
+        <div class="loading">加载中</div>
+    </div>
+    <!-- 商家列表结束 -->
+    <!-- 底部栏开始 -->
+    <div class="bottom-bar"></div>
+    <!-- 底部栏结束 -->
+    <script type="text/javascript" src="../lib/zepto.min.js"></script>
+    <script type="text/javascript" src="./category/categorys.js"></script>
+    <script type="text/javascript" src="./starScore/starScore.js"></script>
+    <script type="text/javascript" src="../common/bottomBar/bottomBar.js"></script>
+    <script type="text/javascript" src="./contentList/contentList.js"></script>
+    <script type="text/javascript">
+    (function () {
+   var ie = !!(window.attachEvent && !window.opera);
+   var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+   var fn = [];
+   var run = function () { for (var i = 0; i < fn.length; i++) fn[i](); };
+   var d = document;
+   d.ready = function (f) {
+      if (!ie && !wk && d.addEventListener)
+      return d.addEventListener('DOMContentLoaded', f, false);
+      if (fn.push(f) > 1) return;
+      if (ie)
+         (function () {
+            try { d.documentElement.doScroll('left'); run(); }
+            catch (err) { setTimeout(arguments.callee, 0); }
+         })();
+      else if (wk)
+      var t = setInterval(function () {
+         if (/^(loaded|complete)$/.test(d.readyState))
+         clearInterval(t), run();
+      }, 0);
+   };
+})();
+document.ready(function(){
+   alert('Document is ready!');
+});
+    </script>
 </body>
+
 </html>
